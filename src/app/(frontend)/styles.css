@@ -1,164 +1,180 @@
-:root {
-  --font-mono: 'Roboto Mono', monospace;
-}
+@import 'tailwindcss';
 
+/* Base styles */
 * {
-  box-sizing: border-box;
+  border-color: rgb(229 231 235);
 }
 
-html {
-  font-size: 18px;
-  line-height: 32px;
+@theme {
+  /* Primary brand color - red */
+  --color-primary-50: #fdf3f3;
+  --color-primary-100: #fce5e4;
+  --color-primary-200: #facfce;
+  --color-primary-300: #f6adab;
+  --color-primary-400: #ee7d7b;
+  --color-primary-500: #e35350;
+  --color-primary-600: #cf3633;
+  --color-primary-700: #b52c29;
+  --color-primary-800: #902624;
+  --color-primary-900: #782624;
+  --color-primary-950: #410f0e;
+  --color-primary: #b52c29;
 
-  background: rgb(0, 0, 0);
-  -webkit-font-smoothing: antialiased;
-}
+  /* Secondary color - green */
+  --color-secondary-50: #ecfdf5;
+  --color-secondary-100: #d1fae5;
+  --color-secondary-200: #a7f3d0;
+  --color-secondary-300: #6ee7b7;
+  --color-secondary-400: #34d399;
+  --color-secondary-500: #10b981;
+  --color-secondary-600: #059669;
+  --color-secondary-700: #047857;
+  --color-secondary-800: #065f46;
+  --color-secondary-900: #064e3b;
+  --color-secondary-950: #022c22;
+  --color-secondary: #059669;
 
-html,
-body,
-#app {
-  height: 100%;
+  /* Accent color - blue */
+  --color-accent-50: #f4f6fb;
+  --color-accent-100: #e8ecf6;
+  --color-accent-200: #ccd7eb;
+  --color-accent-300: #9fb6da;
+  --color-accent-400: #6b90c5;
+  --color-accent-500: #4973ae;
+  --color-accent-600: #3c62a0;
+  --color-accent-700: #2d4877;
+  --color-accent-800: #293f63;
+  --color-accent-900: #263654;
+  --color-accent-950: #192338;
+  --color-accent: #3c62a0;
+
+  /* Neutral colors */
+  --color-neutral-50: #f9fafb;
+  --color-neutral-100: #f3f4f6;
+  --color-neutral-200: #e5e7eb;
+  --color-neutral-300: #d1d5db;
+  --color-neutral-400: #9ca3af;
+  --color-neutral-500: #6b7280;
+  --color-neutral-600: #4b5563;
+  --color-neutral-700: #374151;
+  --color-neutral-800: #1f2937;
+  --color-neutral-900: #111827;
+  --color-neutral-950: #030712;
+
+  /* Semantic colors */
+  --color-background: #ffffff;
+  --color-foreground: #111827;
+  --color-muted: #f3f4f6;
+  --color-muted-foreground: #6b7280;
+  --color-border: #e5e7eb;
+  --color-input: #e5e7eb;
+  --color-ring: #b52c29;
+  --color-destructive: #dc2626;
+  --color-destructive-foreground: #ffffff;
 }
 
 body {
-  font-family: system-ui;
-  font-size: 18px;
-  line-height: 32px;
+  background-color: white;
+  color: rgb(17 24 39);
+}
 
-  margin: 0;
-  color: rgb(1000, 1000, 1000);
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--color-ring),
+    0 0 0 4px rgb(from var(--color-ring) r g b / 0.1);
+}
 
-  @media (max-width: 1024px) {
-    font-size: 15px;
-    line-height: 24px;
+/* Motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0s !important;
+    transition-property: none !important;
   }
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
+/* Prose styles */
+.prose {
+  max-width: none;
 }
 
-h1 {
-  margin: 40px 0;
-  font-size: 64px;
-  line-height: 70px;
-  font-weight: bold;
-
-  @media (max-width: 1024px) {
-    margin: 24px 0;
-    font-size: 42px;
-    line-height: 42px;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 38px;
-    line-height: 38px;
-  }
-
-  @media (max-width: 400px) {
-    font-size: 32px;
-    line-height: 32px;
-  }
+.prose h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: rgb(17 24 39);
+  margin-bottom: 1.5rem;
 }
 
-p {
-  margin: 24px 0;
-
-  @media (max-width: 1024px) {
-    margin: calc(var(--base) * 0.75) 0;
-  }
+.prose h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: rgb(17 24 39);
+  margin-bottom: 1rem;
+  margin-top: 2rem;
 }
 
-a {
-  color: currentColor;
-
-  &:focus {
-    opacity: 0.8;
-    outline: none;
-  }
-
-  &:active {
-    opacity: 0.7;
-    outline: none;
-  }
+.prose h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: rgb(17 24 39);
+  margin-bottom: 0.75rem;
+  margin-top: 1.5rem;
 }
 
-svg {
-  vertical-align: middle;
+.prose p {
+  color: rgb(17 24 39 / 0.8);
+  margin-bottom: 1rem;
+  line-height: 1.625;
 }
 
-.home {
+.prose ul {
+  list-style-type: disc;
+  list-style-position: inside;
+  margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: 100vh;
-  padding: 45px;
-  max-width: 1024px;
-  margin: 0 auto;
-  overflow: hidden;
+  gap: 0.5rem;
+}
 
-  @media (max-width: 400px) {
-    padding: 24px;
+.prose li {
+  color: rgb(17 24 39 / 0.8);
+}
+
+.prose a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  transition: color 0.15s ease-in-out;
+}
+
+.prose a:hover {
+  color: rgb(from var(--color-accent) r g b / 0.8);
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
-
-  .content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 1;
-
-    h1 {
-      text-align: center;
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
 
-  .links {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
 
-    a {
-      text-decoration: none;
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-    }
+/* iOS/Safari specific fixes for mobile responsiveness */
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
 
-    .admin {
-      color: rgb(0, 0, 0);
-      background: rgb(1000, 1000, 1000);
-      border: 1px solid rgb(0, 0, 0);
-    }
-
-    .docs {
-      color: rgb(1000, 1000, 1000);
-      background: rgb(0, 0, 0);
-      border: 1px solid rgb(1000, 1000, 1000);
-    }
-  }
-
-  .footer {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    @media (max-width: 1024px) {
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    p {
-      margin: 0;
-    }
-
-    .codeLink {
-      text-decoration: none;
-      padding: 0 0.5rem;
-      background: rgb(60, 60, 60);
-      border-radius: 4px;
-    }
-  }
+body {
+  -webkit-overflow-scrolling: touch;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
