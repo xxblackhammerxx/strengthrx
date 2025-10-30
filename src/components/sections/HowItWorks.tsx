@@ -73,24 +73,7 @@ export function HowItWorks({ variant = 'default' }: HowItWorksProps) {
                 {step.description}
               </p>
 
-              {/* Arrow connector (hidden on mobile and last item) */}
-              {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-6 left-full w-full">
-                  <svg
-                    className={`w-8 h-6 mx-auto ${isAccent ? 'text-white/40' : 'text-accent/40'}`}
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 7l5 5m0 0l-5 5m5-5H6"
-                    />
-                  </svg>
-                </div>
-              )}
+
             </div>
           ))}
         </div>

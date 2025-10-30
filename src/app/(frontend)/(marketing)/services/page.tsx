@@ -1,14 +1,15 @@
-import type { Metadata } from 'next'
+import { ServicesGrid } from '@/components/sections/ServicesGrid'
+import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { Heading } from '@/components/ui/Heading'
-import { Button } from '@/components/ui/Button'
-import { ServicesGrid } from '@/components/sections/ServicesGrid'
 import { services } from '@/content/services'
+import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Our Services - TRT, Peptides & Weight Loss | StrengthRX',
-  description: 'Comprehensive wellness services including testosterone replacement therapy, peptide protocols, weight loss programs, and performance optimization. Licensed providers, telehealth available.',
+  description:
+    'Comprehensive wellness services including testosterone replacement therapy, peptide protocols, weight loss programs, and performance optimization. Licensed providers, telehealth available.',
   alternates: {
     canonical: '/services',
   },
@@ -25,7 +26,9 @@ export default function ServicesPage() {
               Comprehensive Wellness Services
             </Heading>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-              Evidence-based protocols designed to optimize your health, performance, and quality of life through advanced medical interventions. All services delivered through convenient telehealth consultations.
+              Evidence-based protocols designed to optimize your health, performance, and quality of
+              life through advanced medical interventions. All services delivered through convenient
+              telehealth consultations.
             </p>
             <Button size="lg" asChild>
               <Link href="/contact">Book Free Consultation</Link>
@@ -42,8 +45,8 @@ export default function ServicesPage() {
         <Container>
           <div className="space-y-16">
             {services.map((service, index) => (
-              <div 
-                key={service.id} 
+              <div
+                key={service.id}
                 className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
                   index % 2 === 1 ? 'lg:flex-row-reverse' : ''
                 }`}
@@ -52,17 +55,15 @@ export default function ServicesPage() {
                   <Heading as="h2" size="2xl" className="mb-4">
                     {service.title}
                   </Heading>
-                  <p className="text-muted-foreground mb-6">
-                    {service.description}
-                  </p>
-                  
+                  <p className="text-muted-foreground mb-6">{service.description}</p>
+
                   <div className="space-y-3">
                     <h4 className="font-semibold text-foreground">Key Benefits:</h4>
                     <ul className="space-y-2">
                       {service.benefits.map((benefit, idx) => (
                         <li key={idx} className="flex items-start">
                           <svg
-                            className="h-5 w-5 text-secondary mt-0.5 mr-3 shrink-0"
+                            className="h-5 w-5 text-accent mt-0.5 mr-3 shrink-0"
                             fill="currentColor"
                             viewBox="0 0 20 20"
                           >
@@ -78,7 +79,7 @@ export default function ServicesPage() {
                     </ul>
                   </div>
                 </div>
-                
+
                 <div className={`${index % 2 === 1 ? 'lg:order-1' : ''}`}>
                   <div className="bg-white rounded-2xl p-8 shadow-sm border border-border">
                     <div className="text-center">
@@ -109,16 +110,17 @@ export default function ServicesPage() {
               Ready to Start Your Wellness Journey?
             </Heading>
             <p className="text-lg text-white/90 max-w-2xl mx-auto mb-8">
-              Our expert team is ready to help you achieve your health and performance goals with personalized protocols and ongoing support.
+              Our expert team is ready to help you achieve your health and performance goals with
+              personalized protocols and ongoing support.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="secondary" size="lg" asChild>
+              <Button variant="accent" size="lg" asChild>
                 <Link href="/contact">Book Free Consultation</Link>
               </Button>
-              <Button 
-                variant="ghost" 
-                size="lg" 
-                className="text-white border-white hover:bg-white hover:text-primary" 
+              <Button
+                variant="ghost"
+                size="lg"
+                className="text-white border-white hover:bg-white hover:text-primary"
                 asChild
               >
                 <a href="tel:602-708-6487">Call: 602-708-6487</a>

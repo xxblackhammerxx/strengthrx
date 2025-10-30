@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 
@@ -22,7 +23,7 @@ export function MainNav() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <span className="text-2xl font-bold text-primary">StrengthRX</span>
+            <Image src={'/logo.png'} alt="logo image" width={100} height={60} />
           </Link>
 
           {/* Desktop Navigation */}

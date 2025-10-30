@@ -1,12 +1,13 @@
-import type { Metadata } from 'next'
+import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { Heading } from '@/components/ui/Heading'
-import { Button } from '@/components/ui/Button'
+import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'About StrengthRX - Professional Wellness Optimization',
-  description: 'Founded in February 2022, StrengthRX is dedicated to helping individuals achieve optimal health through evidence-based hormone optimization and performance enhancement protocols.',
+  description:
+    'Founded in February 2022, StrengthRX is dedicated to helping individuals achieve optimal health through evidence-based hormone optimization and performance enhancement protocols.',
   alternates: {
     canonical: '/about',
   },
@@ -23,7 +24,8 @@ export default function AboutPage() {
               About StrengthRX
             </Heading>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Dedicated to destroying mediocrity through disciplined wellness optimization and evidence-based medical interventions.
+              Dedicated to destroying mediocrity through disciplined wellness optimization and
+              evidence-based medical interventions.
             </p>
           </div>
         </Container>
@@ -39,17 +41,26 @@ export default function AboutPage() {
               </Heading>
               <div className="prose max-w-none">
                 <p>
-                  Founded in February 2022, StrengthRX emerged from a simple yet powerful belief: that optimal health is the foundation for achieving excellence in every aspect of life. We specialize in evidence-based wellness optimization through hormone therapy, peptide protocols, and performance enhancement strategies.
+                  Founded in February 2022, StrengthRX emerged from a simple yet powerful belief:
+                  that optimal health is the foundation for achieving excellence in every aspect of
+                  life. We specialize in evidence-based wellness optimization through hormone
+                  therapy, peptide protocols, and performance enhancement strategies.
                 </p>
                 <p>
-                  Our approach combines cutting-edge medical science with personalized care, delivered through convenient telehealth services across eight states. We believe in empowering individuals to take control of their health journey with professional guidance, transparent processes, and sustainable protocols.
+                  Our approach combines cutting-edge medical science with personalized care,
+                  delivered through convenient telehealth services across eight states. We believe
+                  in empowering individuals to take control of their health journey with
+                  professional guidance, transparent processes, and sustainable protocols.
                 </p>
                 <p>
-                  At StrengthRX, we don't just treat symptoms – we optimize systems. Our comprehensive approach addresses the interconnected nature of hormonal health, metabolic function, and overall wellness to help you achieve peak performance in work, relationships, and life.
+                  At StrengthRX, we don't just treat symptoms – we optimize systems. Our
+                  comprehensive approach addresses the interconnected nature of hormonal health,
+                  metabolic function, and overall wellness to help you achieve peak performance in
+                  work, relationships, and life.
                 </p>
               </div>
             </div>
-            
+
             <div className="bg-muted/30 rounded-2xl p-8">
               <div className="space-y-6">
                 <div>
@@ -85,47 +96,80 @@ export default function AboutPage() {
               The principles that guide our approach to wellness optimization and patient care.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <svg className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <svg
+                  className="h-8 w-8 text-primary"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
                 </svg>
               </div>
               <Heading as="h3" size="lg" className="mb-3">
                 Evidence-Based
               </Heading>
               <p className="text-muted-foreground">
-                All our protocols are grounded in current medical research and clinical evidence, ensuring safe and effective treatments.
+                All our protocols are grounded in current medical research and clinical evidence,
+                ensuring safe and effective treatments.
               </p>
             </div>
-            
+
             <div className="text-center">
               <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <svg className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                <svg
+                  className="h-8 w-8 text-primary"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                  />
                 </svg>
               </div>
               <Heading as="h3" size="lg" className="mb-3">
                 Personalized Care
               </Heading>
               <p className="text-muted-foreground">
-                Every treatment plan is customized based on individual health history, lab results, and personal goals.
+                Every treatment plan is customized based on individual health history, lab results,
+                and personal goals.
               </p>
             </div>
-            
+
             <div className="text-center">
               <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <svg className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                <svg
+                  className="h-8 w-8 text-primary"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                  />
                 </svg>
               </div>
               <Heading as="h3" size="lg" className="mb-3">
                 Excellence
               </Heading>
               <p className="text-muted-foreground">
-                We're committed to destroying mediocrity in healthcare by setting new standards for patient outcomes and experience.
+                We're committed to destroying mediocrity in healthcare by setting new standards for
+                patient outcomes and experience.
               </p>
             </div>
           </div>
@@ -141,63 +185,116 @@ export default function AboutPage() {
                 Safety & Medical Oversight
               </Heading>
               <p className="text-lg text-muted-foreground">
-                Your safety is our top priority. Our approach emphasizes careful monitoring, responsible protocols, and professional oversight.
+                Your safety is our top priority. Our approach emphasizes careful monitoring,
+                responsible protocols, and professional oversight.
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-4">
                 <h3 className="text-xl font-semibold mb-4">Licensed Providers</h3>
                 <ul className="space-y-3">
                   <li className="flex items-start">
-                    <svg className="h-5 w-5 text-secondary mt-0.5 mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    <svg
+                      className="h-5 w-5 text-accent mt-0.5 mr-3 shrink-0"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
                     </svg>
                     <span>Board-certified healthcare professionals</span>
                   </li>
                   <li className="flex items-start">
-                    <svg className="h-5 w-5 text-secondary mt-0.5 mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    <svg
+                      className="h-5 w-5 text-accent mt-0.5 mr-3 shrink-0"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
                     </svg>
                     <span>Specialized training in hormone optimization</span>
                   </li>
                   <li className="flex items-start">
-                    <svg className="h-5 w-5 text-secondary mt-0.5 mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    <svg
+                      className="h-5 w-5 text-accent mt-0.5 mr-3 shrink-0"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
                     </svg>
                     <span>Licensed in all states we serve</span>
                   </li>
                 </ul>
               </div>
-              
+
               <div className="space-y-4">
                 <h3 className="text-xl font-semibold mb-4">Comprehensive Monitoring</h3>
                 <ul className="space-y-3">
                   <li className="flex items-start">
-                    <svg className="h-5 w-5 text-secondary mt-0.5 mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    <svg
+                      className="h-5 w-5 text-accent mt-0.5 mr-3 shrink-0"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
                     </svg>
                     <span>Regular lab work and health assessments</span>
                   </li>
                   <li className="flex items-start">
-                    <svg className="h-5 w-5 text-secondary mt-0.5 mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    <svg
+                      className="h-5 w-5 text-accent mt-0.5 mr-3 shrink-0"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
                     </svg>
                     <span>Ongoing protocol adjustments as needed</span>
                   </li>
                   <li className="flex items-start">
-                    <svg className="h-5 w-5 text-secondary mt-0.5 mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    <svg
+                      className="h-5 w-5 text-accent mt-0.5 mr-3 shrink-0"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
                     </svg>
                     <span>24/7 access to medical support</span>
                   </li>
                 </ul>
               </div>
             </div>
-            
+
             <div className="mt-8 p-6 bg-yellow-50 border border-yellow-200 rounded-lg">
               <p className="text-sm text-yellow-800">
-                <strong>Important Medical Disclaimer:</strong> The information provided by StrengthRX is for educational purposes only and should not be considered medical advice. All treatments are provided under the supervision of licensed healthcare providers. Individual results may vary. Please consult with our medical team to determine if our services are appropriate for your individual health needs.
+                <strong>Important Medical Disclaimer:</strong> The information provided by
+                StrengthRX is for educational purposes only and should not be considered medical
+                advice. All treatments are provided under the supervision of licensed healthcare
+                providers. Individual results may vary. Please consult with our medical team to
+                determine if our services are appropriate for your individual health needs.
               </p>
             </div>
           </div>
@@ -212,16 +309,17 @@ export default function AboutPage() {
               Ready to Learn More?
             </Heading>
             <p className="text-lg text-white/90 max-w-2xl mx-auto mb-8">
-              Schedule a consultation to discuss your health goals and learn how our evidence-based approach can help you achieve optimal wellness.
+              Schedule a consultation to discuss your health goals and learn how our evidence-based
+              approach can help you achieve optimal wellness.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="secondary" size="lg" asChild>
+              <Button variant="accent" size="lg" asChild>
                 <Link href="/contact">Book Consultation</Link>
               </Button>
-              <Button 
-                variant="ghost" 
-                size="lg" 
-                className="text-white border-white hover:bg-white hover:text-primary" 
+              <Button
+                variant="ghost"
+                size="lg"
+                className="text-white border-white hover:bg-white hover:text-primary"
                 asChild
               >
                 <a href="tel:602-708-6487">Call: 602-708-6487</a>

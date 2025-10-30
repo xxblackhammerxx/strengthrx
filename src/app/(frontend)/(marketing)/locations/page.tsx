@@ -87,7 +87,7 @@ export default function LocationsPage() {
               <div className="space-y-4">
                 <div className="flex items-start">
                   <svg
-                    className="h-6 w-6 text-secondary mt-1 mr-4 shrink-0"
+                    className="h-6 w-6 text-accent mt-1 mr-4 shrink-0"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -133,7 +133,7 @@ export default function LocationsPage() {
 
                 <div className="flex items-start">
                   <svg
-                    className="h-6 w-6 text-secondary mt-1 mr-4 shrink-0"
+                    className="h-6 w-6 text-accent mt-1 mr-4 shrink-0"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"

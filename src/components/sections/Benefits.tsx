@@ -66,7 +66,7 @@ const benefits = [
 
 export function Benefits() {
   return (
-    <section className="py-16 sm:py-24 bg-linear-to-br from-accent via-accent to-accent-700">
+    <section className="py-16 sm:py-24 bg-linear-to-br from-accent-50 via-accent to-accent-700">
       <Container>
         <div className="text-center mb-12">
           <Heading as="h2" size="3xl" className="mb-4 text-white">

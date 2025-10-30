@@ -53,13 +53,7 @@ export function ServicesGrid({ variant = 'default' }: ServicesGridProps) {
                     className={`flex items-start text-sm ${isAccent ? 'text-white/90' : ''}`}
                   >
                     <svg
-                      className={`h-4 w-4 mt-0.5 mr-2 shrink-0 ${
-                        isAccent
-                          ? 'text-white/80'
-                          : idx % 2 === 0
-                            ? 'text-secondary'
-                            : 'text-accent'
-                      }`}
+                      className={`h-4 w-4 mt-0.5 mr-2 shrink-0 text-accent`}
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       aria-hidden="true"
@@ -75,16 +69,7 @@ export function ServicesGrid({ variant = 'default' }: ServicesGridProps) {
                 ))}
               </ul>
 
-              <Button
-                variant={isAccent ? (index % 2 === 0 ? 'secondary' : 'primary') : 'ghost'}
-                size="sm"
-                className={`w-full transition-colors ${
-                  isAccent
-                    ? ''
-                    : `${index % 2 === 0 ? 'group-hover:bg-primary' : 'group-hover:bg-accent'} group-hover:text-white`
-                }`}
-                asChild
-              >
+              <Button variant={'primary'} size="sm" className={`w-full transition-colors `} asChild>
                 <Link href="/services">Learn More</Link>
               </Button>
             </div>
@@ -92,7 +77,7 @@ export function ServicesGrid({ variant = 'default' }: ServicesGridProps) {
         </div>
 
         <div className="text-center mt-12">
-          <Button size="lg" variant={isAccent ? 'secondary' : 'primary'} asChild>
+          <Button size="lg" variant={'primary'} asChild>
             <Link href="/services">View All Services</Link>
           </Button>
         </div>
