@@ -15,7 +15,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const variants = {
       primary: 'bg-primary text-white hover:bg-primary/90 shadow-sm hover:shadow-md',
       accent: 'bg-accent text-white hover:bg-accent/90 shadow-sm hover:shadow-md',
-      ghost: 'text-primary hover:bg-primary/10 hover:text-primary/90 border border-primary',
+      ghost: 'text-accent hover:bg-primary/10 hover:text-primary/90 border border-primary',
       destructive:
         'bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow-sm hover:shadow-md',
       white: 'bg-white text-primary hover:bg-primary-50 shadow-sm hover:shadow-md',

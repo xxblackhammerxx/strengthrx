@@ -36,14 +36,14 @@ export function HowItWorks({ variant = 'default' }: HowItWorksProps) {
   const isAccent = variant === 'accent'
 
   return (
-    <section className={`py-16 sm:py-24 ${isAccent ? 'bg-accent text-white' : ''}`}>
+    <section className={`py-16 sm:py-24 ${isAccent ? 'bg-accent text-white' : 'bg-neutral-900'}`}>
       <Container>
         <div className="text-center mb-12">
-          <Heading as="h2" size="3xl" className={`mb-4 ${isAccent ? 'text-white' : ''}`}>
+          <Heading as="h2" size="3xl" className={`mb-4 ${isAccent ? 'text-white' : 'text-white'}`}>
             How It Works
           </Heading>
           <p
-            className={`text-lg max-w-2xl mx-auto ${isAccent ? 'text-white/80' : 'text-muted-foreground'}`}
+            className={`text-lg max-w-2xl mx-auto ${isAccent ? 'text-white/80' : 'text-gray-300'}`}
           >
             Our streamlined process makes it easy to start your wellness optimization journey with
             professional medical guidance every step of the way.
@@ -66,14 +66,16 @@ export function HowItWorks({ variant = 'default' }: HowItWorksProps) {
               >
                 {step.step}
               </div>
-              <Heading as="h3" size="md" className={`mb-2 ${isAccent ? 'text-white' : ''}`}>
+              <Heading
+                as="h3"
+                size="md"
+                className={`mb-2 ${isAccent ? 'text-white' : 'text-white'}`}
+              >
                 {step.title}
               </Heading>
-              <p className={`text-sm ${isAccent ? 'text-white/80' : 'text-muted-foreground'}`}>
+              <p className={`text-sm ${isAccent ? 'text-white/80' : 'text-gray-300'}`}>
                 {step.description}
               </p>
-
-
             </div>
           ))}
         </div>

@@ -12,14 +12,16 @@ export function ServicesGrid({ variant = 'default' }: ServicesGridProps) {
   const isAccent = variant === 'accent'
 
   return (
-    <section className={`py-16 sm:py-24 ${isAccent ? 'bg-accent text-white' : ''}`}>
+    <section
+      className={`py-16 sm:py-24 ${isAccent ? 'bg-accent text-white' : 'bg-neutral-800 text-white'}`}
+    >
       <Container>
         <div className="text-center mb-12">
-          <Heading as="h2" size="3xl" className={`mb-4 ${isAccent ? 'text-white' : ''}`}>
+          <Heading as="h2" size="3xl" className={`mb-4 ${isAccent ? 'text-white' : 'text-white'}`}>
             Comprehensive Wellness Solutions
           </Heading>
           <p
-            className={`text-lg max-w-2xl mx-auto ${isAccent ? 'text-white/80' : 'text-muted-foreground'}`}
+            className={`text-lg max-w-2xl mx-auto ${isAccent ? 'text-white/80' : 'text-gray-300'}`}
           >
             Evidence-based protocols designed to optimize your health, performance, and quality of
             life through advanced medical interventions.
@@ -33,15 +35,19 @@ export function ServicesGrid({ variant = 'default' }: ServicesGridProps) {
               className={`group relative rounded-2xl p-6 transition-all duration-200 hover:-translate-y-1 ${
                 isAccent
                   ? 'bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15'
-                  : 'bg-white shadow-sm border border-border hover:shadow-lg'
+                  : 'bg-neutral-700 shadow-sm border border-neutral-600 hover:shadow-lg hover:bg-neutral-600'
               }`}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="mb-4">
-                <Heading as="h3" size="lg" className={`mb-2 ${isAccent ? 'text-white' : ''}`}>
+                <Heading
+                  as="h3"
+                  size="lg"
+                  className={`mb-2 ${isAccent ? 'text-white' : 'text-white'}`}
+                >
                   {service.title}
                 </Heading>
-                <p className={`text-sm ${isAccent ? 'text-white/80' : 'text-muted-foreground'}`}>
+                <p className={`text-sm ${isAccent ? 'text-white/80' : 'text-gray-300'}`}>
                   {service.description}
                 </p>
               </div>
@@ -50,7 +56,7 @@ export function ServicesGrid({ variant = 'default' }: ServicesGridProps) {
                 {service.benefits.slice(0, 3).map((benefit, idx) => (
                   <li
                     key={idx}
-                    className={`flex items-start text-sm ${isAccent ? 'text-white/90' : ''}`}
+                    className={`flex items-start text-sm ${isAccent ? 'text-white/90' : 'text-gray-300'}`}
                   >
                     <svg
                       className={`h-4 w-4 mt-0.5 mr-2 shrink-0 text-accent`}
@@ -68,10 +74,6 @@ export function ServicesGrid({ variant = 'default' }: ServicesGridProps) {
                   </li>
                 ))}
               </ul>
-
-              <Button variant={'primary'} size="sm" className={`w-full transition-colors `} asChild>
-                <Link href="/services">Learn More</Link>
-              </Button>
             </div>
           ))}
         </div>

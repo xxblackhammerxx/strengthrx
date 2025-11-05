@@ -2,10 +2,11 @@ import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { Heading } from '@/components/ui/Heading'
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'About StrengthRX - Professional Wellness Optimization',
+  title: 'About Us - StrengthRX Professional Wellness Optimization',
   description:
     'Founded in February 2022, StrengthRX is dedicated to helping individuals achieve optimal health through evidence-based hormone optimization and performance enhancement protocols.',
   alternates: {
@@ -21,7 +22,7 @@ export default function AboutPage() {
         <Container>
           <div className="text-center">
             <Heading as="h1" size="4xl" className="mb-4">
-              About StrengthRX
+              About Us
             </Heading>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               Dedicated to destroying mediocrity through disciplined wellness optimization and
@@ -91,23 +92,34 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <Heading as="h2" size="2xl" className="mb-6">
-                Meet Our Founder
+                Meet Our Founders
               </Heading>
-              <div className="prose max-w-none">
-                <h3 className="text-xl font-semibold mb-4">Bobby Wolfe, FNP</h3>
-                <p>
-                  Bobby Wolfe is a Family Nurse Practitioner and one of the founders and lead
-                  practitioners of StrengthRx, a performance and wellness clinic built on one
-                  mission—helping men and women feel like themselves again. With a passion for
-                  fitness, hormone optimization, peptides, and overall wellness, Bobby takes a
-                  personal, results-driven approach to helping every patient boost energy,
-                  confidence, and strength from the inside out.
-                </p>
-                <p>
-                  When he's not working with patients, you'll find him cheering on the Iowa
-                  Hawkeyes, out fishing with his boys, or spending time with family—recharging the
-                  same way he encourages others to.
-                </p>
+              <div className="text-center mb-8">
+                <div className="mb-6 h-[200px] w-[200px] rounded-full overflow-hidden mx-auto">
+                  <Image
+                    src="/bobby-profile.png"
+                    alt="Bobby Wolfe, FNP - Founder of StrengthRX"
+                    width={200}
+                    height={200}
+                    className="object-cover object-center w-full h-full"
+                  />
+                </div>
+                <div className="prose max-w-none">
+                  <h3 className="text-xl font-semibold mb-4">Bobby Wolfe, FNP</h3>
+                  <p>
+                    Bobby Wolfe is a Family Nurse Practitioner and one of the founders and lead
+                    practitioners of StrengthRx, a performance and wellness clinic built on one
+                    mission—helping men and women feel like themselves again. With a passion for
+                    fitness, hormone optimization, peptides, and overall wellness, Bobby takes a
+                    personal, results-driven approach to helping every patient boost energy,
+                    confidence, and strength from the inside out.
+                  </p>
+                  <p>
+                    When he's not working with patients, you'll find him cheering on the Iowa
+                    Hawkeyes, out fishing with his boys, or spending time with family—recharging the
+                    same way he encourages others to.
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -133,6 +145,71 @@ export default function AboutPage() {
                   <h3 className="font-semibold text-foreground mb-2">Mission</h3>
                   <p className="text-muted-foreground">
                     Helping men and women feel like themselves again
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Co-Founder Section */}
+      <section className="py-16 sm:py-24">
+        <Container>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="bg-muted/40 rounded-2xl p-8">
+              <div className="space-y-6">
+                <div>
+                  <h3 className="font-semibold text-foreground mb-2">Role</h3>
+                  <p className="text-muted-foreground">Co-Founder & Business Operations Director</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground mb-2">Primary Focus</h3>
+                  <p className="text-muted-foreground">
+                    Business Operations, Sales Strategy, Client Experience
+                  </p>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground mb-2">Partnership</h3>
+                  <p className="text-muted-foreground">
+                    Works closely with Bobby to deliver exceptional patient care
+                  </p>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground mb-2">Mission</h3>
+                  <p className="text-muted-foreground">
+                    Ensuring seamless operations and outstanding client experiences
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div className="text-center mb-8">
+                <div className="mb-6 h-[200px] w-[200px] rounded-full overflow-hidden mx-auto">
+                  <Image
+                    src="/kendon-profile.jpg"
+                    alt="Kendon Hatch - Co-Founder of StrengthRX"
+                    width={200}
+                    height={200}
+                    className="object-cover object-center w-full h-full"
+                  />
+                </div>
+                <div className="prose max-w-none">
+                  <h3 className="text-xl font-semibold mb-4">Kendon Hatch</h3>
+                  <p>
+                    Kendon Hatch is the Co-Founder and Business Operations Director at StrengthRX,
+                    where he plays a crucial role in driving the company's growth and ensuring
+                    exceptional client experiences. Working closely with Bobby Wolfe, Kendon focuses
+                    on the operational excellence that allows StrengthRX to deliver world-class
+                    wellness optimization services.
+                  </p>
+                  <p>
+                    With a keen eye for business strategy and sales operations, Kendon ensures that
+                    every aspect of the patient journey is seamless, from initial consultation
+                    through ongoing treatment protocols. His dedication to operational excellence
+                    and client satisfaction helps StrengthRX maintain its reputation for destroying
+                    mediocrity in healthcare delivery.
                   </p>
                 </div>
               </div>
@@ -347,7 +424,7 @@ export default function AboutPage() {
             <div className="mt-8 p-6 bg-yellow-50 border border-yellow-200 rounded-lg">
               <p className="text-sm text-yellow-800">
                 <strong>Important Medical Disclaimer:</strong> The information provided by
-                StrengthRX is for educational purposes only and should not be considered medical
+                StrengthRX on this website is for educational purposes only and should not be considered medical
                 advice. All treatments are provided under the supervision of licensed healthcare
                 providers. Individual results may vary. Please consult with our medical team to
                 determine if our services are appropriate for your individual health needs.

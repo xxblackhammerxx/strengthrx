@@ -7,7 +7,7 @@ const benefits = [
     description:
       'Licensed healthcare providers with specialized expertise in hormone optimization and performance enhancement.',
     icon: (
-      <svg className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <svg className="h-8 w-8 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -22,7 +22,7 @@ const benefits = [
     description:
       'Customized treatment plans based on comprehensive lab work, health history, and individual goals.',
     icon: (
-      <svg className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <svg className="h-8 w-8 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -37,7 +37,7 @@ const benefits = [
     description:
       'Clear, upfront pricing with no hidden fees. Direct-pay model ensures personalized attention and faster service.',
     icon: (
-      <svg className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <svg className="h-8 w-8 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -52,7 +52,7 @@ const benefits = [
     description:
       'Virtual consultations and ongoing support from the comfort of your home. Available across 8 states.',
     icon: (
-      <svg className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <svg className="h-8 w-8 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -66,13 +66,13 @@ const benefits = [
 
 export function Benefits() {
   return (
-    <section className="py-16 sm:py-24 bg-linear-to-br from-accent-50 via-accent to-accent-700">
+    <section className="py-16 sm:py-24 bg-neutral-900">
       <Container>
         <div className="text-center mb-12">
           <Heading as="h2" size="3xl" className="mb-4 text-white">
             Why Choose StrengthRX?
           </Heading>
-          <p className="text-lg text-white/80 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
             We combine medical expertise with modern convenience to deliver exceptional results in
             hormone optimization and wellness enhancement.
           </p>
@@ -85,13 +85,13 @@ export function Benefits() {
               className="text-center group"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 mb-4 group-hover:bg-white/20 transition-all">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/20 backdrop-blur-sm rounded-2xl border border-primary/30 mb-4 group-hover:bg-primary/30 transition-all text-primary">
                 {benefit.icon}
               </div>
               <Heading as="h3" size="md" className="mb-2 text-white">
                 {benefit.title}
               </Heading>
-              <p className="text-white/80 text-sm">{benefit.description}</p>
+              <p className="text-gray-300 text-sm">{benefit.description}</p>
             </div>
           ))}
         </div>
