@@ -64,6 +64,11 @@ body {
   color: rgb(17 24 39);
 }
 
+/* Font utilities */
+.font-heading {
+  font-family: var(--font-heading), monospace !important;
+}
+
 /* Focus styles for accessibility */
 *:focus-visible {
   outline: none;
@@ -86,6 +91,7 @@ body {
 }
 
 .prose h1 {
+  font-family: var(--font-heading);
   font-size: 1.875rem;
   font-weight: 700;
   color: rgb(17 24 39);
@@ -93,6 +99,7 @@ body {
 }
 
 .prose h2 {
+  font-family: var(--font-heading);
   font-size: 1.5rem;
   font-weight: 600;
   color: rgb(17 24 39);
@@ -101,6 +108,7 @@ body {
 }
 
 .prose h3 {
+  font-family: var(--font-heading);
   font-size: 1.25rem;
   font-weight: 600;
   color: rgb(17 24 39);

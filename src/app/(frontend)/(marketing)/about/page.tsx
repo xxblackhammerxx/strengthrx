@@ -85,6 +85,62 @@ export default function AboutPage() {
         </Container>
       </section>
 
+      {/* Founder Section */}
+      <section className="py-16 sm:py-24 bg-muted/20">
+        <Container>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <Heading as="h2" size="2xl" className="mb-6">
+                Meet Our Founder
+              </Heading>
+              <div className="prose max-w-none">
+                <h3 className="text-xl font-semibold mb-4">Bobby Wolfe, FNP</h3>
+                <p>
+                  Bobby Wolfe is a Family Nurse Practitioner and one of the founders and lead
+                  practitioners of StrengthRx, a performance and wellness clinic built on one
+                  mission—helping men and women feel like themselves again. With a passion for
+                  fitness, hormone optimization, peptides, and overall wellness, Bobby takes a
+                  personal, results-driven approach to helping every patient boost energy,
+                  confidence, and strength from the inside out.
+                </p>
+                <p>
+                  When he's not working with patients, you'll find him cheering on the Iowa
+                  Hawkeyes, out fishing with his boys, or spending time with family—recharging the
+                  same way he encourages others to.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-muted/40 rounded-2xl p-8">
+              <div className="space-y-6">
+                <div>
+                  <h3 className="font-semibold text-foreground mb-2">Credentials</h3>
+                  <p className="text-muted-foreground">Family Nurse Practitioner (FNP)</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground mb-2">Specializations</h3>
+                  <p className="text-muted-foreground">
+                    Hormone Optimization, Peptide Therapy, Performance Enhancement
+                  </p>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground mb-2">Personal Interests</h3>
+                  <p className="text-muted-foreground">
+                    Iowa Hawkeyes, Fishing, Family Time, Fitness
+                  </p>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground mb-2">Mission</h3>
+                  <p className="text-muted-foreground">
+                    Helping men and women feel like themselves again
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
       {/* Values Section */}
       <section className="py-16 sm:py-24 bg-muted/30">
         <Container>

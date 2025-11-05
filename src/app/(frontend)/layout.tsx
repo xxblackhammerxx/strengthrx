@@ -1,12 +1,19 @@
 import { SiteFooter } from '@/components/footer/SiteFooter'
 import { MainNav } from '@/components/header/MainNav'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Montserrat } from 'next/font/google'
 import './styles.css'
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
+})
+
+const montserrat = Montserrat({
+  weight: ['400', '500', '600', '700', '800', '900'],
+  subsets: ['latin'],
+  variable: '--font-heading',
+  display: 'swap',
 })
 
 export const metadata: Metadata = {
@@ -70,7 +77,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`${inter.variable} ${montserrat.variable}`}>
       <body className="font-sans antialiased">
         <div className="flex min-h-screen flex-col">
           <MainNav />

@@ -7,15 +7,15 @@ import AnimatedSection from './AnimatedSection'
 export function Hero() {
   return (
     <AnimatedSection>
-      <section className="relative bg-linear-to-br from-primary/90 via-white to-accent/90 pt-16 pb-20 sm:pt-24 sm:pb-32">
+      <section className="relative bg-linear-to-br from-primary  to-accent pt-16 pb-20 sm:pt-24 sm:pb-32">
         <Container>
           <div className="mx-auto max-w-4xl text-center">
-            <Heading as="h1" size="4xl" className="animate-fade-in-up text-accent-700">
+            <Heading as="h1" size="4xl" className="animate-fade-in-up text-white">
               Strong body, strong minds, destroying mediocrity.
             </Heading>
             <AnimatedSection delay={500}>
               <p
-                className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in-up"
+                className="mt-6 text-lg text-gray-200  max-w-2xl mx-auto animate-fade-in-up"
                 style={{ animationDelay: '0.2s' }}
               >
                 Professional wellness optimization through testosterone replacement therapy, peptide
@@ -40,19 +40,19 @@ export function Hero() {
               className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 text-center animate-fade-in-up"
               style={{ animationDelay: '0.6s' }}
             >
-              <div className="bg-white/50 backdrop-blur rounded-lg p-4 border border-border/50">
+              <div className="bg-white backdrop-blur rounded-lg p-4 border border-border/50">
                 <div className="text-2xl font-bold text-primary">8</div>
                 <div className="text-sm text-muted-foreground">States Served</div>
               </div>
-              <div className="bg-white/50 backdrop-blur rounded-lg p-4 border border-border/50">
+              <div className="bg-white backdrop-blur rounded-lg p-4 border border-border/50">
                 <div className="text-2xl font-bold text-accent">100%</div>
                 <div className="text-sm text-muted-foreground">Telehealth</div>
               </div>
-              <div className="bg-white/50 backdrop-blur rounded-lg p-4 border border-border/50">
+              <div className="bg-white backdrop-blur rounded-lg p-4 border border-border/50">
                 <div className="text-2xl font-bold text-primary">2022</div>
                 <div className="text-sm text-muted-foreground">Founded</div>
               </div>
-              <div className="bg-white/50 backdrop-blur rounded-lg p-4 border border-border/50">
+              <div className="bg-white backdrop-blur rounded-lg p-4 border border-border/50">
                 <div className="text-2xl font-bold text-accent">24/7</div>
                 <div className="text-sm text-muted-foreground">Support</div>
               </div>
