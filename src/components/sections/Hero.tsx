@@ -58,21 +58,21 @@ export function Hero() {
                 className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 text-center animate-fade-in-up"
                 style={{ animationDelay: '0.6s' }}
               >
-                <div className="bg-white/10 backdrop-blur rounded-lg p-4 border border-white/20">
+                <div className="bg-white/70 backdrop-blur rounded-lg p-4 border border-white/20">
                   <div className="text-2xl font-bold text-primary">8</div>
-                  <div className="text-sm text-gray-300">States Served</div>
+                  <div className="text-sm text-gray-900">States Served</div>
                 </div>
-                <div className="bg-white/10 backdrop-blur rounded-lg p-4 border border-white/20">
+                <div className="bg-white/70 backdrop-blur rounded-lg p-4 border border-white/20">
                   <div className="text-2xl font-bold text-accent">100%</div>
-                  <div className="text-sm text-gray-300">Telehealth</div>
+                  <div className="text-sm text-gray-900">Telehealth</div>
                 </div>
-                <div className="bg-white/10 backdrop-blur rounded-lg p-4 border border-white/20">
+                <div className="bg-white/70 backdrop-blur rounded-lg p-4 border border-white/20">
                   <div className="text-2xl font-bold text-primary">2022</div>
-                  <div className="text-sm text-gray-300">Founded</div>
+                  <div className="text-sm text-gray-900">Founded</div>
                 </div>
-                <div className="bg-white/10 backdrop-blur rounded-lg p-4 border border-white/20">
+                <div className="bg-white/70 backdrop-blur rounded-lg p-4 border border-white/20">
                   <div className="text-2xl font-bold text-accent">24/7</div>
-                  <div className="text-sm text-gray-300">Support</div>
+                  <div className="text-sm text-gray-900">Support</div>
                 </div>
               </div>
             </AnimatedSection>
