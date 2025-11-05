@@ -1,4 +1,4 @@
-import { PeptideCard } from '@/components/sections/PeptideCard'
+import { DetailCard } from '@/components/ui/DetailCard'
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { Heading } from '@/components/ui/Heading'
@@ -145,7 +145,7 @@ export default function PeptidesPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {peptideTherapies.map((therapy, index) => (
-              <PeptideCard
+              <DetailCard
                 key={index}
                 title={therapy.title}
                 description={therapy.description}
