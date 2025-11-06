@@ -141,7 +141,7 @@ export default function ContactPage() {
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <div className="bg-white rounded-2xl p-8 shadow-sm border border-border">
+            <div className="bg-gray-800 rounded-2xl p-8 shadow-sm border border-border">
               <Heading as="h2" size="xl" className="mb-6">
                 Schedule Your Consultation
               </Heading>

@@ -90,7 +90,7 @@ export function MainNav() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden">
+          <div className="xl:hidden sticky">
             <div className="px-2 pt-2 pb-3 space-y-1 border-t border-neutral-700 bg-neutral-900">
               {navigation.map((item) => (
                 <Link
