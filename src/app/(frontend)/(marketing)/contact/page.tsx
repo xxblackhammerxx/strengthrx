@@ -291,7 +291,7 @@ export default function ContactPage() {
               </div>
 
               {/* Hours */}
-              <div className="bg-white rounded-2xl p-8 shadow-sm border border-border">
+              <div className="bg-gray-700 rounded-2xl p-8 shadow-sm border border-border">
                 <Heading as="h3" size="lg" className="mb-4">
                   Consultation Hours
                 </Heading>
