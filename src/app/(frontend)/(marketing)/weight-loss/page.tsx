@@ -1,5 +1,7 @@
 import { Button } from '@/components/ui/Button'
+import { Card, CardIcon, CardTitle, CardDescription, CardList } from '@/components/ui/Card'
 import { Container } from '@/components/ui/Container'
+import { DetailCard } from '@/components/ui/DetailCard'
 import { Heading } from '@/components/ui/Heading'
 import type { Metadata } from 'next'
 import Link from 'next/link'
@@ -173,24 +175,20 @@ export default function WeightLossPage() {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl p-8 shadow-sm">
+            <div className="bg-primary rounded-2xl p-8 shadow-sm">
               <h3 className="text-xl font-semibold mb-6">Expected Results</h3>
               <div className="space-y-4">
                 <div className="flex items-center justify-between p-4 bg-muted/40 rounded-lg">
                   <span className="font-medium">Average Weight Loss</span>
-                  <span className="text-accent font-bold">15-20%</span>
+                  <span className="text-white font-bold">1-4 lbs/week</span>
                 </div>
                 <div className="flex items-center justify-between p-4 bg-muted/40 rounded-lg">
                   <span className="font-medium">Timeframe</span>
-                  <span className="text-accent font-bold">6-12 months</span>
+                  <span className="text-white font-bold">6-12 months</span>
                 </div>
                 <div className="flex items-center justify-between p-4 bg-muted/40 rounded-lg">
                   <span className="font-medium">A1C Improvement</span>
-                  <span className="text-accent font-bold">1-2 points</span>
-                </div>
-                <div className="flex items-center justify-between p-4 bg-muted/40 rounded-lg">
-                  <span className="font-medium">Success Rate</span>
-                  <span className="text-accent font-bold">85%+</span>
+                  <span className="text-white font-bold">1-2 points</span>
                 </div>
               </div>
             </div>
@@ -212,8 +210,16 @@ export default function WeightLossPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white rounded-2xl p-6 shadow-sm">
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <DetailCard
+              title="Metabolic Testing"
+              description="Comprehensive lab work to identify hormonal imbalances, insulin resistance, thyroid function, and other metabolic factors affecting weight."
+              benefits={[
+                'Thyroid panel (TSH, T3, T4)',
+                'Insulin and glucose levels',
+                'Hormone assessment',
+                'Metabolic markers',
+              ]}
+              icon={
                 <svg
                   className="h-6 w-6 text-primary"
                   fill="none"
@@ -227,22 +233,19 @@ export default function WeightLossPage() {
                     d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                   />
                 </svg>
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Metabolic Testing</h3>
-              <p className="text-muted-foreground mb-4">
-                Comprehensive lab work to identify hormonal imbalances, insulin resistance, thyroid
-                function, and other metabolic factors affecting weight.
-              </p>
-              <ul className="text-sm space-y-1">
-                <li>• Thyroid panel (TSH, T3, T4)</li>
-                <li>• Insulin and glucose levels</li>
-                <li>• Hormone assessment</li>
-                <li>• Metabolic markers</li>
-              </ul>
-            </div>
+              }
+            />
 
-            <div className="bg-white rounded-2xl p-6 shadow-sm">
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <DetailCard
+              title="Medication Management"
+              description="Personalized medication protocols including GLP-1 agonists, appetite suppressants, and metabolic enhancers as appropriate."
+              benefits={[
+                'GLP-1 receptor agonists',
+                'Appetite suppressants',
+                'Metabolic support compounds',
+                'Hormone optimization',
+              ]}
+              icon={
                 <svg
                   className="h-6 w-6 text-primary"
                   fill="none"
@@ -256,22 +259,19 @@ export default function WeightLossPage() {
                     d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
                   />
                 </svg>
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Medication Management</h3>
-              <p className="text-muted-foreground mb-4">
-                Personalized medication protocols including GLP-1 agonists, appetite suppressants,
-                and metabolic enhancers as appropriate.
-              </p>
-              <ul className="text-sm space-y-1">
-                <li>• GLP-1 receptor agonists</li>
-                <li>• Appetite suppressants</li>
-                <li>• Metabolic support compounds</li>
-                <li>• Hormone optimization</li>
-              </ul>
-            </div>
+              }
+            />
 
-            <div className="bg-white rounded-2xl p-6 shadow-sm">
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <DetailCard
+              title="Nutrition Guidance"
+              description="Evidence-based nutrition protocols tailored to your metabolic profile, food preferences, and lifestyle requirements."
+              benefits={[
+                'Personalized meal planning',
+                'Macronutrient optimization',
+                'Supplement recommendations',
+                'Behavioral strategies',
+              ]}
+              icon={
                 <svg
                   className="h-6 w-6 text-primary"
                   fill="none"
@@ -285,22 +285,19 @@ export default function WeightLossPage() {
                     d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v-4m6 0a2 2 0 100-4m0 4a2 2 0 100 4m0-4v-4m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v-4"
                   />
                 </svg>
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Nutrition Guidance</h3>
-              <p className="text-muted-foreground mb-4">
-                Evidence-based nutrition protocols tailored to your metabolic profile, food
-                preferences, and lifestyle requirements.
-              </p>
-              <ul className="text-sm space-y-1">
-                <li>• Personalized meal planning</li>
-                <li>• Macronutrient optimization</li>
-                <li>• Supplement recommendations</li>
-                <li>• Behavioral strategies</li>
-              </ul>
-            </div>
+              }
+            />
 
-            <div className="bg-white rounded-2xl p-6 shadow-sm">
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <DetailCard
+              title="Exercise Optimization"
+              description="Customized exercise recommendations based on your fitness level, preferences, and metabolic needs for maximum fat loss."
+              benefits={[
+                'Strength training protocols',
+                'Cardiovascular optimization',
+                'Activity level guidance',
+                'Recovery strategies',
+              ]}
+              icon={
                 <svg
                   className="h-6 w-6 text-primary"
                   fill="none"
@@ -314,22 +311,19 @@ export default function WeightLossPage() {
                     d="M13 10V3L4 14h7v7l9-11h-7z"
                   />
                 </svg>
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Exercise Optimization</h3>
-              <p className="text-muted-foreground mb-4">
-                Customized exercise recommendations based on your fitness level, preferences, and
-                metabolic needs for maximum fat loss.
-              </p>
-              <ul className="text-sm space-y-1">
-                <li>• Strength training protocols</li>
-                <li>• Cardiovascular optimization</li>
-                <li>• Activity level guidance</li>
-                <li>• Recovery strategies</li>
-              </ul>
-            </div>
+              }
+            />
 
-            <div className="bg-white rounded-2xl p-6 shadow-sm">
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <DetailCard
+              title="Progress Monitoring"
+              description="Regular check-ins, lab monitoring, and protocol adjustments to ensure continued progress and optimal results."
+              benefits={[
+                'Weekly progress reviews',
+                'Body composition tracking',
+                'Lab result analysis',
+                'Protocol adjustments',
+              ]}
+              icon={
                 <svg
                   className="h-6 w-6 text-primary"
                   fill="none"
@@ -343,22 +337,19 @@ export default function WeightLossPage() {
                     d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
                   />
                 </svg>
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Progress Monitoring</h3>
-              <p className="text-muted-foreground mb-4">
-                Regular check-ins, lab monitoring, and protocol adjustments to ensure continued
-                progress and optimal results.
-              </p>
-              <ul className="text-sm space-y-1">
-                <li>• Weekly progress reviews</li>
-                <li>• Body composition tracking</li>
-                <li>• Lab result analysis</li>
-                <li>• Protocol adjustments</li>
-              </ul>
-            </div>
+              }
+            />
 
-            <div className="bg-white rounded-2xl p-6 shadow-sm">
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <DetailCard
+              title="Ongoing Support"
+              description="Continuous medical guidance, lifestyle coaching, and maintenance strategies for long-term weight management success."
+              benefits={[
+                '24/7 medical support',
+                'Lifestyle coaching',
+                'Maintenance planning',
+                'Community support',
+              ]}
+              icon={
                 <svg
                   className="h-6 w-6 text-primary"
                   fill="none"
@@ -372,19 +363,8 @@ export default function WeightLossPage() {
                     d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
                   />
                 </svg>
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Ongoing Support</h3>
-              <p className="text-muted-foreground mb-4">
-                Continuous medical guidance, lifestyle coaching, and maintenance strategies for
-                long-term weight management success.
-              </p>
-              <ul className="text-sm space-y-1">
-                <li>• 24/7 medical support</li>
-                <li>• Lifestyle coaching</li>
-                <li>• Maintenance planning</li>
-                <li>• Community support</li>
-              </ul>
-            </div>
+              }
+            />
           </div>
         </Container>
       </section>

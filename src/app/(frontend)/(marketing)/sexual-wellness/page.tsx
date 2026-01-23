@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
+import { DetailCard } from '@/components/ui/DetailCard'
 import { Heading } from '@/components/ui/Heading'
 import type { Metadata } from 'next'
 import Link from 'next/link'
@@ -105,161 +106,71 @@ export default function SexualWellnessPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white rounded-2xl p-6 shadow-sm">
-              <h3 className="text-xl font-semibold mb-3">Erectile Dysfunction</h3>
-              <p className="text-muted-foreground mb-4">
-                Difficulty achieving or maintaining erections sufficient for satisfactory sexual
-                performance.
-              </p>
-              <ul className="text-sm space-y-2">
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-accent rounded-full mr-2"></span>
-                  Performance anxiety
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-accent rounded-full mr-2"></span>
-                  Cardiovascular factors
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-accent rounded-full mr-2"></span>
-                  Hormonal imbalances
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-accent rounded-full mr-2"></span>
-                  Medication side effects
-                </li>
-              </ul>
-            </div>
+            <DetailCard
+              title="Erectile Dysfunction"
+              description="Difficulty achieving or maintaining erections sufficient for satisfactory sexual performance."
+              benefits={[
+                'Performance anxiety',
+                'Cardiovascular factors',
+                'Hormonal imbalances',
+                'Medication side effects',
+              ]}
+            />
 
-            <div className="bg-white rounded-2xl p-6 shadow-sm">
-              <h3 className="text-xl font-semibold mb-3">Low Libido</h3>
-              <p className="text-muted-foreground mb-4">
-                Decreased interest in sexual activity that may affect quality of life and
-                relationships.
-              </p>
-              <ul className="text-sm space-y-2">
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-accent rounded-full mr-2"></span>
-                  Hormonal changes
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-accent rounded-full mr-2"></span>
-                  Stress and fatigue
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-accent rounded-full mr-2"></span>
-                  Relationship factors
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-accent rounded-full mr-2"></span>
-                  Medical conditions
-                </li>
-              </ul>
-            </div>
+            <DetailCard
+              title="Low Libido"
+              description="Decreased interest in sexual activity that may affect quality of life and relationships."
+              benefits={[
+                'Hormonal changes',
+                'Stress and fatigue',
+                'Relationship factors',
+                'Medical conditions',
+              ]}
+            />
 
-            <div className="bg-white rounded-2xl p-6 shadow-sm">
-              <h3 className="text-xl font-semibold mb-3">Performance Issues</h3>
-              <p className="text-muted-foreground mb-4">
-                Concerns about sexual performance that can create anxiety and impact intimate
-                relationships.
-              </p>
-              <ul className="text-sm space-y-2">
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-accent rounded-full mr-2"></span>
-                  Premature ejaculation
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-accent rounded-full mr-2"></span>
-                  Delayed ejaculation
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-accent rounded-full mr-2"></span>
-                  Performance anxiety
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-accent rounded-full mr-2"></span>
-                  Confidence issues
-                </li>
-              </ul>
-            </div>
+            <DetailCard
+              title="Performance Issues"
+              description="Concerns about sexual performance that can create anxiety and impact intimate relationships."
+              benefits={[
+                'Premature ejaculation',
+                'Delayed ejaculation',
+                'Performance anxiety',
+                'Confidence issues',
+              ]}
+            />
 
-            <div className="bg-white rounded-2xl p-6 shadow-sm">
-              <h3 className="text-xl font-semibold mb-3">Hormonal Factors</h3>
-              <p className="text-muted-foreground mb-4">
-                Hormonal imbalances that significantly impact sexual desire, performance, and
-                satisfaction.
-              </p>
-              <ul className="text-sm space-y-2">
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-accent rounded-full mr-2"></span>
-                  Low testosterone
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-accent rounded-full mr-2"></span>
-                  Estrogen imbalances
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-accent rounded-full mr-2"></span>
-                  Thyroid dysfunction
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-accent rounded-full mr-2"></span>
-                  Adrenal issues
-                </li>
-              </ul>
-            </div>
+            <DetailCard
+              title="Hormonal Factors"
+              description="Hormonal imbalances that significantly impact sexual desire, performance, and satisfaction."
+              benefits={[
+                'Low testosterone',
+                'Estrogen imbalances',
+                'Thyroid dysfunction',
+                'Adrenal issues',
+              ]}
+            />
 
-            <div className="bg-white rounded-2xl p-6 shadow-sm">
-              <h3 className="text-xl font-semibold mb-3">Age-Related Changes</h3>
-              <p className="text-muted-foreground mb-4">
-                Natural changes in sexual function that occur with aging, affecting both men and
-                women.
-              </p>
-              <ul className="text-sm space-y-2">
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-accent rounded-full mr-2"></span>
-                  Decreased sensitivity
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-accent rounded-full mr-2"></span>
-                  Reduced blood flow
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-accent rounded-full mr-2"></span>
-                  Hormonal decline
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-accent rounded-full mr-2"></span>
-                  Physical changes
-                </li>
-              </ul>
-            </div>
+            <DetailCard
+              title="Age-Related Changes"
+              description="Natural changes in sexual function that occur with aging, affecting both men and women."
+              benefits={[
+                'Decreased sensitivity',
+                'Reduced blood flow',
+                'Hormonal decline',
+                'Physical changes',
+              ]}
+            />
 
-            <div className="bg-white rounded-2xl p-6 shadow-sm">
-              <h3 className="text-xl font-semibold mb-3">Relationship Impact</h3>
-              <p className="text-muted-foreground mb-4">
-                Sexual health concerns that affect intimate relationships and overall quality of
-                life.
-              </p>
-              <ul className="text-sm space-y-2">
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-accent rounded-full mr-2"></span>
-                  Communication barriers
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-accent rounded-full mr-2"></span>
-                  Intimacy concerns
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-accent rounded-full mr-2"></span>
-                  Partner satisfaction
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-accent rounded-full mr-2"></span>
-                  Emotional connection
-                </li>
-              </ul>
-            </div>
+            <DetailCard
+              title="Relationship Impact"
+              description="Sexual health concerns that affect intimate relationships and overall quality of life."
+              benefits={[
+                'Communication barriers',
+                'Intimacy concerns',
+                'Partner satisfaction',
+                'Emotional connection',
+              ]}
+            />
           </div>
         </Container>
       </section>
@@ -278,337 +189,109 @@ export default function SexualWellnessPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-2xl p-8 shadow-sm">
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
-                  <svg
-                    className="h-6 w-6 text-primary"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold">Medication Therapy</h3>
-              </div>
-              <p className="text-muted-foreground mb-4">
-                FDA-approved medications for erectile dysfunction, premature ejaculation, and other
-                sexual health concerns.
-              </p>
-              <ul className="space-y-3">
-                <li className="flex items-start">
-                  <svg
-                    className="h-5 w-5 text-accent mt-0.5 mr-3 shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span>PDE5 inhibitors (Sildenafil, Tadalafil)</span>
-                </li>
-                <li className="flex items-start">
-                  <svg
-                    className="h-5 w-5 text-accent mt-0.5 mr-3 shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span>Topical treatments and compounded formulations</span>
-                </li>
-                <li className="flex items-start">
-                  <svg
-                    className="h-5 w-5 text-accent mt-0.5 mr-3 shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span>Injectable therapies for enhanced effectiveness</span>
-                </li>
-                <li className="flex items-start">
-                  <svg
-                    className="h-5 w-5 text-accent mt-0.5 mr-3 shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span>Customized dosing for optimal results</span>
-                </li>
-              </ul>
-            </div>
+            <DetailCard
+              title="Medication Therapy"
+              description="FDA-approved medications for erectile dysfunction, premature ejaculation, and other sexual health concerns."
+              benefits={[
+                'PDE5 inhibitors (Sildenafil, Tadalafil)',
+                'Topical treatments and compounded formulations',
+                'Injectable therapies for enhanced effectiveness',
+                'Customized dosing for optimal results',
+              ]}
+              icon={
+                <svg
+                  className="h-6 w-6 text-primary"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+                  />
+                </svg>
+              }
+            />
 
-            <div className="bg-white rounded-2xl p-8 shadow-sm">
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
-                  <svg
-                    className="h-6 w-6 text-primary"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold">Hormone Optimization</h3>
-              </div>
-              <p className="text-muted-foreground mb-4">
-                Comprehensive hormone testing and replacement therapy to address underlying hormonal
-                factors affecting sexual function.
-              </p>
-              <ul className="space-y-3">
-                <li className="flex items-start">
-                  <svg
-                    className="h-5 w-5 text-accent mt-0.5 mr-3 shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span>Testosterone replacement therapy</span>
-                </li>
-                <li className="flex items-start">
-                  <svg
-                    className="h-5 w-5 text-accent mt-0.5 mr-3 shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span>Estrogen and progesterone balancing</span>
-                </li>
-                <li className="flex items-start">
-                  <svg
-                    className="h-5 w-5 text-accent mt-0.5 mr-3 shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span>Thyroid and adrenal support</span>
-                </li>
-                <li className="flex items-start">
-                  <svg
-                    className="h-5 w-5 text-accent mt-0.5 mr-3 shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span>Regular monitoring and adjustments</span>
-                </li>
-              </ul>
-            </div>
+            <DetailCard
+              title="Hormone Optimization"
+              description="Comprehensive hormone testing and replacement therapy to address underlying hormonal factors affecting sexual function."
+              benefits={[
+                'Testosterone replacement therapy',
+                'Estrogen and progesterone balancing',
+                'Thyroid and adrenal support',
+                'Regular monitoring and adjustments',
+              ]}
+              icon={
+                <svg
+                  className="h-6 w-6 text-primary"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                  />
+                </svg>
+              }
+            />
 
-            <div className="bg-white rounded-2xl p-8 shadow-sm">
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
-                  <svg
-                    className="h-6 w-6 text-primary"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold">Lifestyle Optimization</h3>
-              </div>
-              <p className="text-muted-foreground mb-4">
-                Comprehensive lifestyle interventions to support sexual health through improved
-                overall wellness.
-              </p>
-              <ul className="space-y-3">
-                <li className="flex items-start">
-                  <svg
-                    className="h-5 w-5 text-accent mt-0.5 mr-3 shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span>Cardiovascular health optimization</span>
-                </li>
-                <li className="flex items-start">
-                  <svg
-                    className="h-5 w-5 text-accent mt-0.5 mr-3 shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span>Stress management techniques</span>
-                </li>
-                <li className="flex items-start">
-                  <svg
-                    className="h-5 w-5 text-accent mt-0.5 mr-3 shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span>Exercise and fitness recommendations</span>
-                </li>
-                <li className="flex items-start">
-                  <svg
-                    className="h-5 w-5 text-accent mt-0.5 mr-3 shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span>Nutritional guidance for sexual health</span>
-                </li>
-              </ul>
-            </div>
+            <DetailCard
+              title="Lifestyle Optimization"
+              description="Comprehensive lifestyle interventions to support sexual health through improved overall wellness."
+              benefits={[
+                'Cardiovascular health optimization',
+                'Stress management techniques',
+                'Exercise and fitness recommendations',
+                'Nutritional guidance for sexual health',
+              ]}
+              icon={
+                <svg
+                  className="h-6 w-6 text-primary"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                  />
+                </svg>
+              }
+            />
 
-            <div className="bg-white rounded-2xl p-8 shadow-sm">
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
-                  <svg
-                    className="h-6 w-6 text-primary"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold">Support & Counseling</h3>
-              </div>
-              <p className="text-muted-foreground mb-4">
-                Professional guidance to address psychological factors and relationship dynamics
-                affecting sexual wellness.
-              </p>
-              <ul className="space-y-3">
-                <li className="flex items-start">
-                  <svg
-                    className="h-5 w-5 text-accent mt-0.5 mr-3 shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span>Performance anxiety counseling</span>
-                </li>
-                <li className="flex items-start">
-                  <svg
-                    className="h-5 w-5 text-accent mt-0.5 mr-3 shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span>Relationship communication strategies</span>
-                </li>
-                <li className="flex items-start">
-                  <svg
-                    className="h-5 w-5 text-accent mt-0.5 mr-3 shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span>Confidence building techniques</span>
-                </li>
-                <li className="flex items-start">
-                  <svg
-                    className="h-5 w-5 text-accent mt-0.5 mr-3 shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span>Ongoing emotional support</span>
-                </li>
-              </ul>
-            </div>
+            <DetailCard
+              title="Support & Counseling"
+              description="Professional guidance to address psychological factors and relationship dynamics affecting sexual wellness."
+              benefits={[
+                'Performance anxiety counseling',
+                'Relationship communication strategies',
+                'Confidence building techniques',
+                'Ongoing emotional support',
+              ]}
+              icon={
+                <svg
+                  className="h-6 w-6 text-primary"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
+              }
+            />
           </div>
         </Container>
       </section>

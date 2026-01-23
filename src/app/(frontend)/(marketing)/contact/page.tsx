@@ -121,6 +121,7 @@ export default function ContactPage() {
 
   return (
     <div>
+
       {/* Hero Section */}
       <section className="pt-16 pb-12 sm:pt-24 sm:pb-16">
         <Container>
@@ -141,199 +142,190 @@ export default function ContactPage() {
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <div className="bg-gray-800 rounded-2xl p-8 shadow-sm border border-border">
-              <Heading as="h2" size="xl" className="mb-6">
-                Schedule Your Consultation
-              </Heading>
-
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <Input
-                  label="Full Name"
-                  type="text"
-                  value={formData.name}
-                  onChange={(e) => handleInputChange('name', e.target.value)}
-                  error={errors.name}
-                  required
-                  placeholder="Enter your full name"
-                />
-
-                <Input
-                  label="Email Address"
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => handleInputChange('email', e.target.value)}
-                  error={errors.email}
-                  required
-                  placeholder="your.email@example.com"
-                />
-
-                <Input
-                  label="Phone Number"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={(e) => handleInputChange('phone', e.target.value)}
-                  error={errors.phone}
-                  required
-                  placeholder="(555) 123-4567"
-                />
-
-                <div>
-                  <label htmlFor="state" className="block text-sm font-medium text-foreground mb-2">
-                    State
-                    <span className="text-destructive ml-1">*</span>
-                  </label>
-                  <select
-                    id="state"
-                    value={formData.state}
-                    onChange={(e) => handleInputChange('state', e.target.value)}
-                    className="flex h-12 w-full rounded-lg border border-input bg-background px-4 py-2 text-base ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
-                    required
-                  >
-                    <option value="">Select your state</option>
-                    {states.map((state) => (
-                      <option key={state.code} value={state.code}>
-                        {state.name}
-                      </option>
-                    ))}
-                  </select>
-                  {errors.state && <p className="mt-2 text-sm text-destructive">{errors.state}</p>}
-                </div>
-
-                <Textarea
-                  label="Tell us about your health goals"
-                  value={formData.message}
-                  onChange={(e) => handleInputChange('message', e.target.value)}
-                  error={errors.message}
-                  required
-                  placeholder="What health or performance goals would you like to achieve? Any specific symptoms or concerns?"
-                  rows={4}
-                />
-
-                <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
-                  {isSubmitting ? 'Submitting...' : 'Book Free Consultation'}
-                </Button>
-
-                <p className="text-xs text-muted-foreground text-center">
-                  By submitting this form, you consent to be contacted by StrengthRX about our
-                  services. We respect your privacy and will never share your information with third
-                  parties.
-                </p>
-              </form>
-            </div>
-
-            {/* Contact Information */}
-            <div className="space-y-8">
-              {/* Direct Contact */}
-              <div className="bg-muted/30 rounded-2xl p-8">
-                <Heading as="h3" size="lg" className="mb-4">
-                  Prefer to Call?
-                </Heading>
-                <p className="text-muted-foreground mb-6">
-                  Speak directly with our team to schedule your consultation or get immediate
-                  answers to your questions.
-                </p>
-
-                <div className="space-y-4">
-                  <div className="flex items-center">
-                    <svg
-                      className="h-5 w-5 text-primary mr-3"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                    </svg>
-                    <div>
-                      <p className="font-semibold">Phone</p>
-                      <a href="tel:602-708-6487" className="text-primary hover:underline">
-                        602-708-6487
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center">
-                    <svg
-                      className="h-5 w-5 text-primary mr-3"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                      <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                    </svg>
-                    <div>
-                      <p className="font-semibold">Email</p>
-                      <a
-                        href="mailto:Yourstrengthrx@gmail.com"
-                        className="text-primary hover:underline"
-                      >
-                        Yourstrengthrx@gmail.com
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center">
-                    <svg
-                      className="h-5 w-5 text-primary mr-3"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    <div>
-                      <p className="font-semibold">Location</p>
-                      <p className="text-muted-foreground">Phoenix, Arizona</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Hours */}
-              <div className="bg-gray-700 rounded-2xl p-8 shadow-sm border border-border">
-                <Heading as="h3" size="lg" className="mb-4">
-                  Consultation Hours
-                </Heading>
-                <div className="space-y-2">
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Monday - Friday</span>
-                    <span className="font-medium">8:00 AM - 7:00 PM MST</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Saturday</span>
-                    <span className="font-medium">9:00 AM - 5:00 PM MST</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Sunday</span>
-                    <span className="font-medium">Closed</span>
-                  </div>
-                </div>
-
-                <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-                  <p className="text-sm text-green-800">
-                    <strong>Same-day appointments available!</strong> Most consultations can be
-                    scheduled within 24-48 hours.
+            {/* Google Calendar Scheduling */}
+            <section className="pb-16 sm:pb-24">
+              <Container>
+                <div className="text-center mb-8">
+                  <Heading as="h2" size="2xl" className="mb-4">
+                    Schedule Your Appointment
+                  </Heading>
+                  <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                    Book your consultation directly through our calendar below
                   </p>
                 </div>
+                <div className="bg-white  rounded-2xl p-4 shadow-sm border border-border">
+                  {/* Google Calendar Appointment Scheduling begin */}
+                  <iframe
+                    src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ27vS2exHF_EnBY-IPJQSiN8q6f24Pl_yBYZGjGg986c7mNX1qV0N60TLYNJndsclHEDKq_Rzvw?gv=true"
+                    style={{ border: 0 }}
+                    width="100%"
+                    height="1100"
+                    frameBorder="0"
+                  />
+                  {/* end Google Calendar Appointment Scheduling */}
+                </div>
+              </Container>
+            </section>
+
+            {/* Contact Form & Contact Information */}
+            <div className="space-y-8">
+              {/* Contact Form */}
+              <div className="bg-gray-800 rounded-2xl p-8 shadow-sm border border-border">
+                <Heading as="h2" size="xl" className="mb-6">
+                  Have Questions? Get In Touch
+                </Heading>
+
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <Input
+                    label="Full Name"
+                    type="text"
+                    value={formData.name}
+                    onChange={(e) => handleInputChange('name', e.target.value)}
+                    error={errors.name}
+                    required
+                    placeholder="Enter your full name"
+                  />
+
+                  <Input
+                    label="Email Address"
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => handleInputChange('email', e.target.value)}
+                    error={errors.email}
+                    required
+                    placeholder="your.email@example.com"
+                  />
+
+                  <div>
+                    <label
+                      htmlFor="products"
+                      className="block text-sm font-medium text-foreground mb-2"
+                    >
+                      Products/Services Interested In
+                    </label>
+                    <select
+                      id="products"
+                      value={formData.state}
+                      onChange={(e) => handleInputChange('state', e.target.value)}
+                      className="flex h-12 w-full rounded-lg border border-input bg-background px-4 py-2 text-base ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                    >
+                      <option value="">Select a product/service</option>
+                      <option value="TRT">Testosterone Replacement Therapy (TRT)</option>
+                      <option value="Peptides">Peptides</option>
+                      <option value="Weight Loss">Weight Loss</option>
+                      <option value="Sexual Wellness">Sexual Wellness</option>
+                      <option value="Hormone Therapy">Hormone Therapy</option>
+                      <option value="General">General Inquiry</option>
+                    </select>
+                  </div>
+
+                  <Textarea
+                    label="Your Message"
+                    value={formData.message}
+                    onChange={(e) => handleInputChange('message', e.target.value)}
+                    error={errors.message}
+                    required
+                    placeholder="Tell us about your questions or how we can help you..."
+                    rows={4}
+                  />
+
+                  <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                  </Button>
+
+                  <p className="text-xs text-muted-foreground text-center">
+                    We'll get back to you within 24 hours. For urgent matters, please call us
+                    directly.
+                  </p>
+                </form>
               </div>
 
-              {/* FAQ Link */}
-              <div className="bg-primary text-white rounded-2xl p-8">
-                <Heading as="h3" size="lg" className="mb-4 text-white">
-                  Have Questions?
-                </Heading>
-                <p className="text-white/90 mb-6">
-                  Check out our frequently asked questions or schedule a call to speak with our team
-                  about your specific situation.
-                </p>
-                <div className="space-y-3">
-                  <Button variant="accent" className="w-full" asChild>
-                    <a href="mailto:Yourstrengthrx@gmail.com">Email Us Your Questions</a>
-                  </Button>
-                  <Button variant="white" className="w-full" asChild>
-                    <a href="tel:602-708-6487">Call Now</a>
-                  </Button>
+              {/* Contact Information */}
+              <div className="space-y-8">
+                {/* Direct Contact */}
+                <div className="bg-muted/30 rounded-2xl p-8">
+                  <Heading as="h3" size="lg" className="mb-4">
+                    Prefer to Call?
+                  </Heading>
+                  <p className="text-muted-foreground mb-6">
+                    Speak directly with our team to schedule your consultation or get immediate
+                    answers to your questions.
+                  </p>
+
+                  <div className="space-y-4">
+                    <div className="flex items-center">
+                      <svg
+                        className="h-5 w-5 text-primary mr-3"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                      </svg>
+                      <div>
+                        <p className="font-semibold">Phone</p>
+                        <a href="tel:602-708-6487" className="text-primary hover:underline">
+                          602-708-6487
+                        </a>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center">
+                      <svg
+                        className="h-5 w-5 text-primary mr-3"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                      </svg>
+                      <div>
+                        <p className="font-semibold">Email</p>
+                        <a
+                          href="mailto:Yourstrengthrx@gmail.com"
+                          className="text-primary hover:underline"
+                        >
+                          Yourstrengthrx@gmail.com
+                        </a>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center">
+                      <svg
+                        className="h-5 w-5 text-primary mr-3"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      <div>
+                        <p className="font-semibold">Location</p>
+                        <p className="text-muted-foreground">Phoenix, Arizona</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* FAQ Link */}
+                <div className="bg-primary text-white rounded-2xl p-8">
+                  <Heading as="h3" size="lg" className="mb-4 text-white">
+                    Have Questions?
+                  </Heading>
+                  <p className="text-white/90 mb-6">
+                    Check out our frequently asked questions or schedule a call to speak with our
+                    team about your specific situation.
+                  </p>
+                  <div className="space-y-3">
+                    <Button variant="accent" className="w-full" asChild>
+                      <a href="mailto:Yourstrengthrx@gmail.com">Email Us Your Questions</a>
+                    </Button>
+                    <Button variant="white" className="w-full" asChild>
+                      <a href="tel:602-708-6487">Call Now</a>
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
