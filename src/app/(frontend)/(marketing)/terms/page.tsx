@@ -69,7 +69,10 @@ export default async function TermsPage() {
           <p>To use our services, you must:</p>
           <ul>
             <li>Be at least 18 years of age</li>
-            <li>Reside in a state where we are licensed to provide prescription-related services (currently {statesList}, with more states being added frequently)</li>
+            <li>
+              Reside in a state where we are licensed to provide prescription-related services
+              (currently {statesList}, with more states being added frequently)
+            </li>
             <li>Provide accurate and complete health information</li>
             <li>Have access to reliable internet and video calling capabilities</li>
             <li>Agree to follow prescribed treatment protocols</li>

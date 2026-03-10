@@ -49,9 +49,9 @@ export default function WeightLossPage() {
                   metabolic, and physiological factors that influence weight management.
                 </p>
                 <p>
-                  Using medications like GLP-1 receptor agonists, comprehensive
-                  metabolic testing, and personalized nutrition protocols, we help you achieve and
-                  maintain your ideal weight while optimizing overall health.
+                  Using medications like GLP-1 receptor agonists, comprehensive metabolic testing,
+                  and personalized nutrition protocols, we help you achieve and maintain your ideal
+                  weight while optimizing overall health.
                 </p>
                 <p>
                   Our programs are designed for individuals who have struggled with traditional diet
@@ -99,8 +99,8 @@ export default function WeightLossPage() {
               GLP-1 Receptor Agonist Therapy
             </Heading>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Revolutionary medications that work with your body's natural systems to
-              promote healthy weight loss.
+              Revolutionary medications that work with your body's natural systems to promote
+              healthy weight loss.
             </p>
           </div>
 
@@ -344,11 +344,7 @@ export default function WeightLossPage() {
             <DetailCard
               title="Ongoing Support"
               description="Continuous medical guidance, lifestyle coaching, and maintenance strategies for long-term weight management success."
-              benefits={[
-                'Lifestyle coaching',
-                'Maintenance planning',
-                'Community support',
-              ]}
+              benefits={['Lifestyle coaching', 'Maintenance planning', 'Community support']}
               icon={
                 <svg
                   className="h-6 w-6 text-primary"

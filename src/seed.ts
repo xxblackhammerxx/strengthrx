@@ -37,9 +37,24 @@ async function seed() {
   // ── Partners ────────────────────────────────────────────
   console.log('\nCreating partners...')
   const partnersData = [
-    { fullName: 'John Rivera', email: 'john@fitlife.com', referralCode: 'TRAINERJOHN', commissionRate: 12 },
-    { fullName: 'Lisa Chen', email: 'lisa@ironwill.com', referralCode: 'COACHLISA', commissionRate: 10 },
-    { fullName: 'Marcus Thompson', email: 'marcus@peakfit.com', referralCode: 'FITMARC', commissionRate: 15 },
+    {
+      fullName: 'John Rivera',
+      email: 'john@fitlife.com',
+      referralCode: 'TRAINERJOHN',
+      commissionRate: 12,
+    },
+    {
+      fullName: 'Lisa Chen',
+      email: 'lisa@ironwill.com',
+      referralCode: 'COACHLISA',
+      commissionRate: 10,
+    },
+    {
+      fullName: 'Marcus Thompson',
+      email: 'marcus@peakfit.com',
+      referralCode: 'FITMARC',
+      commissionRate: 15,
+    },
   ]
 
   const partners = []
@@ -60,16 +75,116 @@ async function seed() {
   // ── Clients ─────────────────────────────────────────────
   console.log('\nCreating clients...')
   const clientsData = [
-    { firstName: 'Alex', lastName: 'Thompson', email: 'alex.t@email.com', dateOfBirth: '1990-03-15', phone: '555-0101', paperworkStatus: 'completed' as const, labStatus: 'received' as const, medicalReviewStatus: 'complete' as const, partnerIdx: 0 },
-    { firstName: 'Emma', lastName: 'Wilson', email: 'emma.w@email.com', dateOfBirth: '1988-07-22', phone: '555-0102', paperworkStatus: 'completed' as const, labStatus: 'ordered' as const, medicalReviewStatus: 'pending' as const, partnerIdx: 0 },
-    { firstName: 'Chris', lastName: 'Martinez', email: 'chris.m@email.com', dateOfBirth: '1992-11-08', phone: '555-0103', paperworkStatus: 'completed' as const, labStatus: 'uploaded' as const, medicalReviewStatus: 'complete' as const, partnerIdx: 0 },
-    { firstName: 'Sophia', lastName: 'Nguyen', email: 'sophia.n@email.com', dateOfBirth: '1995-01-30', phone: '555-0104', paperworkStatus: 'in_progress' as const, labStatus: 'not_ordered' as const, medicalReviewStatus: 'pending' as const, partnerIdx: 1 },
-    { firstName: 'David', lastName: 'Lee', email: 'david.l@email.com', dateOfBirth: '1985-06-14', phone: '555-0105', paperworkStatus: 'completed' as const, labStatus: 'received' as const, medicalReviewStatus: 'complete' as const, partnerIdx: 1 },
-    { firstName: 'Olivia', lastName: 'Brown', email: 'olivia.b@email.com', dateOfBirth: '1993-09-25', phone: '555-0106', paperworkStatus: 'completed' as const, labStatus: 'ordered' as const, medicalReviewStatus: 'pending' as const, partnerIdx: 1 },
-    { firstName: 'James', lastName: 'Taylor', email: 'james.t@email.com', dateOfBirth: '1991-04-17', phone: '555-0107', paperworkStatus: 'not_started' as const, labStatus: 'not_ordered' as const, medicalReviewStatus: 'pending' as const, partnerIdx: 2 },
-    { firstName: 'Mia', lastName: 'Anderson', email: 'mia.a@email.com', dateOfBirth: '1994-12-03', phone: '555-0108', paperworkStatus: 'completed' as const, labStatus: 'received' as const, medicalReviewStatus: 'pending' as const, partnerIdx: 2 },
-    { firstName: 'Ethan', lastName: 'Garcia', email: 'ethan.g@email.com', dateOfBirth: '1989-08-19', phone: '555-0109', paperworkStatus: 'completed' as const, labStatus: 'uploaded' as const, medicalReviewStatus: 'complete' as const, partnerIdx: 2 },
-    { firstName: 'Ava', lastName: 'Johnson', email: 'ava.j@email.com', dateOfBirth: '1996-02-28', phone: '555-0110', paperworkStatus: 'completed' as const, labStatus: 'ordered' as const, medicalReviewStatus: 'pending' as const, partnerIdx: null },
+    {
+      firstName: 'Alex',
+      lastName: 'Thompson',
+      email: 'alex.t@email.com',
+      dateOfBirth: '1990-03-15',
+      phone: '555-0101',
+      paperworkStatus: 'completed' as const,
+      labStatus: 'received' as const,
+      medicalReviewStatus: 'complete' as const,
+      partnerIdx: 0,
+    },
+    {
+      firstName: 'Emma',
+      lastName: 'Wilson',
+      email: 'emma.w@email.com',
+      dateOfBirth: '1988-07-22',
+      phone: '555-0102',
+      paperworkStatus: 'completed' as const,
+      labStatus: 'ordered' as const,
+      medicalReviewStatus: 'pending' as const,
+      partnerIdx: 0,
+    },
+    {
+      firstName: 'Chris',
+      lastName: 'Martinez',
+      email: 'chris.m@email.com',
+      dateOfBirth: '1992-11-08',
+      phone: '555-0103',
+      paperworkStatus: 'completed' as const,
+      labStatus: 'uploaded' as const,
+      medicalReviewStatus: 'complete' as const,
+      partnerIdx: 0,
+    },
+    {
+      firstName: 'Sophia',
+      lastName: 'Nguyen',
+      email: 'sophia.n@email.com',
+      dateOfBirth: '1995-01-30',
+      phone: '555-0104',
+      paperworkStatus: 'in_progress' as const,
+      labStatus: 'not_ordered' as const,
+      medicalReviewStatus: 'pending' as const,
+      partnerIdx: 1,
+    },
+    {
+      firstName: 'David',
+      lastName: 'Lee',
+      email: 'david.l@email.com',
+      dateOfBirth: '1985-06-14',
+      phone: '555-0105',
+      paperworkStatus: 'completed' as const,
+      labStatus: 'received' as const,
+      medicalReviewStatus: 'complete' as const,
+      partnerIdx: 1,
+    },
+    {
+      firstName: 'Olivia',
+      lastName: 'Brown',
+      email: 'olivia.b@email.com',
+      dateOfBirth: '1993-09-25',
+      phone: '555-0106',
+      paperworkStatus: 'completed' as const,
+      labStatus: 'ordered' as const,
+      medicalReviewStatus: 'pending' as const,
+      partnerIdx: 1,
+    },
+    {
+      firstName: 'James',
+      lastName: 'Taylor',
+      email: 'james.t@email.com',
+      dateOfBirth: '1991-04-17',
+      phone: '555-0107',
+      paperworkStatus: 'not_started' as const,
+      labStatus: 'not_ordered' as const,
+      medicalReviewStatus: 'pending' as const,
+      partnerIdx: 2,
+    },
+    {
+      firstName: 'Mia',
+      lastName: 'Anderson',
+      email: 'mia.a@email.com',
+      dateOfBirth: '1994-12-03',
+      phone: '555-0108',
+      paperworkStatus: 'completed' as const,
+      labStatus: 'received' as const,
+      medicalReviewStatus: 'pending' as const,
+      partnerIdx: 2,
+    },
+    {
+      firstName: 'Ethan',
+      lastName: 'Garcia',
+      email: 'ethan.g@email.com',
+      dateOfBirth: '1989-08-19',
+      phone: '555-0109',
+      paperworkStatus: 'completed' as const,
+      labStatus: 'uploaded' as const,
+      medicalReviewStatus: 'complete' as const,
+      partnerIdx: 2,
+    },
+    {
+      firstName: 'Ava',
+      lastName: 'Johnson',
+      email: 'ava.j@email.com',
+      dateOfBirth: '1996-02-28',
+      phone: '555-0110',
+      paperworkStatus: 'completed' as const,
+      labStatus: 'ordered' as const,
+      medicalReviewStatus: 'pending' as const,
+      partnerIdx: null,
+    },
   ]
 
   const clients = []
@@ -90,7 +205,12 @@ async function seed() {
   // ── Referrals ───────────────────────────────────────────
   console.log('\nCreating referrals...')
 
-  type ReferralStatus = 'lead_created' | 'consult_booked' | 'qualified' | 'converted' | 'disqualified'
+  type ReferralStatus =
+    | 'lead_created'
+    | 'consult_booked'
+    | 'qualified'
+    | 'converted'
+    | 'disqualified'
 
   const referralsData: {
     partnerIdx: number
@@ -146,7 +266,9 @@ async function seed() {
         marketingSource: partners[r.partnerIdx].referralCode,
       },
     })
-    console.log(`  ✓ Created ${publicId} (${r.status}) → Partner: ${partners[r.partnerIdx].fullName}`)
+    console.log(
+      `  ✓ Created ${publicId} (${r.status}) → Partner: ${partners[r.partnerIdx].fullName}`,
+    )
   }
 
   // ── Update partner totalEarnings ────────────────────────

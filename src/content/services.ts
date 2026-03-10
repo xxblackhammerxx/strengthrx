@@ -9,7 +9,7 @@ export interface Service {
 export const services: Service[] = [
   {
     id: 'testosterone-optimization',
-    title: 'Testosterone Optimization (TRT)',
+    title: 'Testosterone Optimization (TRT) & Hormone Optimization',
     description:
       'Comprehensive testosterone replacement therapy with ongoing monitoring and optimization.',
     benefits: [

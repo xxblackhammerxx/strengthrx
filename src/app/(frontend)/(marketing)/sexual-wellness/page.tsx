@@ -267,7 +267,6 @@ export default function SexualWellnessPage() {
                 </svg>
               }
             />
-
           </div>
         </Container>
       </section>

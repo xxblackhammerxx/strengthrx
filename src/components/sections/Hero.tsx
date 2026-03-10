@@ -71,7 +71,6 @@ export function Hero() {
                   <div className="text-2xl font-bold text-primary">2022</div>
                   <div className="text-sm text-gray-900">Founded</div>
                 </div>
-
               </div>
             </AnimatedSection>
           </div>

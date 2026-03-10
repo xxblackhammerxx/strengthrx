@@ -84,7 +84,8 @@ export function SiteFooter() {
         {/* Pharmacy Notice */}
         <div className="border-t border-gray-700 pt-6 mt-8">
           <p className="text-center text-gray-300 text-sm font-medium">
-            All medications prescribed through a licensed 503A compound pharmacy — <span className="text-accent font-semibold">NOT research grade</span>
+            All medications prescribed through a licensed 503A compound pharmacy —{' '}
+            <span className="text-accent font-semibold">NOT research grade</span>
           </p>
         </div>
 

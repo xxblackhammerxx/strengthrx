@@ -39,8 +39,7 @@ export function generateOrganizationSchema(serviceAreas: string[] = defaultServi
     alternateName: 'StrengthRX',
     url: 'https://mystrengthrx.com',
     logo: 'https://mystrengthrx.com/logo.png',
-    description:
-      `Professional wellness optimization through testosterone replacement therapy, peptide protocols, and performance enhancement. We serve all 50 states. Prescription services available in ${serviceAreas.length} states and expanding.`,
+    description: `Professional wellness optimization through testosterone replacement therapy, peptide protocols, and performance enhancement. We serve all 50 states. Prescription services available in ${serviceAreas.length} states and expanding.`,
     foundingDate: '2022-02-01',
     telephone: contactInfo.telephone,
     email: contactInfo.email,
@@ -192,7 +191,10 @@ export function generateWebsiteSchema() {
   }
 }
 
-export function generateServiceSchema(service: Service, serviceAreas: string[] = defaultServiceAreas) {
+export function generateServiceSchema(
+  service: Service,
+  serviceAreas: string[] = defaultServiceAreas,
+) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
