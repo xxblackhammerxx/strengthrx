@@ -19,6 +19,7 @@
     "seed": "cross-env NODE_OPTIONS=--no-deprecation npx tsx src/seed.ts"
   },
   "dependencies": {
+    "@google-cloud/recaptcha-enterprise": "^6.4.0",
     "@payloadcms/db-postgres": "3.61.1",
     "@payloadcms/next": "3.61.1",
     "@payloadcms/payload-cloud": "3.61.1",
@@ -35,6 +36,7 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "recharts": "^3.7.0",
+    "resend": "^6.9.3",
     "sharp": "0.34.2",
     "tailwind-merge": "^3.3.1"
   },

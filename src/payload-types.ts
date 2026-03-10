@@ -97,9 +97,11 @@ export interface Config {
   };
   globals: {
     'prescription-states': PrescriptionState;
+    'site-settings': SiteSetting;
   };
   globalsSelect: {
     'prescription-states': PrescriptionStatesSelect<false> | PrescriptionStatesSelect<true>;
+    'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
   };
   locale: null;
   user:
@@ -693,6 +695,29 @@ export interface PrescriptionState {
   createdAt?: string | null;
 }
 /**
+ * Global site configuration managed from the admin panel.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings".
+ */
+export interface SiteSetting {
+  id: number;
+  /**
+   * The email address that receives contact form submissions from the website.
+   */
+  contactFormRecipient: string;
+  /**
+   * The "from" email address used when sending emails (must be a verified domain in Resend).
+   */
+  fromEmail?: string | null;
+  /**
+   * The display name shown in the "from" field of outgoing emails.
+   */
+  fromName?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "prescription-states_select".
  */
@@ -705,6 +730,18 @@ export interface PrescriptionStatesSelect<T extends boolean = true> {
         description?: T;
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings_select".
+ */
+export interface SiteSettingsSelect<T extends boolean = true> {
+  contactFormRecipient?: T;
+  fromEmail?: T;
+  fromName?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

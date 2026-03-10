@@ -14,6 +14,7 @@ import { Partners } from './collections/Partners'
 import { Clients } from './collections/Clients'
 import { Referrals } from './collections/Referrals'
 import { PrescriptionStates } from './globals/PrescriptionStates'
+import { SiteSettings } from './globals/SiteSettings'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -26,7 +27,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, Admins, Partners, Clients, Referrals],
-  globals: [PrescriptionStates],
+  globals: [PrescriptionStates, SiteSettings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

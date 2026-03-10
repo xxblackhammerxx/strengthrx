@@ -76,17 +76,40 @@ export default function ContactPage() {
     setSubmitSuccess(false)
 
     try {
-      // TODO: Replace with actual form submission logic
-      // const response = await fetch('/api/contact', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify(formData),
-      // })
+      // Get reCAPTCHA Enterprise token
+      const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY
+      if (!siteKey) {
+        throw new Error('reCAPTCHA site key is not configured')
+      }
 
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000))
+      const recaptchaToken = await new Promise<string>((resolve, reject) => {
+        window.grecaptcha.enterprise.ready(async () => {
+          try {
+            const token = await window.grecaptcha.enterprise.execute(siteKey, {
+              action: 'CONTACT_FORM',
+            })
+            resolve(token)
+          } catch (err) {
+            reject(err)
+          }
+        })
+      })
+
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          recaptchaToken,
+        }),
+      })
+
+      if (!response.ok) {
+        const data = await response.json()
+        throw new Error(data.error || 'Failed to submit form')
+      }
 
       setSubmitSuccess(true)
 

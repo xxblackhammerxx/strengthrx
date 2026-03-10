@@ -2,6 +2,7 @@ import { SiteFooter } from '@/components/footer/SiteFooter'
 import { MainNav } from '@/components/header/MainNav'
 import type { Metadata } from 'next'
 import { Inter, Montserrat } from 'next/font/google'
+import Script from 'next/script'
 import './styles.css'
 
 const inter = Inter({
@@ -78,6 +79,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${montserrat.variable}`}>
+      <head>
+        <Script
+          src={`https://www.google.com/recaptcha/enterprise.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
+          strategy="afterInteractive"
+        />
+      </head>
       <body className="font-sans antialiased">
         <div className="flex min-h-screen flex-col">
           <MainNav />
