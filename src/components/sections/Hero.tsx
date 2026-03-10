@@ -60,10 +60,6 @@ export function Hero() {
                 style={{ animationDelay: '0.6s' }}
               >
                 <div className="bg-white/90 backdrop-blur rounded-lg p-4 border border-white/20">
-                  <div className="text-2xl font-bold text-primary">8</div>
-                  <div className="text-sm text-gray-900">States Served</div>
-                </div>
-                <div className="bg-white/90 backdrop-blur rounded-lg p-4 border border-white/20">
                   <div className="text-2xl font-bold text-accent">100%</div>
                   <div className="text-sm text-gray-900">Telehealth</div>
                 </div>
