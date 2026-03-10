@@ -39,6 +39,6 @@ export const faqs: FAQ[] = [
     id: 'insurance-coverage',
     question: 'Do you accept insurance?',
     answer:
-      "We operate on a direct-pay model to ensure personalized care and faster service. While we don't directly bill insurance, many patients successfully submit receipts to their insurance for potential reimbursement. We provide detailed receipts for this purpose.",
+      "StrengthRx intentionally operates outside the insurance system so we can practice medicine the way it should be practiced — guided by clinical judgment and patient goals, not insurance restrictions.",
   },
 ]
