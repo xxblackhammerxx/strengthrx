@@ -3,14 +3,14 @@ export const businessConfig = {
   tagline: 'Optimize Your Health & Performance',
 
   phone: {
-    display: '602-708-6487',
-    href: 'tel:602-708-6487',
-    international: '+1-602-708-6487',
+    display: '657-338-6004',
+    href: 'tel:657-338-6004',
+    international: '+1-657-338-6004',
   },
 
   email: {
-    display: 'Yourstrengthrx@gmail.com',
-    href: 'mailto:Yourstrengthrx@gmail.com',
+    display: 'info@yourstrengthrx.com',
+    href: 'mailto:info@yourstrengthrx.com',
   },
 
   location: {

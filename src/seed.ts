@@ -162,6 +162,29 @@ async function seed() {
     console.log(`  ✓ ${partners[i].fullName}: $${totalEarnings}`)
   }
 
+  // ── Prescription States Global ──────────────────────────
+  console.log('\nSeeding prescription states...')
+  await payload.updateGlobal({
+    slug: 'prescription-states',
+    data: {
+      states: [
+        { code: 'AZ', name: 'Arizona', description: 'Phoenix and statewide coverage' },
+        { code: 'ID', name: 'Idaho', description: 'Boise and statewide coverage' },
+        { code: 'WY', name: 'Wyoming', description: 'Cheyenne and statewide coverage' },
+        { code: 'IA', name: 'Iowa', description: 'Des Moines and statewide coverage' },
+        { code: 'UT', name: 'Utah', description: 'Salt Lake City and statewide coverage' },
+        { code: 'NM', name: 'New Mexico', description: 'Albuquerque and statewide coverage' },
+        { code: 'NV', name: 'Nevada', description: 'Las Vegas and statewide coverage' },
+        { code: 'CO', name: 'Colorado', description: 'Denver and statewide coverage' },
+        { code: 'WA', name: 'Washington', description: 'Seattle and statewide coverage' },
+        { code: 'VA', name: 'Virginia', description: 'Richmond and statewide coverage' },
+        { code: 'NE', name: 'Nebraska', description: 'Omaha and statewide coverage' },
+        { code: 'FL', name: 'Florida', description: 'Miami and statewide coverage' },
+      ],
+    },
+  })
+  console.log('  ✓ Prescription states seeded (12 states)')
+
   // ── Summary ─────────────────────────────────────────────
   console.log('\n' + '═'.repeat(50))
   console.log('🎉 Seed complete!\n')

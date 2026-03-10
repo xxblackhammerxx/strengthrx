@@ -49,7 +49,7 @@ export default function WeightLossPage() {
                   metabolic, and physiological factors that influence weight management.
                 </p>
                 <p>
-                  Using FDA-approved medications like GLP-1 receptor agonists, comprehensive
+                  Using medications like GLP-1 receptor agonists, comprehensive
                   metabolic testing, and personalized nutrition protocols, we help you achieve and
                   maintain your ideal weight while optimizing overall health.
                 </p>
@@ -70,7 +70,7 @@ export default function WeightLossPage() {
                   </p>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground mb-2">FDA-Approved Medications</h3>
+                  <h3 className="font-semibold text-foreground mb-2">Proven Medications</h3>
                   <p className="text-muted-foreground">Proven therapies for weight management</p>
                 </div>
                 <div>
@@ -99,7 +99,7 @@ export default function WeightLossPage() {
               GLP-1 Receptor Agonist Therapy
             </Heading>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Revolutionary FDA-approved medications that work with your body's natural systems to
+              Revolutionary medications that work with your body's natural systems to
               promote healthy weight loss.
             </p>
           </div>
@@ -345,7 +345,6 @@ export default function WeightLossPage() {
               title="Ongoing Support"
               description="Continuous medical guidance, lifestyle coaching, and maintenance strategies for long-term weight management success."
               benefits={[
-                '24/7 medical support',
                 'Lifestyle coaching',
                 'Maintenance planning',
                 'Community support',

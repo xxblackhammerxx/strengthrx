@@ -95,8 +95,12 @@ export interface Config {
   db: {
     defaultIDType: number;
   };
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    'prescription-states': PrescriptionState;
+  };
+  globalsSelect: {
+    'prescription-states': PrescriptionStatesSelect<false> | PrescriptionStatesSelect<true>;
+  };
   locale: null;
   user:
     | (User & {
@@ -656,6 +660,54 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * Manage the states where prescription-related services are currently available. These are displayed across the site.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "prescription-states".
+ */
+export interface PrescriptionState {
+  id: number;
+  /**
+   * States where prescription-related services are available.
+   */
+  states?:
+    | {
+        /**
+         * Two-letter state abbreviation (e.g., AZ, CO, FL)
+         */
+        code: string;
+        /**
+         * Full state name (e.g., Arizona, Colorado, Florida)
+         */
+        name: string;
+        /**
+         * Brief description (e.g., "Phoenix and statewide coverage")
+         */
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "prescription-states_select".
+ */
+export interface PrescriptionStatesSelect<T extends boolean = true> {
+  states?:
+    | T
+    | {
+        code?: T;
+        name?: T;
+        description?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

@@ -4,17 +4,7 @@ import Link from 'next/link'
 import NextImage from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
 import { useState, useCallback } from 'react'
-import {
-  User,
-  LogOut,
-  Menu,
-  X,
-  Home,
-  Users,
-  UserCheck,
-  FileText,
-  Image,
-} from 'lucide-react'
+import { User, LogOut, Menu, X, Home, Users, UserCheck, FileText, Image } from 'lucide-react'
 
 export function PortalNav() {
   const pathname = usePathname()
@@ -183,14 +173,20 @@ export function PortalNav() {
             })}
             <div className="my-2 border-t border-white/[0.06]" />
             <button
-              onClick={() => { setMobileMenuOpen(false); handleAccount(); }}
+              onClick={() => {
+                setMobileMenuOpen(false)
+                handleAccount()
+              }}
               className="flex w-full cursor-pointer items-center space-x-3 rounded-lg px-3 py-2.5 text-base font-medium text-neutral-400 hover:bg-white/[0.04] hover:text-neutral-200"
             >
               <User className="h-5 w-5" />
               <span>Account</span>
             </button>
             <button
-              onClick={() => { setMobileMenuOpen(false); handleLogout(); }}
+              onClick={() => {
+                setMobileMenuOpen(false)
+                handleLogout()
+              }}
               className="flex w-full cursor-pointer items-center space-x-3 rounded-lg px-3 py-2.5 text-base font-medium text-red-400/80 hover:bg-red-500/10 hover:text-red-400"
             >
               <LogOut className="h-5 w-5" />

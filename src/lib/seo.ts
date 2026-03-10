@@ -14,7 +14,8 @@ const siteConfig = {
   name: 'StrengthRX',
   url: 'https://mystrengthrx.com',
   description:
-    'Professional wellness optimization through TRT, peptides, and performance protocols. Telehealth services available across AZ, ID, WY, IA, UT, NM, NV, CO.',
+    'Professional wellness optimization through TRT, peptides, and performance protocols. We serve all 50 states. Prescription services currently available in select states and expanding.',
+
   tagline: 'Strong body, strong minds, destroying mediocrity.',
   defaultOgImage: '/og-image.jpg',
   twitterHandle: '@strengthrx',

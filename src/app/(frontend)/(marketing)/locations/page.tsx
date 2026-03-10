@@ -3,30 +3,21 @@ import { businessConfig } from '@/lib/business.config'
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { Heading } from '@/components/ui/Heading'
+import { getPrescriptionStates } from '@/lib/prescription-states'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Service Areas - Telehealth Across 8 States | StrengthRX',
+  title: 'Service Areas - Telehealth Across All 50 States | StrengthRX',
   description:
-    'StrengthRX provides telehealth services across Arizona, Idaho, Wyoming, Iowa, Utah, New Mexico, Nevada, and Colorado. Licensed providers in each state.',
+    'StrengthRX serves all 50 states. Prescription-related services are currently available in select states, with more being added frequently.',
   alternates: {
     canonical: '/locations',
   },
 }
 
-const serviceAreas = [
-  { code: 'AZ', name: 'Arizona', description: 'Phoenix and surrounding areas' },
-  { code: 'ID', name: 'Idaho', description: 'Boise and statewide coverage' },
-  { code: 'WY', name: 'Wyoming', description: 'Cheyenne and statewide coverage' },
-  { code: 'IA', name: 'Iowa', description: 'Des Moines and statewide coverage' },
-  { code: 'UT', name: 'Utah', description: 'Salt Lake City and statewide coverage' },
-  { code: 'NM', name: 'New Mexico', description: 'Albuquerque and statewide coverage' },
-  { code: 'NV', name: 'Nevada', description: 'Las Vegas and statewide coverage' },
-  { code: 'CO', name: 'Colorado', description: 'Denver and statewide coverage' },
-]
-
-export default function LocationsPage() {
+export default async function LocationsPage() {
+  const prescriptionStates = await getPrescriptionStates()
   return (
     <div>
       {/* Hero Section */}
@@ -34,11 +25,12 @@ export default function LocationsPage() {
         <Container>
           <div className="text-center">
             <Heading as="h1" size="4xl" className="mb-4">
-              Telehealth Services Across 8 States
+              We Serve All 50 States
             </Heading>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               Convenient, professional wellness optimization services delivered directly to you
-              through secure telehealth consultations. Licensed providers in each state we serve.
+              through secure telehealth consultations. Prescription-related services are currently
+              available in the states listed below, with more being added frequently.
             </p>
           </div>
         </Container>
@@ -47,8 +39,15 @@ export default function LocationsPage() {
       {/* Service Areas Grid */}
       <section className="pb-16 sm:pb-24">
         <Container>
+          <div className="text-center mb-8">
+            <Heading as="h2" size="2xl" className="mb-2">
+              Prescription Services Available In
+            </Heading>
+            <p className="text-muted-foreground">More states being added frequently</p>
+          </div>
+
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-            {serviceAreas.map((area, index) => (
+            {prescriptionStates.map((area, index) => (
               <div
                 key={area.code}
                 className="bg-white rounded-lg p-6 shadow-sm border border-border text-center hover:shadow-md transition-shadow"
@@ -240,11 +239,12 @@ export default function LocationsPage() {
         <Container>
           <div className="text-center mb-12">
             <Heading as="h2" size="3xl" className="mb-4">
-              Licensed in Every State We Serve
+              Licensed and Expanding
             </Heading>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Our healthcare providers are properly licensed and credentialed in each state where we
-              offer services, ensuring compliance with local regulations and standards of care.
+              We serve all 50 states for general wellness services. Our healthcare providers are
+              properly licensed and credentialed in each state where we offer prescription-related
+              services, ensuring compliance with local regulations and standards of care.
             </p>
           </div>
 

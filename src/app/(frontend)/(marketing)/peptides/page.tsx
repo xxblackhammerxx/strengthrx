@@ -283,8 +283,7 @@ export default function PeptidesPage() {
         },
         {
           name: 'SS-31 (Elamipretide)',
-          description:
-            'Protects mitochondria, boosts cellular energy, and supports recovery.',
+          description: 'Protects mitochondria, boosts cellular energy, and supports recovery.',
         },
         {
           name: 'FOXO4-DRI',
@@ -302,7 +301,8 @@ export default function PeptidesPage() {
         },
         {
           name: 'Cagrilintide',
-          description: 'Controls appetite, slows gastric emptying, and promotes steady weight loss.',
+          description:
+            'Controls appetite, slows gastric emptying, and promotes steady weight loss.',
         },
         {
           name: 'Ibutamoren (MK-677)',
@@ -316,7 +316,8 @@ export default function PeptidesPage() {
         },
         {
           name: 'NAD+',
-          description: 'Boosts cellular energy, supports DNA repair, and maintains healthy metabolism.',
+          description:
+            'Boosts cellular energy, supports DNA repair, and maintains healthy metabolism.',
         },
         {
           name: 'Naltrexone (low dose)',
@@ -361,13 +362,11 @@ export default function PeptidesPage() {
         },
         {
           name: 'Kisspeptin',
-          description:
-            'Supports reproductive hormone health by stimulating LH and FSH release.',
+          description: 'Supports reproductive hormone health by stimulating LH and FSH release.',
         },
         {
           name: 'PT-141 (Bremelanotide)',
-          description:
-            'Enhances sexual arousal and desire, improving libido and sexual wellness.',
+          description: 'Enhances sexual arousal and desire, improving libido and sexual wellness.',
         },
         {
           name: 'Tadalafil',
@@ -487,7 +486,7 @@ export default function PeptidesPage() {
         <Container>
           <div className="text-center mb-12">
             <Heading as="h2" size="3xl" className="mb-4">
-              Peptides by Goal
+              Peptides & Treatments by Goal
             </Heading>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Find therapies grouped by the outcomes you want to prioritize.
@@ -496,7 +495,10 @@ export default function PeptidesPage() {
 
           <div className="space-y-8">
             {peptideCategories.map((category) => (
-              <div key={category.title} className="rounded-2xl border border-border bg-card p-6 sm:p-8">
+              <div
+                key={category.title}
+                className="rounded-2xl border border-border bg-card p-6 sm:p-8"
+              >
                 <Heading as="h3" size="xl" className="mb-5">
                   {category.title}
                 </Heading>
@@ -673,20 +675,6 @@ export default function PeptidesPage() {
                       />
                     </svg>
                     <span>Regular health monitoring</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="h-5 w-5 text-accent mt-0.5 mr-3 shrink-0"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    <span>24/7 medical support access</span>
                   </li>
                 </ul>
               </div>

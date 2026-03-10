@@ -404,20 +404,6 @@ export default function AboutPage() {
                     </svg>
                     <span>Ongoing protocol adjustments as needed</span>
                   </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="h-5 w-5 text-accent mt-0.5 mr-3 shrink-0"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    <span>24/7 access to medical support</span>
-                  </li>
                 </ul>
               </div>
             </div>
@@ -425,10 +411,11 @@ export default function AboutPage() {
             <div className="mt-8 p-6 bg-yellow-50 border border-yellow-200 rounded-lg">
               <p className="text-sm text-yellow-800">
                 <strong>Important Medical Disclaimer:</strong> The information provided by
-                StrengthRX on this website is for educational purposes only and should not be considered medical
-                advice. All treatments are provided under the supervision of licensed healthcare
-                providers. Individual results may vary. Please consult with our medical team to
-                determine if our services are appropriate for your individual health needs.
+                StrengthRX on this website is for educational purposes only and should not be
+                considered medical advice. All treatments are provided under the supervision of
+                licensed healthcare providers. Individual results may vary. Please consult with our
+                medical team to determine if our services are appropriate for your individual health
+                needs.
               </p>
             </div>
           </div>

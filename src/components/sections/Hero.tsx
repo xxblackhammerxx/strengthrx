@@ -71,10 +71,7 @@ export function Hero() {
                   <div className="text-2xl font-bold text-primary">2022</div>
                   <div className="text-sm text-gray-900">Founded</div>
                 </div>
-                <div className="bg-white/90 backdrop-blur rounded-lg p-4 border border-white/20">
-                  <div className="text-2xl font-bold text-accent">24/7</div>
-                  <div className="text-sm text-gray-900">Support</div>
-                </div>
+
               </div>
             </AnimatedSection>
           </div>

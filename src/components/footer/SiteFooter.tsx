@@ -39,10 +39,7 @@ export function SiteFooter() {
               </p>
               <p>
                 ✉️{' '}
-                <a
-                  href={businessConfig.email.href}
-                  className="hover:text-white transition-colors"
-                >
+                <a href={businessConfig.email.href} className="hover:text-white transition-colors">
                   {businessConfig.email.display}
                 </a>
               </p>
@@ -84,8 +81,15 @@ export function SiteFooter() {
           </div>
         </div>
 
+        {/* Pharmacy Notice */}
+        <div className="border-t border-gray-700 pt-6 mt-8">
+          <p className="text-center text-gray-300 text-sm font-medium">
+            All medications prescribed through a licensed 503A compound pharmacy — <span className="text-accent font-semibold">NOT research grade</span>
+          </p>
+        </div>
+
         {/* Bottom Bar */}
-        <div className="border-t border-gray-700 pt-8 mt-8 flex flex-col sm:flex-row justify-between items-center">
+        <div className="border-t border-gray-700 pt-8 mt-6 flex flex-col sm:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">
             © {new Date().getFullYear()} StrengthRX. All rights reserved.
           </p>

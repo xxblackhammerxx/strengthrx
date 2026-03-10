@@ -100,7 +100,9 @@ export default function ContactPage() {
       })
     } catch (error) {
       console.error('Form submission error:', error)
-      setSubmitError('Sorry, there was an error submitting your form. Please try again or call us directly.')
+      setSubmitError(
+        'Sorry, there was an error submitting your form. Please try again or call us directly.',
+      )
     } finally {
       setIsSubmitting(false)
     }
@@ -172,14 +174,21 @@ export default function ContactPage() {
                   <div className="rounded-lg border border-green-500/30 bg-green-500/10 p-6 text-center">
                     <div className="mb-3 flex justify-center">
                       <div className="rounded-full bg-green-500/20 p-3">
-                        <svg className="h-6 w-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <svg
+                          className="h-6 w-6 text-green-400"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={2}
+                        >
                           <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
                     </div>
                     <p className="font-semibold text-green-400">Message sent!</p>
                     <p className="mt-1 text-sm text-green-400/80">
-                      Thank you for reaching out. We&apos;ll get back to you within 24 hours to schedule your consultation.
+                      Thank you for reaching out. We&apos;ll get back to you within 24 hours to
+                      schedule your consultation.
                     </p>
                   </div>
                 ) : (
@@ -280,7 +289,10 @@ export default function ContactPage() {
                       </svg>
                       <div>
                         <p className="font-semibold">Phone</p>
-                        <a href={businessConfig.phone.href} className="text-primary hover:underline">
+                        <a
+                          href={businessConfig.phone.href}
+                          className="text-primary hover:underline"
+                        >
                           {businessConfig.phone.display}
                         </a>
                       </div>

@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: '%s | StrengthRX',
   },
   description:
-    'Professional wellness optimization through TRT, peptides, and performance protocols. Telehealth services available across AZ, ID, WY, IA, UT, NM, NV, CO.',
+    'Professional wellness optimization through TRT, peptides, and performance protocols. We serve all 50 states. Prescription services currently available in select states and expanding.',
   keywords: [
     'TRT',
     'testosterone replacement therapy',

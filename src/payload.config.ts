@@ -13,6 +13,7 @@ import { Admins } from './collections/Admins'
 import { Partners } from './collections/Partners'
 import { Clients } from './collections/Clients'
 import { Referrals } from './collections/Referrals'
+import { PrescriptionStates } from './globals/PrescriptionStates'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -25,6 +26,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, Admins, Partners, Clients, Referrals],
+  globals: [PrescriptionStates],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

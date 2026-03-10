@@ -17,10 +17,7 @@ export async function PATCH(request: NextRequest) {
     const { firstName, lastName } = body
 
     if (!firstName?.trim() || !lastName?.trim()) {
-      return NextResponse.json(
-        { error: 'First name and last name are required' },
-        { status: 400 },
-      )
+      return NextResponse.json({ error: 'First name and last name are required' }, { status: 400 })
     }
 
     const collection = (user as any).collection

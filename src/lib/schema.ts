@@ -17,6 +17,9 @@ interface Service {
 
 import { businessConfig } from './business.config'
 
+// Default fallback - the CMS global is the source of truth
+const defaultServiceAreas = ['AZ', 'ID', 'WY', 'IA', 'UT', 'NM', 'NV', 'CO', 'WA', 'VA', 'NE', 'FL']
+
 const contactInfo: ContactInfo = {
   telephone: businessConfig.phone.international,
   email: businessConfig.email.display,
@@ -27,9 +30,7 @@ const contactInfo: ContactInfo = {
   },
 }
 
-const serviceAreas = ['AZ', 'ID', 'WY', 'IA', 'UT', 'NM', 'NV', 'CO']
-
-export function generateOrganizationSchema() {
+export function generateOrganizationSchema(serviceAreas: string[] = defaultServiceAreas) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
@@ -39,7 +40,7 @@ export function generateOrganizationSchema() {
     url: 'https://mystrengthrx.com',
     logo: 'https://mystrengthrx.com/logo.png',
     description:
-      'Professional wellness optimization through testosterone replacement therapy, peptide protocols, and performance enhancement. Telehealth services across 8 states.',
+      `Professional wellness optimization through testosterone replacement therapy, peptide protocols, and performance enhancement. We serve all 50 states. Prescription services available in ${serviceAreas.length} states and expanding.`,
     foundingDate: '2022-02-01',
     telephone: contactInfo.telephone,
     email: contactInfo.email,
@@ -58,7 +59,7 @@ export function generateOrganizationSchema() {
   }
 }
 
-export function generateLocalBusinessSchema() {
+export function generateLocalBusinessSchema(serviceAreas: string[] = defaultServiceAreas) {
   return {
     '@context': 'https://schema.org',
     '@type': 'MedicalBusiness',
@@ -124,7 +125,7 @@ export function generateLocalBusinessSchema() {
   }
 }
 
-export function generateMedicalOrganizationSchema() {
+export function generateMedicalOrganizationSchema(serviceAreas: string[] = defaultServiceAreas) {
   return {
     '@context': 'https://schema.org',
     '@type': 'MedicalOrganization',
@@ -191,7 +192,7 @@ export function generateWebsiteSchema() {
   }
 }
 
-export function generateServiceSchema(service: Service) {
+export function generateServiceSchema(service: Service, serviceAreas: string[] = defaultServiceAreas) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -225,7 +226,7 @@ export function generateFAQPageSchema(faqs: { question: string; answer: string }
   }
 }
 
-export function generateContactPageSchema() {
+export function generateContactPageSchema(serviceAreas: string[] = defaultServiceAreas) {
   return {
     '@context': 'https://schema.org',
     '@type': 'ContactPage',

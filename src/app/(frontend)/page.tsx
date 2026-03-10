@@ -11,10 +11,12 @@ import {
   generateOrganizationSchema,
   generateWebsiteSchema,
 } from '@/lib/schema'
+import { getPrescriptionStateCodes } from '@/lib/prescription-states'
 
-export default function HomePage() {
-  const organizationSchema = generateOrganizationSchema()
-  const localBusinessSchema = generateLocalBusinessSchema()
+export default async function HomePage() {
+  const stateCodes = await getPrescriptionStateCodes()
+  const organizationSchema = generateOrganizationSchema(stateCodes)
+  const localBusinessSchema = generateLocalBusinessSchema(stateCodes)
   const websiteSchema = generateWebsiteSchema()
 
   return (
