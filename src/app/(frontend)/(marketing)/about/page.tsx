@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/Button'
+import { businessConfig } from '@/lib/business.config'
 import { Container } from '@/components/ui/Container'
 import { Heading } from '@/components/ui/Heading'
 import type { Metadata } from 'next'
@@ -70,7 +71,7 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-foreground mb-2">Location</h3>
-                  <p className="text-muted-foreground">Phoenix, Arizona</p>
+                  <p className="text-muted-foreground">{businessConfig.location.display}</p>
                 </div>
                 <div>
                   <h3 className="font-semibold text-foreground mb-2">Service Areas</h3>

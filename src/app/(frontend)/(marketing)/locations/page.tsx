@@ -1,4 +1,5 @@
 import { Badge } from '@/components/ui/Badge'
+import { businessConfig } from '@/lib/business.config'
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { Heading } from '@/components/ui/Heading'
@@ -281,7 +282,7 @@ export default function LocationsPage() {
                 <Link href="/contact">Book Free Consultation</Link>
               </Button>
               <Button variant="ghost" size="lg" asChild>
-                <a href="tel:602-708-6487">Call: 602-708-6487</a>
+                <a href={businessConfig.phone.href}>Call: {businessConfig.phone.display}</a>
               </Button>
             </div>
           </div>

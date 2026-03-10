@@ -1,0 +1,23 @@
+import { redirect } from 'next/navigation'
+import { getAuthenticatedClient } from '@/lib/auth'
+import { Container } from '@/components/ui/Container'
+import { Heading } from '@/components/ui/Heading'
+
+export default async function ClientSettingsPage() {
+  const auth = await getAuthenticatedClient()
+
+  if (!auth) {
+    redirect('/signup/client')
+  }
+
+  return (
+    <Container className="py-12">
+      <Heading as="h1" className="mb-8 text-white">
+        Settings
+      </Heading>
+      <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8">
+        <p className="text-neutral-400">Settings page coming soon.</p>
+      </div>
+    </Container>
+  )
+}

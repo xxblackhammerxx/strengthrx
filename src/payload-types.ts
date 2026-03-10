@@ -64,11 +64,18 @@ export type SupportedTimezones =
 export interface Config {
   auth: {
     users: UserAuthOperations;
+    admins: AdminAuthOperations;
+    partners: PartnerAuthOperations;
+    clients: ClientAuthOperations;
   };
   blocks: {};
   collections: {
     users: User;
     media: Media;
+    admins: Admin;
+    partners: Partner;
+    clients: Client;
+    referrals: Referral;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -77,19 +84,33 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    admins: AdminsSelect<false> | AdminsSelect<true>;
+    partners: PartnersSelect<false> | PartnersSelect<true>;
+    clients: ClientsSelect<false> | ClientsSelect<true>;
+    referrals: ReferralsSelect<false> | ReferralsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
   };
   db: {
-    defaultIDType: string;
+    defaultIDType: number;
   };
   globals: {};
   globalsSelect: {};
   locale: null;
-  user: User & {
-    collection: 'users';
-  };
+  user:
+    | (User & {
+        collection: 'users';
+      })
+    | (Admin & {
+        collection: 'admins';
+      })
+    | (Partner & {
+        collection: 'partners';
+      })
+    | (Client & {
+        collection: 'clients';
+      });
   jobs: {
     tasks: unknown;
     workflows: unknown;
@@ -113,12 +134,66 @@ export interface UserAuthOperations {
     password: string;
   };
 }
+export interface AdminAuthOperations {
+  forgotPassword: {
+    email: string;
+    password: string;
+  };
+  login: {
+    email: string;
+    password: string;
+  };
+  registerFirstUser: {
+    email: string;
+    password: string;
+  };
+  unlock: {
+    email: string;
+    password: string;
+  };
+}
+export interface PartnerAuthOperations {
+  forgotPassword: {
+    email: string;
+    password: string;
+  };
+  login: {
+    email: string;
+    password: string;
+  };
+  registerFirstUser: {
+    email: string;
+    password: string;
+  };
+  unlock: {
+    email: string;
+    password: string;
+  };
+}
+export interface ClientAuthOperations {
+  forgotPassword: {
+    email: string;
+    password: string;
+  };
+  login: {
+    email: string;
+    password: string;
+  };
+  registerFirstUser: {
+    email: string;
+    password: string;
+  };
+  unlock: {
+    email: string;
+    password: string;
+  };
+}
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
-  id: string;
+  id: number;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -142,7 +217,7 @@ export interface User {
  * via the `definition` "media".
  */
 export interface Media {
-  id: string;
+  id: number;
   alt: string;
   updatedAt: string;
   createdAt: string;
@@ -158,24 +233,204 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "admins".
+ */
+export interface Admin {
+  id: number;
+  name: string;
+  /**
+   * CNP role is required to view Intake Forms
+   */
+  role: 'owner' | 'staff' | 'cnp';
+  avatar?: (number | null) | Media;
+  updatedAt: string;
+  createdAt: string;
+  email: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  sessions?:
+    | {
+        id: string;
+        createdAt?: string | null;
+        expiresAt: string;
+      }[]
+    | null;
+  password?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partners".
+ */
+export interface Partner {
+  id: number;
+  fullName: string;
+  /**
+   * Unique code used for attribution (e.g., "TRAINERJOE")
+   */
+  referralCode: string;
+  /**
+   * Commission percentage (default: 10%)
+   */
+  commissionRate: number;
+  status: 'pending' | 'active' | 'suspended';
+  payoutDetails?: {
+    bankName?: string | null;
+    accountLast4?: string | null;
+    venmoHandle?: string | null;
+  };
+  /**
+   * Calculated via hooks
+   */
+  totalEarnings?: number | null;
+  updatedAt: string;
+  createdAt: string;
+  email: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  sessions?:
+    | {
+        id: string;
+        createdAt?: string | null;
+        expiresAt: string;
+      }[]
+    | null;
+  password?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "clients".
+ */
+export interface Client {
+  id: number;
+  firstName: string;
+  lastName: string;
+  /**
+   * Required for medical verification
+   */
+  dateOfBirth: string;
+  phone?: string | null;
+  /**
+   * Set upon registration if a referral code is used
+   */
+  assignedTrainer?: (number | null) | Partner;
+  /**
+   * Hidden field for billing
+   */
+  stripeCustomerId?: string | null;
+  /**
+   * Admin-only edit
+   */
+  paperworkStatus?: ('not_started' | 'in_progress' | 'completed') | null;
+  /**
+   * Admin-only edit
+   */
+  labStatus?: ('not_ordered' | 'ordered' | 'received' | 'uploaded') | null;
+  /**
+   * Admin-only edit
+   */
+  medicalReviewStatus?: ('pending' | 'complete' | 'denied') | null;
+  updatedAt: string;
+  createdAt: string;
+  email: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  sessions?:
+    | {
+        id: string;
+        createdAt?: string | null;
+        expiresAt: string;
+      }[]
+    | null;
+  password?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "referrals".
+ */
+export interface Referral {
+  id: number;
+  trainer: number | Partner;
+  /**
+   * Only visible to admins for HIPAA compliance
+   */
+  client: number | Client;
+  /**
+   * Safe ID for trainer display (e.g., REF-8821)
+   */
+  publicId: string;
+  status?: ('lead_created' | 'consult_booked' | 'qualified' | 'converted' | 'disqualified') | null;
+  /**
+   * The potential or actual value earned from this referral
+   */
+  commissionSnapshot?: number | null;
+  /**
+   * UTM Source or specific campaign tag (e.g., "instagram_bio")
+   */
+  marketingSource?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
-  id: string;
+  id: number;
   document?:
     | ({
         relationTo: 'users';
-        value: string | User;
+        value: number | User;
       } | null)
     | ({
         relationTo: 'media';
-        value: string | Media;
+        value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'admins';
+        value: number | Admin;
+      } | null)
+    | ({
+        relationTo: 'partners';
+        value: number | Partner;
+      } | null)
+    | ({
+        relationTo: 'clients';
+        value: number | Client;
+      } | null)
+    | ({
+        relationTo: 'referrals';
+        value: number | Referral;
       } | null);
   globalSlug?: string | null;
-  user: {
-    relationTo: 'users';
-    value: string | User;
-  };
+  user:
+    | {
+        relationTo: 'users';
+        value: number | User;
+      }
+    | {
+        relationTo: 'admins';
+        value: number | Admin;
+      }
+    | {
+        relationTo: 'partners';
+        value: number | Partner;
+      }
+    | {
+        relationTo: 'clients';
+        value: number | Client;
+      };
   updatedAt: string;
   createdAt: string;
 }
@@ -184,11 +439,24 @@ export interface PayloadLockedDocument {
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
-  id: string;
-  user: {
-    relationTo: 'users';
-    value: string | User;
-  };
+  id: number;
+  user:
+    | {
+        relationTo: 'users';
+        value: number | User;
+      }
+    | {
+        relationTo: 'admins';
+        value: number | Admin;
+      }
+    | {
+        relationTo: 'partners';
+        value: number | Partner;
+      }
+    | {
+        relationTo: 'clients';
+        value: number | Client;
+      };
   key?: string | null;
   value?:
     | {
@@ -207,7 +475,7 @@ export interface PayloadPreference {
  * via the `definition` "payload-migrations".
  */
 export interface PayloadMigration {
-  id: string;
+  id: number;
   name?: string | null;
   batch?: number | null;
   updatedAt: string;
@@ -252,6 +520,110 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "admins_select".
+ */
+export interface AdminsSelect<T extends boolean = true> {
+  name?: T;
+  role?: T;
+  avatar?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  email?: T;
+  resetPasswordToken?: T;
+  resetPasswordExpiration?: T;
+  salt?: T;
+  hash?: T;
+  loginAttempts?: T;
+  lockUntil?: T;
+  sessions?:
+    | T
+    | {
+        id?: T;
+        createdAt?: T;
+        expiresAt?: T;
+      };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partners_select".
+ */
+export interface PartnersSelect<T extends boolean = true> {
+  fullName?: T;
+  referralCode?: T;
+  commissionRate?: T;
+  status?: T;
+  payoutDetails?:
+    | T
+    | {
+        bankName?: T;
+        accountLast4?: T;
+        venmoHandle?: T;
+      };
+  totalEarnings?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  email?: T;
+  resetPasswordToken?: T;
+  resetPasswordExpiration?: T;
+  salt?: T;
+  hash?: T;
+  loginAttempts?: T;
+  lockUntil?: T;
+  sessions?:
+    | T
+    | {
+        id?: T;
+        createdAt?: T;
+        expiresAt?: T;
+      };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "clients_select".
+ */
+export interface ClientsSelect<T extends boolean = true> {
+  firstName?: T;
+  lastName?: T;
+  dateOfBirth?: T;
+  phone?: T;
+  assignedTrainer?: T;
+  stripeCustomerId?: T;
+  paperworkStatus?: T;
+  labStatus?: T;
+  medicalReviewStatus?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  email?: T;
+  resetPasswordToken?: T;
+  resetPasswordExpiration?: T;
+  salt?: T;
+  hash?: T;
+  loginAttempts?: T;
+  lockUntil?: T;
+  sessions?:
+    | T
+    | {
+        id?: T;
+        createdAt?: T;
+        expiresAt?: T;
+      };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "referrals_select".
+ */
+export interface ReferralsSelect<T extends boolean = true> {
+  trainer?: T;
+  client?: T;
+  publicId?: T;
+  status?: T;
+  commissionSnapshot?: T;
+  marketingSource?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

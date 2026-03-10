@@ -1,4 +1,5 @@
 import { Container } from '@/components/ui/Container'
+import { businessConfig } from '@/lib/business.config'
 import Link from 'next/link'
 
 const footerLinks = {
@@ -29,20 +30,20 @@ export function SiteFooter() {
               through TRT, peptides, and performance protocols.
             </p>
             <div className="space-y-2 text-sm text-gray-300">
-              <p>📍 Phoenix, AZ</p>
+              <p>📍 {businessConfig.location.display}</p>
               <p>
                 📞{' '}
-                <a href="tel:602-708-6487" className="hover:text-white transition-colors">
-                  602-708-6487
+                <a href={businessConfig.phone.href} className="hover:text-white transition-colors">
+                  {businessConfig.phone.display}
                 </a>
               </p>
               <p>
                 ✉️{' '}
                 <a
-                  href="mailto:Yourstrengthrx@gmail.com"
+                  href={businessConfig.email.href}
                   className="hover:text-white transition-colors"
                 >
-                  Yourstrengthrx@gmail.com
+                  {businessConfig.email.display}
                 </a>
               </p>
             </div>

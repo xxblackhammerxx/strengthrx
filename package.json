@@ -15,7 +15,8 @@
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
     "test": "pnpm run test:int && pnpm run test:e2e",
     "test:e2e": "cross-env NODE_OPTIONS=\"--no-deprecation --no-experimental-strip-types\" pnpm exec playwright test",
-    "test:int": "cross-env NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts"
+    "test:int": "cross-env NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts",
+    "seed": "cross-env NODE_OPTIONS=--no-deprecation npx tsx src/seed.ts"
   },
   "dependencies": {
     "@payloadcms/db-postgres": "3.61.1",
@@ -23,14 +24,17 @@
     "@payloadcms/payload-cloud": "3.61.1",
     "@payloadcms/richtext-lexical": "3.61.1",
     "@payloadcms/ui": "3.61.1",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cross-env": "^7.0.3",
     "dotenv": "16.4.7",
     "graphql": "^16.8.1",
+    "lucide-react": "^0.563.0",
     "next": "15.4.10",
     "payload": "3.61.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "recharts": "^3.7.0",
     "sharp": "0.34.2",
     "tailwind-merge": "^3.3.1"
   },

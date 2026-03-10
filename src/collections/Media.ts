@@ -13,4 +13,5 @@ export const Media: CollectionConfig = {
     },
   ],
   upload: true,
+  timestamps: true, // This automatically adds createdAt and updatedAt fields
 }

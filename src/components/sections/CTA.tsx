@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { Heading } from '@/components/ui/Heading'
+import { businessConfig } from '@/lib/business.config'
 import Link from 'next/link'
 
 export function CTA() {
@@ -26,7 +27,7 @@ export function CTA() {
               className="text-white border-white hover:bg-white hover:text-primary"
               asChild
             >
-              <a href="tel:602-708-6487">Call Now: 602-708-6487</a>
+              <a href={businessConfig.phone.href}>Call Now: {businessConfig.phone.display}</a>
             </Button>
           </div>
 

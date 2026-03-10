@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/Button'
+import { businessConfig } from '@/lib/business.config'
 import { Card, CardIcon, CardTitle, CardDescription, CardList } from '@/components/ui/Card'
 import { Container } from '@/components/ui/Container'
 import { DetailCard } from '@/components/ui/DetailCard'
@@ -572,7 +573,7 @@ export default function WeightLossPage() {
                 className="text-white border-white hover:bg-white hover:text-primary"
                 asChild
               >
-                <a href="tel:602-708-6487">Call: 602-708-6487</a>
+                <a href={businessConfig.phone.href}>Call: {businessConfig.phone.display}</a>
               </Button>
             </div>
           </div>

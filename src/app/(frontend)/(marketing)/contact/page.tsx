@@ -1,6 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/Button'
+import { businessConfig } from '@/lib/business.config'
 import { Container } from '@/components/ui/Container'
 import { Heading } from '@/components/ui/Heading'
 import { Input } from '@/components/ui/Input'
@@ -37,6 +38,8 @@ export default function ContactPage() {
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitSuccess, setSubmitSuccess] = useState(false)
+  const [submitError, setSubmitError] = useState('')
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {}
@@ -49,14 +52,6 @@ export default function ContactPage() {
       newErrors.email = 'Email is required'
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = 'Please enter a valid email address'
-    }
-
-    if (!formData.phone.trim()) {
-      newErrors.phone = 'Phone number is required'
-    }
-
-    if (!formData.state) {
-      newErrors.state = 'Please select your state'
     }
 
     if (!formData.message.trim()) {
@@ -77,6 +72,8 @@ export default function ContactPage() {
 
     setIsSubmitting(true)
     setErrors({})
+    setSubmitError('')
+    setSubmitSuccess(false)
 
     try {
       // TODO: Replace with actual form submission logic
@@ -91,10 +88,7 @@ export default function ContactPage() {
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1000))
 
-      // Show success message or redirect
-      alert(
-        'Thank you for your message! We will contact you within 24 hours to schedule your consultation.',
-      )
+      setSubmitSuccess(true)
 
       // Reset form
       setFormData({
@@ -106,7 +100,7 @@ export default function ContactPage() {
       })
     } catch (error) {
       console.error('Form submission error:', error)
-      alert('Sorry, there was an error submitting your form. Please try again or call us directly.')
+      setSubmitError('Sorry, there was an error submitting your form. Please try again or call us directly.')
     } finally {
       setIsSubmitting(false)
     }
@@ -121,7 +115,6 @@ export default function ContactPage() {
 
   return (
     <div>
-
       {/* Hero Section */}
       <section className="pt-16 pb-12 sm:pt-24 sm:pb-16">
         <Container>
@@ -175,69 +168,93 @@ export default function ContactPage() {
                   Have Questions? Get In Touch
                 </Heading>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <Input
-                    label="Full Name"
-                    type="text"
-                    value={formData.name}
-                    onChange={(e) => handleInputChange('name', e.target.value)}
-                    error={errors.name}
-                    required
-                    placeholder="Enter your full name"
-                  />
-
-                  <Input
-                    label="Email Address"
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => handleInputChange('email', e.target.value)}
-                    error={errors.email}
-                    required
-                    placeholder="your.email@example.com"
-                  />
-
-                  <div>
-                    <label
-                      htmlFor="products"
-                      className="block text-sm font-medium text-foreground mb-2"
-                    >
-                      Products/Services Interested In
-                    </label>
-                    <select
-                      id="products"
-                      value={formData.state}
-                      onChange={(e) => handleInputChange('state', e.target.value)}
-                      className="flex h-12 w-full rounded-lg border border-input bg-background px-4 py-2 text-base ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
-                    >
-                      <option value="">Select a product/service</option>
-                      <option value="TRT">Testosterone Replacement Therapy (TRT)</option>
-                      <option value="Peptides">Peptides</option>
-                      <option value="Weight Loss">Weight Loss</option>
-                      <option value="Sexual Wellness">Sexual Wellness</option>
-                      <option value="Hormone Therapy">Hormone Therapy</option>
-                      <option value="General">General Inquiry</option>
-                    </select>
+                {submitSuccess ? (
+                  <div className="rounded-lg border border-green-500/30 bg-green-500/10 p-6 text-center">
+                    <div className="mb-3 flex justify-center">
+                      <div className="rounded-full bg-green-500/20 p-3">
+                        <svg className="h-6 w-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                    </div>
+                    <p className="font-semibold text-green-400">Message sent!</p>
+                    <p className="mt-1 text-sm text-green-400/80">
+                      Thank you for reaching out. We&apos;ll get back to you within 24 hours to schedule your consultation.
+                    </p>
                   </div>
+                ) : (
+                  <>
+                    {submitError && (
+                      <div className="mb-6 rounded-lg border border-red-500/30 bg-red-500/10 p-4">
+                        <p className="text-sm text-red-400">{submitError}</p>
+                      </div>
+                    )}
 
-                  <Textarea
-                    label="Your Message"
-                    value={formData.message}
-                    onChange={(e) => handleInputChange('message', e.target.value)}
-                    error={errors.message}
-                    required
-                    placeholder="Tell us about your questions or how we can help you..."
-                    rows={4}
-                  />
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                      <Input
+                        label="Full Name"
+                        type="text"
+                        value={formData.name}
+                        onChange={(e) => handleInputChange('name', e.target.value)}
+                        error={errors.name}
+                        required
+                        placeholder="Enter your full name"
+                      />
 
-                  <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
-                    {isSubmitting ? 'Sending...' : 'Send Message'}
-                  </Button>
+                      <Input
+                        label="Email Address"
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) => handleInputChange('email', e.target.value)}
+                        error={errors.email}
+                        required
+                        placeholder="your.email@example.com"
+                      />
 
-                  <p className="text-xs text-muted-foreground text-center">
-                    We'll get back to you within 24 hours. For urgent matters, please call us
-                    directly.
-                  </p>
-                </form>
+                      <div>
+                        <label
+                          htmlFor="products"
+                          className="block text-sm font-medium text-foreground mb-2"
+                        >
+                          Products/Services Interested In
+                        </label>
+                        <select
+                          id="products"
+                          value={formData.state}
+                          onChange={(e) => handleInputChange('state', e.target.value)}
+                          className="flex h-12 w-full rounded-lg border border-input bg-background px-4 py-2 text-base ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                        >
+                          <option value="">Select a product/service</option>
+                          <option value="TRT">Testosterone Replacement Therapy (TRT)</option>
+                          <option value="Peptides">Peptides</option>
+                          <option value="Weight Loss">Weight Loss</option>
+                          <option value="Sexual Wellness">Sexual Wellness</option>
+                          <option value="Hormone Therapy">Hormone Therapy</option>
+                          <option value="General">General Inquiry</option>
+                        </select>
+                      </div>
+
+                      <Textarea
+                        label="Your Message"
+                        value={formData.message}
+                        onChange={(e) => handleInputChange('message', e.target.value)}
+                        error={errors.message}
+                        required
+                        placeholder="Tell us about your questions or how we can help you..."
+                        rows={4}
+                      />
+
+                      <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
+                        {isSubmitting ? 'Sending...' : 'Send Message'}
+                      </Button>
+
+                      <p className="text-xs text-muted-foreground text-center">
+                        We'll get back to you within 24 hours. For urgent matters, please call us
+                        directly.
+                      </p>
+                    </form>
+                  </>
+                )}
               </div>
 
               {/* Contact Information */}
@@ -263,8 +280,8 @@ export default function ContactPage() {
                       </svg>
                       <div>
                         <p className="font-semibold">Phone</p>
-                        <a href="tel:602-708-6487" className="text-primary hover:underline">
-                          602-708-6487
+                        <a href={businessConfig.phone.href} className="text-primary hover:underline">
+                          {businessConfig.phone.display}
                         </a>
                       </div>
                     </div>
@@ -281,10 +298,10 @@ export default function ContactPage() {
                       <div>
                         <p className="font-semibold">Email</p>
                         <a
-                          href="mailto:Yourstrengthrx@gmail.com"
+                          href={businessConfig.email.href}
                           className="text-primary hover:underline"
                         >
-                          Yourstrengthrx@gmail.com
+                          {businessConfig.email.display}
                         </a>
                       </div>
                     </div>
@@ -303,7 +320,7 @@ export default function ContactPage() {
                       </svg>
                       <div>
                         <p className="font-semibold">Location</p>
-                        <p className="text-muted-foreground">Phoenix, Arizona</p>
+                        <p className="text-muted-foreground">{businessConfig.location.display}</p>
                       </div>
                     </div>
                   </div>
@@ -320,10 +337,10 @@ export default function ContactPage() {
                   </p>
                   <div className="space-y-3">
                     <Button variant="accent" className="w-full" asChild>
-                      <a href="mailto:Yourstrengthrx@gmail.com">Email Us Your Questions</a>
+                      <a href={businessConfig.email.href}>Email Us Your Questions</a>
                     </Button>
                     <Button variant="white" className="w-full" asChild>
-                      <a href="tel:602-708-6487">Call Now</a>
+                      <a href={businessConfig.phone.href}>Call Now</a>
                     </Button>
                   </div>
                 </div>

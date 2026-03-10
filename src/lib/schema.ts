@@ -15,11 +15,13 @@ interface Service {
   url?: string
 }
 
+import { businessConfig } from './business.config'
+
 const contactInfo: ContactInfo = {
-  telephone: '+1-602-708-6487',
-  email: 'Yourstrengthrx@gmail.com',
+  telephone: businessConfig.phone.international,
+  email: businessConfig.email.display,
   address: {
-    addressLocality: 'Phoenix',
+    addressLocality: businessConfig.location.city,
     addressRegion: 'AZ',
     addressCountry: 'US',
   },

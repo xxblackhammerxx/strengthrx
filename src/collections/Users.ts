@@ -10,4 +10,5 @@ export const Users: CollectionConfig = {
     // Email added by default
     // Add more fields as needed
   ],
+  timestamps: true, // This automatically adds createdAt and updatedAt fields
 }
