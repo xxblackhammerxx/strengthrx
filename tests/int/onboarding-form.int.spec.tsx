@@ -65,7 +65,7 @@ describe('StepGoals', () => {
     )
     const firstCard = screen.getAllByRole('button')[0]
     // Before click — card has unselected border
-    expect(firstCard.className).toContain('border-border')
+    expect(firstCard.className).toContain('border-neutral-700')
     await user.click(firstCard)
     // After click — card should have selected border class
     expect(firstCard.className).toContain('border-primary')
@@ -97,7 +97,7 @@ describe('StepLabs', () => {
       </FormWrapper>,
     )
     const yesCard = screen.getByRole('button', { name: /yes, i have recent labs/i })
-    expect(yesCard.className).toContain('border-border')
+    expect(yesCard.className).toContain('border-neutral-700')
     await user.click(yesCard)
     expect(yesCard.className).toContain('border-primary')
   })
@@ -126,11 +126,11 @@ describe('StepContact', () => {
 describe('StepIndicator', () => {
   it('highlights the active step with ring classes', () => {
     render(<StepIndicator currentStep={1} />)
-    // The active step element has ring classes (ring-2 ring-primary)
+    // The active step element has scale-110 and glow shadow
     const stepDivs = document.querySelectorAll('.rounded-full')
-    // Step index 1 (second) should have ring class
+    // Step index 1 (second) should have scale-110 class (active indicator)
     const activeDiv = stepDivs[1]
-    expect(activeDiv.className).toContain('ring-2')
+    expect(activeDiv.className).toContain('scale-110')
   })
 
   it('shows check icon for completed steps', () => {
@@ -152,7 +152,7 @@ describe('GetStartedForm', () => {
 
   it('shows step 1 (goals) by default', () => {
     render(<GetStartedForm />)
-    expect(screen.getByText(/what are your health goals/i)).toBeTruthy()
+    expect(screen.getByText(/what are you looking to achieve/i)).toBeTruthy()
     expect(screen.getByRole('button', { name: /continue/i })).toBeTruthy()
   })
 
@@ -183,7 +183,7 @@ describe('GetStartedForm', () => {
 
     // Should advance to step 2 (labs)
     await waitFor(() => {
-      expect(screen.getByText(/have you had full labs done/i)).toBeTruthy()
+      expect(screen.getByText(/have you had full labs done recently/i)).toBeTruthy()
     })
   })
 
@@ -212,7 +212,7 @@ describe('GetStartedForm', () => {
     await user.click(screen.getByRole('button', { name: /continue/i }))
 
     // Step 2: select labs option
-    await waitFor(() => screen.getByText(/have you had full labs done/i))
+    await waitFor(() => screen.getByText(/have you had full labs done recently/i))
     const yesCard = screen.getByRole('button', { name: /yes, i have recent labs/i })
     await user.click(yesCard)
     await user.click(screen.getByRole('button', { name: /continue/i }))

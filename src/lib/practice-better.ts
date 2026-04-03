@@ -94,7 +94,7 @@ async function getAccessToken(): Promise<string> {
   }
 
   const data = await response.json()
-  const expiresIn: number = data.expires_in ?? 3360
+  const expiresIn: number = data.expires_in ?? 1200
   // Cache with 60-second safety margin
   const safetyMarginSeconds = 60
   cachedToken = data.access_token
