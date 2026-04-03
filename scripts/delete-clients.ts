@@ -17,7 +17,7 @@ async function main() {
     const { docs: referrals } = await payload.find({
       collection: 'referrals',
       limit: 0,
-      select: { id: true },
+      select: {},
     })
     for (const ref of referrals) {
       await payload.delete({ collection: 'referrals', id: ref.id, overrideAccess: true })
@@ -30,7 +30,7 @@ async function main() {
     const { docs } = await payload.find({
       collection: 'clients',
       limit: BATCH_SIZE,
-      select: { id: true },
+      select: {},
     })
 
     if (docs.length === 0) break

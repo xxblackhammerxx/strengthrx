@@ -43,7 +43,7 @@ export function Testimonials() {
                 </div>
               )}
 
-              <blockquote className="text-white/90 mb-4">"{testimonial.quote}"</blockquote>
+              <blockquote className="text-white/90 mb-4">&ldquo;{testimonial.quote}&rdquo;</blockquote>
 
               <div className="flex items-center">
                 <div
