@@ -26,6 +26,16 @@ export async function POST(request: NextRequest) {
         },
         isActive: true,
         sendInvitation: true,
+        formIds: [
+          '683e38def62334e95624b18a', // GLP1 intake form
+          '67609a7d515838f1ef653dd3', // Nandrolone Decanoate Consent
+          '683e35eaf62334e9562483ae', // TRT Intake Form
+          '675b9628be32223028195f5d', // Consent to Treat StrengthRX
+          '675b9b4cbe3222302819a5fb', // Telemedicine Consent
+          '68014d139352db01b9621f47', // Compounded GLP-1 Waiver
+          '675b9f5c81625ca0524c94b1', // Weight loss consent form
+          '675b9c92be3222302819c733', // Peptide consent
+        ],
       })
       practiceBetterId = pbResult.id
     } catch (pbError) {
