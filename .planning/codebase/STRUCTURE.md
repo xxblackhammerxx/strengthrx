@@ -1,0 +1,351 @@
+# Codebase Structure
+
+**Analysis Date:** 2026-04-03
+
+## Directory Layout
+
+```
+src/
+├── app/                           # Next.js App Router
+│   ├── (frontend)/                # Public marketing pages (layout group)
+│   │   ├── (marketing)/           # Marketing route group
+│   │   │   ├── contact/
+│   │   │   ├── privacy/
+│   │   │   └── terms/
+│   │   ├── login/
+│   │   ├── signup/
+│   │   │   ├── client/
+│   │   │   └── partner/
+│   │   ├── layout.tsx             # Frontend layout with header, footer, fonts
+│   │   ├── page.tsx               # Homepage with sections and schema generation
+│   │   └── styles.css
+│   ├── (portals)/                 # Protected user portals (layout group)
+│   │   ├── client-portal/
+│   │   ├── partner-portal/
+│   │   ├── admin-portal/
+│   │   └── layout.tsx             # Portal layout with portal nav and footer
+│   ├── (payload)/                 # Payload CMS admin panel (layout group)
+│   │   ├── admin/
+│   │   ├── api/                   # Payload REST/GraphQL routes
+│   │   └── layout.tsx             # Payload admin layout
+│   ├── api/                       # Custom API routes
+│   │   ├── login/
+│   │   ├── signup/
+│   │   ├── contact/
+│   │   ├── account/
+│   │   └── verify-referral/
+│   ├── my-route/                  # Example/test route
+│   ├── robots.ts
+│   └── sitemap.ts
+├── collections/                   # Payload CMS collection configs
+│   ├── Users.ts                   # Auth user collection (base)
+│   ├── Admins.ts                  # Admin user collection
+│   ├── Partners.ts                # Partner/trainer collection (with referral code)
+│   ├── Clients.ts                 # Client/patient collection
+│   ├── Referrals.ts               # Referral tracking collection
+│   └── Media.ts                   # Media upload collection
+├── globals/                       # Payload global config (site-wide settings)
+│   ├── PrescriptionStates.ts      # Available prescription states
+│   └── SiteSettings.ts            # Email settings, contact recipient
+├── components/                    # React components
+│   ├── ui/                        # Reusable UI components
+│   │   ├── Button.tsx
+│   │   ├── Card.tsx
+│   │   ├── Container.tsx
+│   │   ├── DashboardCard.tsx
+│   │   ├── DetailCard.tsx
+│   │   ├── Badge.tsx
+│   │   ├── Heading.tsx
+│   │   ├── Input.tsx
+│   │   ├── Textarea.tsx
+│   │   ├── Table.tsx
+│   │   └── Section.tsx
+│   ├── sections/                  # Homepage section components
+│   │   ├── Hero.tsx
+│   │   ├── Benefits.tsx
+│   │   ├── ServicesGrid.tsx
+│   │   ├── HowItWorks.tsx
+│   │   ├── Testimonials.tsx
+│   │   ├── CTA.tsx
+│   │   ├── FAQ.tsx
+│   │   ├── AnimatedSection.tsx
+│   │   └── Section.tsx
+│   ├── header/                    # Header components
+│   │   └── MainNav.tsx
+│   ├── footer/                    # Footer components
+│   │   └── SiteFooter.tsx
+│   └── portal/                    # Portal-specific components
+│       ├── PortalNav.tsx
+│       ├── PortalFooter.tsx
+│       └── ReferralLinkCard.tsx
+├── lib/                           # Utility functions and config
+│   ├── auth.ts                    # Auth helper functions (getAuthenticatedClient/Partner/Admin)
+│   ├── utils.ts                   # Class merge utility (cn)
+│   ├── schema.ts                  # SEO/structured data generators
+│   ├── seo.ts                     # Meta tags and SEO utilities
+│   ├── business.config.ts         # Business-wide config (contact, location)
+│   ├── portal-types.ts            # TypeScript interfaces for portal data
+│   ├── prescription-states.ts     # Prescription state fetching logic
+│   └── sql/                       # SQL utilities for custom queries
+├── content/                       # Static content data
+│   ├── faq.ts
+│   ├── testimonials.ts
+│   ├── services.ts
+│   └── hormone-therapies.ts
+├── hooks/                         # Custom React hooks
+│   └── useScrollAnimation.ts
+├── types/                         # TypeScript type definitions
+│   └── recaptcha.d.ts
+├── payload.config.ts              # Payload CMS configuration (collections, globals, db)
+├── payload-types.ts               # Auto-generated Payload types
+└── seed.ts                        # Database seeding script
+
+public/
+├── og-image.jpg
+└── [other static assets]
+
+tests/
+├── int/                           # Integration tests
+│   └── api.int.spec.ts
+└── e2e/                           # End-to-end tests
+    └── frontend.e2e.spec.ts
+
+Configuration Files (root):
+├── tsconfig.json                  # Path aliases: @/* → src/*, @payload-config
+├── next.config.mjs
+├── payload.config.ts              # Main Payload config
+├── package.json
+├── .env                           # Environment variables (DO NOT COMMIT)
+├── .env.example                   # Environment template
+├── vitest.config.mts              # Unit/integration test config
+├── playwright.config.ts           # E2E test config
+├── eslint.config.mjs
+├── postcss.config.js
+├── tailwind.config.js             # Auto-generated by @tailwindcss/postcss
+├── docker-compose.yml             # PostgreSQL dev environment
+└── Dockerfile
+```
+
+## Directory Purposes
+
+**`src/app/`:**
+- Purpose: Next.js App Router pages and layouts
+- Contains: Page components, layout definitions, API routes
+- Key files: Root pages, layout.tsx files, route.ts API handlers
+
+**`src/app/(frontend)/`:**
+- Purpose: Public-facing marketing website
+- Contains: Homepage, signup pages, login, contact form, marketing content pages
+- Key files: `page.tsx` (homepage), `signup/page.tsx`, `layout.tsx` (with header/footer)
+
+**`src/app/(portals)/`:**
+- Purpose: Protected user dashboards and account management
+- Contains: Client/Partner/Admin portals with authentication checks
+- Key files: `*/page.tsx` (portal pages), `layout.tsx` (with portal nav)
+
+**`src/app/(payload)/`:**
+- Purpose: Payload CMS admin interface
+- Contains: Auto-generated admin routes and GraphQL/REST endpoints
+- Key files: `admin/[[...segments]]/page.tsx` (Payload admin UI), `api/` routes
+
+**`src/api/`:**
+- Purpose: Custom Next.js API routes for business logic
+- Contains: Authentication handlers, form processors, integrations
+- Key files: `login/route.ts`, `signup/route.ts`, `contact/route.ts`
+
+**`src/collections/`:**
+- Purpose: Payload CMS data model definitions
+- Contains: CollectionConfig objects for Users, Admins, Partners, Clients, Referrals, Media
+- Key files: Each file exports a named collection config
+
+**`src/globals/`:**
+- Purpose: Site-wide Payload configuration and settings
+- Contains: Global data structures shared across the app
+- Key files: `SiteSettings.ts` (email config), `PrescriptionStates.ts` (available states)
+
+**`src/components/ui/`:**
+- Purpose: Primitive, reusable UI components
+- Contains: Button, Card, Input, Table, Badge, etc. with variant support
+- Key files: All components use Tailwind CSS + cn() utility for class merging
+
+**`src/components/sections/`:**
+- Purpose: Homepage section components composed from UI components
+- Contains: Hero, Services, CTA, FAQ, Testimonials, Benefits sections
+- Key files: Section components that render content from `src/content/`
+
+**`src/components/header/`:**
+- Purpose: Site navigation and header
+- Contains: MainNav component with responsive menu
+- Key files: `MainNav.tsx` (frontend), `PortalNav.tsx` (portal)
+
+**`src/components/footer/`:**
+- Purpose: Footer and footer content
+- Contains: SiteFooter, PortalFooter components
+- Key files: Footer components with links and company info
+
+**`src/lib/`:**
+- Purpose: Shared utilities and configuration
+- Contains: Auth helpers, schema generators, business config, utilities
+- Key files: `auth.ts` (critical for portals), `schema.ts` (SEO), `business.config.ts` (company info)
+
+**`src/content/`:**
+- Purpose: Static content and data structures
+- Contains: FAQ items, testimonials, services, hormone therapy info
+- Key files: Data is imported by section components at build time
+
+**`src/hooks/`:**
+- Purpose: Custom React hooks
+- Contains: Reusable hook logic
+- Key files: `useScrollAnimation.ts` (scroll-triggered animations)
+
+**`src/types/`:**
+- Purpose: Global TypeScript type definitions
+- Contains: Type declarations not in collections/components
+- Key files: `recaptcha.d.ts` (reCAPTCHA Enterprise types)
+
+**`tests/int/`:**
+- Purpose: Integration tests for APIs and logic
+- Contains: Test specs for API routes and workflows
+- Key files: `api.int.spec.ts`
+
+**`tests/e2e/`:**
+- Purpose: End-to-end user flow tests
+- Contains: Playwright test specs for user journeys
+- Key files: `frontend.e2e.spec.ts`
+
+## Key File Locations
+
+**Entry Points:**
+- `src/app/(frontend)/page.tsx`: Homepage entry point
+- `src/app/(payload)/layout.tsx`: Payload admin entry point
+- `src/app/(portals)/layout.tsx`: Portal auth wrapper
+- `src/payload.config.ts`: Payload CMS configuration
+
+**Configuration:**
+- `tsconfig.json`: TypeScript config with path aliases
+- `.env`: Environment variables (secrets, API keys, database URI)
+- `payload.config.ts`: Collections, globals, database, plugins
+
+**Core Logic:**
+- `src/lib/auth.ts`: Authentication for portals
+- `src/app/api/login/route.ts`: Login endpoint
+- `src/app/api/contact/route.ts`: Contact form with reCAPTCHA
+- `src/app/api/signup/route.ts`: Client registration
+
+**Utilities:**
+- `src/lib/schema.ts`: JSON-LD schema generators
+- `src/lib/utils.ts`: Class merging utility
+- `src/lib/business.config.ts`: Company contact and location info
+- `src/lib/prescription-states.ts`: Prescription state fetching
+
+**Testing:**
+- `tests/int/api.int.spec.ts`: API integration tests (Vitest)
+- `tests/e2e/frontend.e2e.spec.ts`: User flow tests (Playwright)
+
+## Naming Conventions
+
+**Files:**
+- Page files: `page.tsx`
+- Route handlers: `route.ts`
+- Layout files: `layout.tsx`
+- Components: PascalCase.tsx (e.g., `Button.tsx`, `MainNav.tsx`)
+- Utilities: camelCase.ts (e.g., `auth.ts`, `schema.ts`)
+- Collections/Configs: PascalCase.ts (e.g., `Clients.ts`, `SiteSettings.ts`)
+
+**Directories:**
+- Route groups (non-public): parentheses, e.g., `(frontend)`, `(portals)`, `(payload)`
+- Feature directories: lowercase, plural where applicable, e.g., `components`, `collections`, `globals`
+- Page sections: lowercase, e.g., `client-portal`, `partner-portal`
+
+**Components:**
+- UI components: `Button`, `Card`, `Input` (generic, reusable)
+- Section components: `Hero`, `Services`, `CTA` (homepage sections)
+- Portal components: `ClientPortalContent`, `PartnerPortalContent` (role-specific)
+
+**Types and Interfaces:**
+- Payload-generated types: `payload-types.ts`
+- Custom portal interfaces: `portal-types.ts`
+- Type declarations: `*.d.ts`
+
+## Where to Add New Code
+
+**New Feature:**
+- Primary code: `src/app/(frontend)/[feature]/page.tsx` or `src/app/(portals)/[portal]/[feature]/page.tsx`
+- Components: `src/components/sections/` (if marketing section) or `src/components/portal/` (if portal feature)
+- Tests: `tests/int/[feature].spec.ts` (integration) or `tests/e2e/[feature].e2e.spec.ts` (E2E)
+
+**New Component/Module:**
+- Implementation: `src/components/[category]/ComponentName.tsx`
+- Export barrel: Update parent `index.ts` if one exists, or import directly from component file
+- Types: Add interface to component file or `src/types/`
+
+**Utilities:**
+- Shared helpers: `src/lib/[category].ts`
+- Custom hooks: `src/hooks/useFeatureName.ts`
+- Business logic: `src/lib/[domain].ts` or dedicated `src/services/` if complex
+
+**API Endpoints:**
+- REST routes: `src/app/api/[resource]/route.ts`
+- Business logic: Extract to `src/lib/` or dedicated service files if shared
+
+**Data/Content:**
+- Static content: `src/content/[feature].ts` (imported at build time)
+- Payload collections: `src/collections/CollectionName.ts`
+- Payload globals: `src/globals/SettingName.ts`
+
+**Tests:**
+- Integration tests: `tests/int/[feature].int.spec.ts` (Vitest)
+- E2E tests: `tests/e2e/[feature].e2e.spec.ts` (Playwright)
+
+## Special Directories
+
+**`src/app/(frontend)/`:**
+- Purpose: Public website
+- Generated: No
+- Committed: Yes
+
+**`src/app/(payload)/`:**
+- Purpose: Payload CMS admin interface
+- Generated: Partially (importMap auto-generated)
+- Committed: Most files yes; importMap files are auto-generated
+
+**`public/`:**
+- Purpose: Static assets served directly
+- Generated: No
+- Committed: Yes
+
+**`.next/`:**
+- Purpose: Next.js build output
+- Generated: Yes
+- Committed: No (.gitignored)
+
+**`src/payload-types.ts`:**
+- Purpose: Auto-generated TypeScript types from Payload collections
+- Generated: Yes (via `payload generate:types`)
+- Committed: Yes (committed to repo for IDE autocomplete)
+
+**`.env`:**
+- Purpose: Environment variables and secrets
+- Generated: No
+- Committed: No (.gitignored) — use `.env.example` template
+
+## Database and Collections
+
+**Payload Collections (in `src/collections/`):**
+
+1. **Users** (`Users.ts`): Base auth-enabled collection, used as Payload admin user
+2. **Clients** (`Clients.ts`): Patient/client profiles with medical status fields (paperworkStatus, labStatus, medicalReviewStatus)
+3. **Partners** (`Partners.ts`): Trainer/partner profiles with referral codes and commission tracking
+4. **Admins** (`Admins.ts`): Admin user profiles
+5. **Referrals** (`Referrals.ts`): Tracks partner-to-client referral relationships
+6. **Media** (`Media.ts`): File uploads managed by Payload
+
+**Payload Globals (in `src/globals/`):**
+
+1. **SiteSettings**: Email configuration (contactFormRecipient, fromEmail, fromName)
+2. **PrescriptionStates**: Available prescription service states (fetched dynamically on homepage)
+
+**Database:**
+- Provider: PostgreSQL
+- Connection: Environment variable `DATABASE_URI`
+- Migrations: Managed by Payload CMS
