@@ -126,6 +126,7 @@ export async function createPracticeBetterClient(
       lastName: input.lastName,
       emailAddress: input.email,
     },
+    sendInvitation: true,
   }
 
   const response = await fetch(`${PB_BASE_URL}/consultant/records`, {
