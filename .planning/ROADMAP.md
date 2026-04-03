@@ -44,7 +44,11 @@ Plans:
   3. User can navigate back to any previous step and their answers are preserved
   4. Inline validation errors appear before the user can advance to the next step
   5. The form is fully usable on a mobile device and shows a loading state then a success screen on submit
-**Plans**: TBD
+**Plans:** 2 plans
+
+Plans:
+- [ ] 02-01-PLAN.md — Create onboarding schema, step components (StepIndicator, StepGoals, StepLabs, StepContact, SuccessScreen)
+- [ ] 02-02-PLAN.md — Wire form controller (GetStartedForm), stub API route, page route, Hero CTA update
 
 ### Phase 3: Practice Better API Spike
 **Goal**: The Practice Better auth scheme is verified, and a working `lib/practice-better.ts` library is built with real API calls for patient creation
@@ -79,6 +83,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Schema and Foundation | 1/1 | Complete   | 2026-04-03 |
-| 2. Onboarding Form UI | 0/? | Not started | - |
+| 2. Onboarding Form UI | 0/2 | Planned | - |
 | 3. Practice Better API Spike | 0/? | Not started | - |
 | 4. API Route and Integration | 0/? | Not started | - |
