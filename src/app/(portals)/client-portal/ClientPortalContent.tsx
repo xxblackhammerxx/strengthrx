@@ -23,6 +23,8 @@ import {
   Microscope,
   ClipboardCheck,
   Info,
+  Mail,
+  ExternalLink,
 } from 'lucide-react'
 import type { ClientPortalData } from '@/lib/portal-types'
 
@@ -270,9 +272,9 @@ function OnboardingView({ clientData }: { clientData: ClientPortalData }) {
     {
       id: 1,
       title: 'Finalize Paperwork',
-      icon: FileText,
+      icon: Mail,
       status: getStepStatus(1),
-      description: 'Complete your medical history and consent forms',
+      description: 'Check your inbox for intake forms',
     },
     {
       id: 2,
@@ -304,17 +306,18 @@ function OnboardingView({ clientData }: { clientData: ClientPortalData }) {
     switch (currentStep.id) {
       case 1:
         return {
-          title: 'Complete Your Paperwork',
+          title: 'Check Your Inbox',
           description:
-            'To move forward with your treatment, we need you to complete your medical history forms and consent documents.',
+            'We\'ve sent your intake paperwork to your email via Practice Better, your patient portal. Complete your medical history forms and consent documents to move forward with treatment.',
           actions: [
-            'Review and sign the consent forms',
-            'Fill out your complete medical history',
-            'Upload any existing medical records (optional)',
+            'Check your email for an invitation from Practice Better',
+            'Create your Practice Better account if prompted',
+            'Complete the intake forms and consent documents',
+            'You\'ll be notified once your paperwork is received',
           ],
           estimatedTime: '15-20 minutes',
-          ctaText: 'Complete Paperwork',
-          ctaLink: '/client-portal/paperwork',
+          ctaText: '',
+          ctaLink: '',
         }
       case 2:
         return {
@@ -376,13 +379,24 @@ function OnboardingView({ clientData }: { clientData: ClientPortalData }) {
   const whatsNext = getWhatsNextContent()
 
   return (
-    <>
+    <div className="relative min-h-screen">
+      {/* Ambient background glow */}
+      <div className="pointer-events-none fixed inset-0 overflow-hidden">
+        <div className="absolute -left-[400px] -top-[200px] h-[800px] w-[800px] rounded-full bg-blue-600/[0.03] blur-[120px]" />
+        <div className="absolute -right-[300px] top-[400px] h-[600px] w-[600px] rounded-full bg-primary-600/[0.03] blur-[120px]" />
+      </div>
+
       {/* Page Header */}
-      <div className="border-b bg-primary">
+      <div className="relative border-b border-white/[0.06]">
         <Container>
-          <div className="py-6">
-            <h1 className="text-3xl font-bold text-white">Welcome back, {clientData.firstName}</h1>
-            <p className="text-sm text-gray-200">
+          <div className="py-8 sm:py-10">
+            <p className="mb-1 text-xs font-medium uppercase tracking-widest text-neutral-500">
+              Welcome back
+            </p>
+            <h1 className="font-heading text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              {clientData.firstName}
+            </h1>
+            <p className="mt-1.5 text-sm text-neutral-500">
               Member since{' '}
               {new Date(clientData.memberSince).toLocaleDateString('en-US', {
                 month: 'long',
@@ -393,18 +407,20 @@ function OnboardingView({ clientData }: { clientData: ClientPortalData }) {
         </Container>
       </div>
 
-      <Container className="py-8">
+      <Container className="relative py-8">
         {/* Journey Progress Steps */}
-        <div className="mb-8">
-          <h2 className="mb-6 text-xl font-semibold text-white">Your Journey to Treatment</h2>
+        <div className="mb-10">
+          <h2 className="mb-6 text-xs font-medium uppercase tracking-widest text-neutral-500">
+            Your Journey to Treatment
+          </h2>
 
           {/* Desktop Steps */}
           <div className="hidden md:block">
             <div className="relative">
               {/* Progress Line */}
-              <div className="absolute left-0 top-12 h-1 w-full bg-gray-200">
+              <div className="absolute left-[12.5%] right-[12.5%] top-8 h-px bg-white/[0.08]">
                 <div
-                  className="h-full bg-blue-600 transition-all duration-500"
+                  className="h-full bg-blue-500 transition-all duration-700 ease-out"
                   style={{
                     width: `${(steps.filter((s) => s.status === 'completed').length / (steps.length - 1)) * 100}%`,
                   }}
@@ -419,18 +435,18 @@ function OnboardingView({ clientData }: { clientData: ClientPortalData }) {
                     <div key={step.id} className="flex flex-col items-center">
                       {/* Icon Circle */}
                       <div
-                        className={`relative z-10 flex h-24 w-24 items-center justify-center rounded-full border-4 transition-all duration-300 ${
+                        className={`relative z-10 flex h-16 w-16 items-center justify-center rounded-full border-2 transition-all duration-300 ${
                           step.status === 'completed'
-                            ? 'border-blue-600 bg-blue-600 text-white shadow-lg'
+                            ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-400'
                             : step.status === 'current'
-                              ? 'border-blue-600 bg-white text-blue-600 shadow-lg ring-4 ring-blue-100'
-                              : 'border-gray-300 bg-white text-gray-400'
+                              ? 'border-blue-500/60 bg-blue-500/10 text-blue-400 shadow-[0_0_20px_rgba(59,130,246,0.15)]'
+                              : 'border-white/[0.08] bg-white/[0.03] text-neutral-600'
                         }`}
                       >
                         {step.status === 'completed' ? (
-                          <CheckCircle2 className="h-12 w-12" />
+                          <CheckCircle2 className="h-7 w-7" />
                         ) : (
-                          <Icon className="h-12 w-12" />
+                          <Icon className="h-7 w-7" />
                         )}
                       </div>
 
@@ -438,26 +454,28 @@ function OnboardingView({ clientData }: { clientData: ClientPortalData }) {
                       <div className="mt-4 text-center">
                         <h3
                           className={`text-sm font-semibold ${
-                            step.status === 'upcoming' ? 'text-gray-400' : 'text-white'
+                            step.status === 'upcoming' ? 'text-neutral-600' : 'text-white'
                           }`}
                         >
                           {step.title}
                         </h3>
                         <p
-                          className={`mt-1 text-xs ${
-                            step.status === 'upcoming' ? 'text-gray-400' : 'text-gray-200'
+                          className={`mt-1 max-w-[160px] text-xs leading-relaxed ${
+                            step.status === 'upcoming' ? 'text-neutral-600' : 'text-neutral-400'
                           }`}
                         >
                           {step.description}
                         </p>
                         {step.status === 'current' && (
-                          <span className="mt-2 inline-block rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-800">
+                          <span className="mt-2.5 inline-flex items-center gap-1 rounded-full bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-400">
+                            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-blue-400" />
                             Current Step
                           </span>
                         )}
                         {step.status === 'completed' && (
-                          <span className="mt-2 inline-block rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-800">
-                            Completed
+                          <span className="mt-2.5 inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-400">
+                            <CheckCircle2 className="h-3 w-3" />
+                            Complete
                           </span>
                         )}
                       </div>
@@ -470,62 +488,60 @@ function OnboardingView({ clientData }: { clientData: ClientPortalData }) {
 
           {/* Mobile Steps */}
           <div className="md:hidden">
-            <div className="space-y-4">
+            <div className="space-y-3">
               {steps.map((step, index) => {
                 const Icon = step.icon
                 return (
                   <div
                     key={step.id}
-                    className={`relative flex items-start rounded-lg border-2 p-4 ${
+                    className={`relative flex items-center gap-4 rounded-xl border p-4 transition-all ${
                       step.status === 'completed'
-                        ? 'border-green-300 bg-green-50'
+                        ? 'border-emerald-500/20 bg-emerald-500/[0.04]'
                         : step.status === 'current'
-                          ? 'border-blue-500 bg-blue-50'
-                          : 'border-gray-200 bg-gray-50'
+                          ? 'border-blue-500/30 bg-blue-500/[0.06]'
+                          : 'border-white/[0.06] bg-white/[0.02]'
                     }`}
                   >
                     {/* Icon */}
                     <div
-                      className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full ${
+                      className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full ${
                         step.status === 'completed'
-                          ? 'bg-green-600 text-white'
+                          ? 'bg-emerald-500/10 text-emerald-400'
                           : step.status === 'current'
-                            ? 'bg-blue-600 text-white'
-                            : 'bg-gray-300 text-gray-500'
+                            ? 'bg-blue-500/10 text-blue-400'
+                            : 'bg-white/[0.04] text-neutral-600'
                       }`}
                     >
                       {step.status === 'completed' ? (
-                        <CheckCircle2 className="h-6 w-6" />
+                        <CheckCircle2 className="h-5 w-5" />
                       ) : (
-                        <Icon className="h-6 w-6" />
+                        <Icon className="h-5 w-5" />
                       )}
                     </div>
 
                     {/* Content */}
-                    <div className="ml-4 flex-1">
-                      <div className="flex items-center justify-between">
-                        <h3 className="font-semibold text-white">{step.title}</h3>
-                        {step.status === 'current' && (
-                          <span className="rounded-full bg-blue-600 px-2 py-1 text-xs font-medium text-white">
-                            Current
-                          </span>
-                        )}
-                        {step.status === 'completed' && (
-                          <span className="rounded-full bg-green-600 px-2 py-1 text-xs font-medium text-white">
-                            Done
-                          </span>
-                        )}
-                      </div>
-                      <p className="mt-1 text-sm text-gray-200">{step.description}</p>
+                    <div className="flex-1">
+                      <h3
+                        className={`text-sm font-semibold ${step.status === 'upcoming' ? 'text-neutral-600' : 'text-white'}`}
+                      >
+                        {step.title}
+                      </h3>
+                      <p
+                        className={`text-xs ${step.status === 'upcoming' ? 'text-neutral-600' : 'text-neutral-400'}`}
+                      >
+                        {step.description}
+                      </p>
                     </div>
 
-                    {/* Connector Line */}
-                    {index < steps.length - 1 && (
-                      <div
-                        className={`absolute -bottom-4 left-6 h-4 w-0.5 ${
-                          step.status === 'completed' ? 'bg-green-600' : 'bg-gray-300'
-                        }`}
-                      />
+                    {/* Status */}
+                    {step.status === 'current' && (
+                      <span className="flex h-2 w-2 shrink-0">
+                        <span className="absolute inline-flex h-2 w-2 animate-ping rounded-full bg-blue-400 opacity-75" />
+                        <span className="relative inline-flex h-2 w-2 rounded-full bg-blue-500" />
+                      </span>
+                    )}
+                    {step.status === 'completed' && (
+                      <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-400" />
                     )}
                   </div>
                 )
@@ -535,76 +551,90 @@ function OnboardingView({ clientData }: { clientData: ClientPortalData }) {
         </div>
 
         {/* What's Next Card */}
-        <div className="rounded-xl border-2 border-blue-200 bg-linear-to-br from-blue-50/10 to-indigo-50/50 p-6 shadow-lg md:p-8">
-          <div className="mb-4 flex items-start justify-between">
+        <div className="overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03]">
+          {/* Card Header */}
+          <div className="flex items-center justify-between border-b border-white/[0.06] px-6 py-4 md:px-8">
             <div className="flex items-center gap-3">
-              <div className="rounded-lg bg-blue-600 p-2">
-                <Info className="h-6 w-6 text-white" />
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-500/10">
+                <Info className="h-4 w-4 text-blue-400" />
               </div>
-              <div>
-                <h2 className="text-2xl font-bold text-white">What&apos;s Next?</h2>
-                <p className="text-sm text-gray-200">
-                  {whatsNext.estimatedTime && (
-                    <span className="flex items-center gap-1">
-                      <Clock className="h-4 w-4" />
-                      {whatsNext.estimatedTime}
-                    </span>
-                  )}
-                </p>
-              </div>
+              <h2 className="font-heading text-lg font-semibold text-white">What&apos;s Next?</h2>
             </div>
+            {whatsNext.estimatedTime && (
+              <span className="flex items-center gap-1.5 rounded-full bg-white/[0.04] px-3 py-1 text-xs text-neutral-400">
+                <Clock className="h-3.5 w-3.5" />
+                {whatsNext.estimatedTime}
+              </span>
+            )}
           </div>
 
-          <div className="mb-6">
+          {/* Card Body */}
+          <div className="px-6 py-6 md:px-8">
             <h3 className="mb-2 text-xl font-semibold text-white">{whatsNext.title}</h3>
-            <p className="text-gray-100">{whatsNext.description}</p>
-          </div>
+            <p className="mb-6 max-w-2xl text-sm leading-relaxed text-neutral-400">
+              {whatsNext.description}
+            </p>
 
-          <div className="mb-6">
-            <h4 className="mb-3 font-semibold text-white">Action Items:</h4>
-            <ul className="space-y-2">
+            <div className="mb-6 space-y-2.5">
               {whatsNext.actions.map((action, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <ArrowRight className="mt-0.5 h-5 w-5 shrink-0 text-blue-600" />
-                  <span className="text-gray-100">{action}</span>
-                </li>
+                <div
+                  key={index}
+                  className="flex items-start gap-3 rounded-lg bg-white/[0.02] px-4 py-2.5"
+                >
+                  <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-500/10">
+                    <span className="text-xs font-semibold text-blue-400">{index + 1}</span>
+                  </div>
+                  <span className="text-sm text-neutral-300">{action}</span>
+                </div>
               ))}
-            </ul>
-          </div>
+            </div>
 
-          <button className="w-full rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-blue-700 md:w-auto">
-            {whatsNext.ctaText}
-          </button>
+            {whatsNext.ctaText && (
+              <a
+                href={whatsNext.ctaLink}
+                className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-blue-500"
+              >
+                {whatsNext.ctaText}
+                <ArrowRight className="h-4 w-4" />
+              </a>
+            )}
+          </div>
         </div>
 
         {/* Quick Actions */}
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
-          <button className="flex items-center justify-between rounded-lg border border-gray-200 bg-white p-4 text-left transition-all hover:border-blue-300 hover:shadow-md">
+        <div className="mt-6 grid gap-3 md:grid-cols-3">
+          <button className="group flex items-center justify-between rounded-xl border border-white/[0.08] bg-white/[0.03] p-4 text-left transition-all hover:border-white/[0.12] hover:bg-white/[0.05]">
             <div>
-              <h3 className="font-semibold text-gray-900">Schedule Appointment</h3>
-              <p className="text-sm text-gray-600">Book a consultation</p>
+              <h3 className="text-sm font-semibold text-white">Schedule Appointment</h3>
+              <p className="text-xs text-neutral-500">Book a consultation</p>
             </div>
-            <Calendar className="h-6 w-6 text-blue-600" />
+            <div className="rounded-lg bg-blue-500/10 p-2 transition-colors group-hover:bg-blue-500/15">
+              <Calendar className="h-4 w-4 text-blue-400" />
+            </div>
           </button>
 
-          <button className="flex items-center justify-between rounded-lg border border-gray-200 bg-white p-4 text-left transition-all hover:border-blue-300 hover:shadow-md">
+          <button className="group flex items-center justify-between rounded-xl border border-white/[0.08] bg-white/[0.03] p-4 text-left transition-all hover:border-white/[0.12] hover:bg-white/[0.05]">
             <div>
-              <h3 className="font-semibold text-gray-900">Contact Support</h3>
-              <p className="text-sm text-gray-600">We&apos;re here to help</p>
+              <h3 className="text-sm font-semibold text-white">Contact Support</h3>
+              <p className="text-xs text-neutral-500">We&apos;re here to help</p>
             </div>
-            <AlertCircle className="h-6 w-6 text-blue-600" />
+            <div className="rounded-lg bg-blue-500/10 p-2 transition-colors group-hover:bg-blue-500/15">
+              <MessageCircle className="h-4 w-4 text-blue-400" />
+            </div>
           </button>
 
-          <button className="flex items-center justify-between rounded-lg border border-gray-200 bg-white p-4 text-left transition-all hover:border-blue-300 hover:shadow-md">
+          <button className="group flex items-center justify-between rounded-xl border border-white/[0.08] bg-white/[0.03] p-4 text-left transition-all hover:border-white/[0.12] hover:bg-white/[0.05]">
             <div>
-              <h3 className="font-semibold text-gray-900">View Documents</h3>
-              <p className="text-sm text-gray-600">Access your files</p>
+              <h3 className="text-sm font-semibold text-white">View Documents</h3>
+              <p className="text-xs text-neutral-500">Access your files</p>
             </div>
-            <FileText className="h-6 w-6 text-blue-600" />
+            <div className="rounded-lg bg-blue-500/10 p-2 transition-colors group-hover:bg-blue-500/15">
+              <FileText className="h-4 w-4 text-blue-400" />
+            </div>
           </button>
         </div>
       </Container>
-    </>
+    </div>
   )
 }
 

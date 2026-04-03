@@ -14,9 +14,13 @@ const MOCK_ACCESS_TOKEN = 'mock-access-token-abc123'
 const MOCK_PATIENT_ID = '69d025470326b4dd7277626e'
 
 const validInput: PracticeBetterClientInput = {
-  firstName: 'John',
-  lastName: 'Doe',
-  email: 'john.doe@example.com',
+  profile: {
+    firstName: 'John',
+    lastName: 'Doe',
+    emailAddress: 'john.doe@example.com',
+  },
+  isActive: true,
+  sendInvitation: true,
 }
 
 function makeTokenResponse(overrides?: Partial<{ access_token: string; token_type: string; expires_in: number }>) {

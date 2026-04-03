@@ -9,14 +9,21 @@ export const GOAL_OPTIONS = [
   { value: 'other', label: 'Other' },
 ] as const
 
-export const onboardingSchema = z.object({
-  goals: z.array(z.string()).min(1, 'Select at least one goal'),
-  labsStatus: z.enum(['yes', 'no'], { required_error: 'Please answer the labs question' }),
-  firstName: z.string().min(1, 'First name is required'),
-  lastName: z.string().min(1, 'Last name is required'),
-  email: z.string().email('Enter a valid email address'),
-  phone: z.string().optional(),
-})
+export const onboardingSchema = z
+  .object({
+    goals: z.array(z.string()).min(1, 'Select at least one goal'),
+    labsStatus: z.enum(['yes', 'no'], { required_error: 'Please answer the labs question' }),
+    firstName: z.string().min(1, 'First name is required'),
+    lastName: z.string().min(1, 'Last name is required'),
+    email: z.string().email('Enter a valid email address'),
+    phone: z.string().optional(),
+    password: z.string().min(8, 'Password must be at least 8 characters'),
+    confirmPassword: z.string().min(1, 'Please confirm your password'),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: 'Passwords do not match',
+    path: ['confirmPassword'],
+  })
 
 export type OnboardingFormData = z.infer<typeof onboardingSchema>
 
@@ -24,6 +31,7 @@ export const STEP_FIELDS: Record<number, (keyof OnboardingFormData)[]> = {
   0: ['goals'],
   1: ['labsStatus'],
   2: ['firstName', 'lastName', 'email'],
+  3: ['password', 'confirmPassword'],
 }
 
-export const STEP_LABELS = ['Your Goals', 'Lab History', 'Contact Info']
+export const STEP_LABELS = ['Your Goals', 'Lab History', 'Contact Info', 'Set Password']

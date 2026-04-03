@@ -1,7 +1,6 @@
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { Heading } from '@/components/ui/Heading'
-import { businessConfig } from '@/lib/business.config'
 import Link from 'next/link'
 
 export function CTA() {
@@ -19,15 +18,7 @@ export function CTA() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="accent" size="lg" asChild>
-              <Link href="/contact">Book Free Consultation</Link>
-            </Button>
-            <Button
-              variant="ghost"
-              size="lg"
-              className="text-white border-white hover:bg-white hover:text-primary"
-              asChild
-            >
-              <a href={businessConfig.phone.href}>Call Now: {businessConfig.phone.display}</a>
+              <Link href="/get-started">Get Started</Link>
             </Button>
           </div>
 

@@ -1,7 +1,6 @@
 'use client'
 
 import { Button } from '@/components/ui/Button'
-import { businessConfig } from '@/lib/business.config'
 import { Container } from '@/components/ui/Container'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -43,11 +42,8 @@ export function MainNav() {
 
           {/* CTA Buttons */}
           <div className="hidden xl:flex items-center space-x-3">
-            <Button variant="ghost" asChild>
-              <a href={businessConfig.phone.href}>Call Now</a>
-            </Button>
             <Button asChild>
-              <Link href="/contact">Book Consult</Link>
+              <Link href="/get-started">Get Started</Link>
             </Button>
           </div>
 
@@ -104,14 +100,9 @@ export function MainNav() {
                 </Link>
               ))}
               <div className="pt-4 space-y-2">
-                <Button variant="ghost" className="w-full" asChild>
-                  <a href={businessConfig.phone.href} onClick={() => setIsOpen(false)}>
-                    Call Now
-                  </a>
-                </Button>
                 <Button className="w-full" asChild>
-                  <Link href="/contact" onClick={() => setIsOpen(false)}>
-                    Book Consult
+                  <Link href="/get-started" onClick={() => setIsOpen(false)}>
+                    Get Started
                   </Link>
                 </Button>
               </div>

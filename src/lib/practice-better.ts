@@ -11,11 +11,51 @@ const PB_BASE_URL = 'https://api.practicebetter.io'
 
 // ─── Exported types ───────────────────────────────────────────────────────────
 
-export interface PracticeBetterClientInput {
+export interface PracticeBetterAddress {
+  line1?: string
+  line2?: string
+  city?: string
+  state?: string
+  country?: string
+  postalCode?: string
+}
+
+export interface PracticeBetterProfileInput {
   firstName: string
   lastName: string
-  email: string
-  phone?: string
+  emailAddress: string
+  middleName?: string
+  preferredName?: string
+  title?: string
+  dateOfBirth?: string
+  gender?: string
+  genderIdentity?: string
+  pronouns?: string
+  mobilePhone?: string
+  homePhone?: string
+  workPhone?: string
+  address?: PracticeBetterAddress
+  occupation?: string
+  workHoursPerWeek?: number
+  maritalStatus?: string
+  referredBy?: string
+  notes?: string
+  patientAccountNumber?: string
+  timeZone?: string
+}
+
+export interface PracticeBetterClientInput {
+  profile: PracticeBetterProfileInput
+  isActive?: boolean
+  sendInvitation?: boolean
+  parentRecordId?: string
+  formIds?: string[]
+  documentsFolder?: boolean
+  foodMoodJournal?: boolean
+  lifestyleJournal?: boolean
+  sendNutriQ?: boolean
+  sendNutriQv2?: boolean
+  sendWellnessQuestionnaire?: boolean
 }
 
 export interface PracticeBetterClientResult {
@@ -108,9 +148,8 @@ async function getAccessToken(): Promise<string> {
 /**
  * Creates a patient record in Practice Better and returns the patient ID.
  *
- * Uses exact field names confirmed by the 03-01 spike:
- *   - Request body: { profile: { firstName, lastName, emailAddress } }
- *   - Response: { id: "<MongoDB ObjectId>" }
+ * Accepts the full ClientRecordCreateFragment shape from the PB API.
+ * Required profile fields: firstName, lastName, emailAddress.
  *
  * Throws PracticeBetterError on any non-2xx response.
  * Never logs patient data (PHI).
@@ -120,22 +159,13 @@ export async function createPracticeBetterClient(
 ): Promise<PracticeBetterClientResult> {
   const token = await getAccessToken()
 
-  const requestBody: Record<string, unknown> = {
-    profile: {
-      firstName: input.firstName,
-      lastName: input.lastName,
-      emailAddress: input.email,
-    },
-    sendInvitation: true,
-  }
-
   const response = await fetch(`${PB_BASE_URL}/consultant/records`, {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(requestBody),
+    body: JSON.stringify(input),
   })
 
   if (!response.ok) {

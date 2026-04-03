@@ -113,3 +113,12 @@ Pre-existing test failures found in `tests/int/onboarding-form.int.spec.tsx` (4 
 ---
 *Phase: 03-practice-better-api-spike*
 *Completed: 2026-04-03*
+
+## Self-Check: PASSED
+
+- FOUND: src/lib/practice-better.ts
+- FOUND: tests/int/practice-better.int.spec.ts
+- FOUND: .planning/phases/03-practice-better-api-spike/03-02-SUMMARY.md
+- FOUND: commit 7dfaae1 (test RED)
+- FOUND: commit be3b0c8 (feat GREEN)
+- FOUND: commit bbb3c75 (docs metadata)

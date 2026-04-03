@@ -375,7 +375,7 @@ export default function ContactPage() {
                       <a href={businessConfig.email.href}>Email Us Your Questions</a>
                     </Button>
                     <Button variant="white" className="w-full" asChild>
-                      <a href={businessConfig.phone.href}>Call Now</a>
+                      <a href="/get-started">Get Started</a>
                     </Button>
                   </div>
                 </div>

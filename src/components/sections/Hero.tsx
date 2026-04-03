@@ -1,5 +1,4 @@
 import { Button } from '@/components/ui/Button'
-import { businessConfig } from '@/lib/business.config'
 import { Container } from '@/components/ui/Container'
 import { Heading } from '@/components/ui/Heading'
 import Link from 'next/link'
@@ -48,9 +47,6 @@ export function Hero() {
               >
                 <Button size="lg" asChild>
                   <Link href="/get-started">Get Started</Link>
-                </Button>
-                <Button variant="white" size="lg" asChild>
-                  <a href={businessConfig.phone.href}>Call Now: {businessConfig.phone.display}</a>
                 </Button>
               </div>
             </AnimatedSection>
