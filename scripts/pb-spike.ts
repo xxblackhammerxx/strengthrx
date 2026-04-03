@@ -60,11 +60,11 @@ async function spike() {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      first_name: 'StrengthRX',
-      last_name: 'SpikeTest',
-      // IMPORTANT: Replace this email with a real address you control.
-      // Practice Better may send an invitation email — you need to confirm whether it does.
-      email: 'USER_MUST_REPLACE@example.com',
+      profile: {
+        firstName: 'StrengthRX',
+        lastName: 'SpikeTest',
+        emailAddress: 'eric@gainzmarketing.com',
+      },
     }),
   })
 
