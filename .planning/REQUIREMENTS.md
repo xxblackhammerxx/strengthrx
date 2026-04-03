@@ -22,10 +22,10 @@ Requirements for UserOnboarding milestone. Each maps to roadmap phases.
 
 ### Schema
 
-- [ ] **SCHMA-01**: Clients collection stores selected health goals (multi-select field)
-- [ ] **SCHMA-02**: Clients collection stores labs status
-- [ ] **SCHMA-03**: Clients collection stores Practice Better patient ID
-- [ ] **SCHMA-04**: Clients collection stores Practice Better sync status
+- [x] **SCHMA-01**: Clients collection stores selected health goals (multi-select field)
+- [x] **SCHMA-02**: Clients collection stores labs status
+- [x] **SCHMA-03**: Clients collection stores Practice Better patient ID
+- [x] **SCHMA-04**: Clients collection stores Practice Better sync status
 
 ### Integration
 
@@ -77,10 +77,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| SCHMA-01 | Phase 1 | Pending |
-| SCHMA-02 | Phase 1 | Pending |
-| SCHMA-03 | Phase 1 | Pending |
-| SCHMA-04 | Phase 1 | Pending |
+| SCHMA-01 | Phase 1 | Complete |
+| SCHMA-02 | Phase 1 | Complete |
+| SCHMA-03 | Phase 1 | Complete |
+| SCHMA-04 | Phase 1 | Complete |
 | ONBRD-01 | Phase 2 | Pending |
 | ONBRD-02 | Phase 2 | Pending |
 | ONBRD-03 | Phase 2 | Pending |
