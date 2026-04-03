@@ -1,0 +1,109 @@
+# Requirements: StrengthRX
+
+**Defined:** 2026-04-03
+**Core Value:** Prospective patients can go from "interested" to "patient with labs ordered" in a single guided session.
+
+## v1.0 Requirements
+
+Requirements for UserOnboarding milestone. Each maps to roadmap phases.
+
+### Onboarding Form
+
+- [ ] **ONBRD-01**: User can click "Get Started" on homepage to begin onboarding
+- [ ] **ONBRD-02**: User can select health goals from checkbox options (lose weight, more energy, less burnout, etc.)
+- [ ] **ONBRD-03**: User can indicate whether they've had full labs done in the last 30 days
+- [ ] **ONBRD-04**: User can enter contact info (first name, last name, phone, email)
+- [ ] **ONBRD-05**: User sees a progress indicator showing current step
+- [ ] **ONBRD-06**: User can navigate back to previous steps without losing data
+- [ ] **ONBRD-07**: User sees inline validation errors before advancing steps
+- [ ] **ONBRD-08**: User sees loading state during form submission
+- [ ] **ONBRD-09**: User sees success screen with next steps after completing onboarding
+- [ ] **ONBRD-10**: Onboarding form is mobile-responsive
+
+### Schema
+
+- [ ] **SCHMA-01**: Clients collection stores selected health goals (multi-select field)
+- [ ] **SCHMA-02**: Clients collection stores labs status
+- [ ] **SCHMA-03**: Clients collection stores Practice Better patient ID
+- [ ] **SCHMA-04**: Clients collection stores Practice Better sync status
+
+### Integration
+
+- [ ] **INTEG-01**: Onboarding submission creates a Payload client record
+- [ ] **INTEG-02**: User is automatically logged in after account creation
+- [ ] **INTEG-03**: Onboarding flow supports optional referral code attribution
+- [ ] **INTEG-04**: Onboarding submission is protected by reCAPTCHA
+- [ ] **INTEG-05**: Practice Better patient creation is stubbed with interface ready for real API
+
+### Post-Onboarding
+
+- [ ] **POST-01**: User is shown Rupa Health store link for lab ordering
+- [ ] **POST-02**: User is redirected to existing client portal after onboarding
+
+## v2 Requirements
+
+Deferred to future milestones. Tracked but not in current roadmap.
+
+### Practice Better Live Integration
+
+- **INTEG-06**: Practice Better patient creation calls real API with OAuth2/HMAC auth
+- **INTEG-07**: Failed Practice Better syncs can be retried from admin portal
+
+### Post-Onboarding Experience
+
+- **POST-03**: User receives confirmation email after onboarding
+- **POST-04**: User receives email drip sequence post-signup
+- **POST-05**: Custom welcome page replaces direct portal redirect
+
+### Partner Onboarding
+
+- **PARTN-01**: Partners see guided onboarding for referral tools
+- **PARTN-02**: Partners receive onboarding email sequence
+
+## Out of Scope
+
+| Feature | Reason |
+|---------|--------|
+| Rupa Health API integration | Link handoff only — no API calls needed |
+| Payment processing during onboarding | Handled externally via Rupa Health / Practice Better |
+| Health intake questionnaires | Separate future milestone — onboarding captures goals only |
+| Email drip sequences | Future milestone — v1.0 focuses on the form flow |
+| Custom post-onboarding welcome page | v1.0 lands on existing client portal |
+| Live Practice Better API calls | Stubbed in v1.0 — requires credential verification spike first |
+
+## Traceability
+
+Which phases cover which requirements. Updated during roadmap creation.
+
+| Requirement | Phase | Status |
+|-------------|-------|--------|
+| SCHMA-01 | — | Pending |
+| SCHMA-02 | — | Pending |
+| SCHMA-03 | — | Pending |
+| SCHMA-04 | — | Pending |
+| ONBRD-01 | — | Pending |
+| ONBRD-02 | — | Pending |
+| ONBRD-03 | — | Pending |
+| ONBRD-04 | — | Pending |
+| ONBRD-05 | — | Pending |
+| ONBRD-06 | — | Pending |
+| ONBRD-07 | — | Pending |
+| ONBRD-08 | — | Pending |
+| ONBRD-09 | — | Pending |
+| ONBRD-10 | — | Pending |
+| INTEG-01 | — | Pending |
+| INTEG-02 | — | Pending |
+| INTEG-03 | — | Pending |
+| INTEG-04 | — | Pending |
+| INTEG-05 | — | Pending |
+| POST-01 | — | Pending |
+| POST-02 | — | Pending |
+
+**Coverage:**
+- v1.0 requirements: 21 total
+- Mapped to phases: 0
+- Unmapped: 21 ⚠️
+
+---
+*Requirements defined: 2026-04-03*
+*Last updated: 2026-04-03 after initial definition*
