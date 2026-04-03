@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Schema and Foundation** - Extend Clients collection with onboarding fields and install dependencies (completed 2026-04-03)
 - [ ] **Phase 2: Onboarding Form UI** - Build the complete multi-step form at /get-started with stub submission
-- [ ] **Phase 3: Practice Better API Spike** - Verify PB auth scheme, build practice-better.ts library with real API calls
+- [x] **Phase 3: Practice Better API Spike** - Verify PB auth scheme, build practice-better.ts library with real API calls (completed 2026-04-03)
 - [ ] **Phase 4: API Route and Integration** - Implement /api/onboarding with live PB creation, admin retry UI, wire up form
 
 ## Phase Details
@@ -61,11 +61,11 @@ Plans:
   3. The required field names for patient creation are verified against the live Swagger docs
   4. A working `lib/practice-better.ts` module can create a patient via the real API and return the patient ID
   5. It is known whether creating a patient triggers an invite email to the patient (and how to suppress it if so)
-**Plans:** 2 plans
+**Plans:** 2/2 plans complete
 
 Plans:
 - [x] 03-01-PLAN.md — Create spike script, run with real credentials to verify API auth and patient creation endpoint
-- [ ] 03-02-PLAN.md — Build production practice-better.ts library with token caching and unit tests
+- [x] 03-02-PLAN.md — Build production practice-better.ts library with token caching and unit tests
 
 ### Phase 4: API Route and Integration
 **Goal**: Submitting the onboarding form creates a Payload client account, logs the user in, creates a Practice Better patient via real API, shows Rupa Health link, and admins can retry failed syncs
@@ -89,5 +89,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Schema and Foundation | 1/1 | Complete   | 2026-04-03 |
 | 2. Onboarding Form UI | 2/3 | In Progress|  |
-| 3. Practice Better API Spike | 0/2 | Not started | - |
+| 3. Practice Better API Spike | 2/2 | Complete   | 2026-04-03 |
 | 4. API Route and Integration | 0/? | Not started | - |

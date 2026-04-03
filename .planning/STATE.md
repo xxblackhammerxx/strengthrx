@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: "Checkpoint: 03-01-PLAN.md Task 2 — awaiting human spike script execution"
-last_updated: "2026-04-03T20:25:12.681Z"
-last_activity: 2026-04-03 -- Phase 03 execution started
+stopped_at: Completed 03-02-PLAN.md
+last_updated: "2026-04-03T20:45:52.123Z"
+last_activity: 2026-04-03
 progress:
   total_phases: 4
-  completed_phases: 2
+  completed_phases: 3
   total_plans: 6
-  completed_plans: 5
+  completed_plans: 6
   percent: 0
 ---
 
@@ -26,9 +26,9 @@ See: .planning/PROJECT.md (updated 2026-04-03)
 ## Current Position
 
 Phase: 03 (practice-better-api-spike) — EXECUTING
-Plan: 1 of 2
-Status: Executing Phase 03
-Last activity: 2026-04-03 -- Phase 03 execution started
+Plan: 2 of 2
+Status: Ready to execute
+Last activity: 2026-04-03
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -53,6 +53,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 02-onboarding-form-ui P00 | 6 | 2 tasks | 4 files |
 | Phase 02 P01 | 148s | 3 tasks | 6 files |
 | Phase 02-onboarding-form-ui P02 | 18min | 3 tasks | 7 files |
+| Phase 03 P02 | 12 | 1 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -74,6 +75,9 @@ Recent decisions affecting current work:
 - [Phase 02-onboarding-form-ui]: afterEach(cleanup) added globally in vitest.setup.ts for jsdom isolation between tests
 - [Phase 02-onboarding-form-ui]: Stub /api/onboarding route returns { ok: true } — Phase 4 replaces with Payload + Practice Better
 - [Phase 03]: OAuth2 Client Credentials is correct PB auth scheme per Swagger spec — not HMAC-SHA256 from third-party guides
+- [Phase 03]: Request body uses { profile: { firstName, lastName, emailAddress } } — exact field names confirmed by spike (emailAddress not email)
+- [Phase 03]: Token cache safety margin is 60 seconds below expires_in (1200s TTL → 1140s effective)
+- [Phase 03]: ID field is 'id' (MongoDB ObjectId string) as confirmed by spike, not _id or record_id
 
 ### Pending Todos
 
@@ -86,6 +90,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-03T20:25:10.024Z
-Stopped at: Checkpoint: 03-01-PLAN.md Task 2 — awaiting human spike script execution
+Last session: 2026-04-03T20:45:52.121Z
+Stopped at: Completed 03-02-PLAN.md
 Resume file: None

@@ -33,7 +33,7 @@ Requirements for UserOnboarding milestone. Each maps to roadmap phases.
 - [ ] **INTEG-02**: User is automatically logged in after account creation
 - [ ] **INTEG-03**: Onboarding flow supports optional referral code attribution
 - [ ] **INTEG-04**: Onboarding submission is protected by reCAPTCHA
-- [ ] **INTEG-05**: Practice Better patient creation calls real API during onboarding
+- [x] **INTEG-05**: Practice Better patient creation calls real API during onboarding
 - [ ] **INTEG-06**: Admin can retry failed Practice Better syncs from admin portal
 
 ### Post-Onboarding
@@ -91,7 +91,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | ONBRD-08 | Phase 2 | Complete |
 | ONBRD-09 | Phase 2 | Complete |
 | ONBRD-10 | Phase 2 | Complete |
-| INTEG-05 | Phase 4 | Pending |
+| INTEG-05 | Phase 4 | Complete |
 | INTEG-06 | Phase 4 | Pending |
 | INTEG-01 | Phase 4 | Pending |
 | INTEG-02 | Phase 4 | Pending |
