@@ -25,6 +25,8 @@ Prospective patients can go from "interested" to "patient with labs ordered" in 
 - ✓ Email sending via Resend — v0
 - ✓ Prescription states management (admin-configurable) — v0
 - ✓ SEO with structured data and sitemap — v0
+- ✓ Clients collection stores onboarding data (goals, labsStatus, practiceBetterId, practiceBetterSyncStatus) — Phase 1
+- ✓ Form libraries installed (react-hook-form, zod v3, @hookform/resolvers) — Phase 1
 
 ### Active
 
@@ -104,4 +106,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-03 after milestone v1.0 initialization*
+*Last updated: 2026-04-03 after Phase 1 completion*
