@@ -34,7 +34,8 @@ Prospective patients can go from "interested" to "patient with labs ordered" in 
 - [ ] Goal selection (stored on user record)
 - [ ] Labs status question with contextual messaging
 - [ ] Contact info collection and user record creation
-- [ ] Practice Better API integration for patient creation
+- [ ] Practice Better API integration for patient creation (live, not stubbed)
+- [ ] Admin retry for failed Practice Better syncs
 - [ ] Rupa Health store link for lab ordering
 - [ ] Referral code support in onboarding flow
 
@@ -80,7 +81,8 @@ Prospective patients can go from "interested" to "patient with labs ordered" in 
 **Target features:**
 - "Get Started" button on homepage leading to multi-step form
 - Goal selection, labs question, contact info collection
-- User record creation + Practice Better patient creation
+- User record creation + Practice Better patient creation (live API)
+- Admin retry for failed PB syncs
 - Rupa Health store link for lab ordering
 - Optional referral code support
 

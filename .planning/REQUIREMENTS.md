@@ -33,7 +33,8 @@ Requirements for UserOnboarding milestone. Each maps to roadmap phases.
 - [ ] **INTEG-02**: User is automatically logged in after account creation
 - [ ] **INTEG-03**: Onboarding flow supports optional referral code attribution
 - [ ] **INTEG-04**: Onboarding submission is protected by reCAPTCHA
-- [ ] **INTEG-05**: Practice Better patient creation is stubbed with interface ready for real API
+- [ ] **INTEG-05**: Practice Better patient creation calls real API during onboarding
+- [ ] **INTEG-06**: Admin can retry failed Practice Better syncs from admin portal
 
 ### Post-Onboarding
 
@@ -44,10 +45,9 @@ Requirements for UserOnboarding milestone. Each maps to roadmap phases.
 
 Deferred to future milestones. Tracked but not in current roadmap.
 
-### Practice Better Live Integration
+### Practice Better Enhancements
 
-- **INTEG-06**: Practice Better patient creation calls real API with OAuth2/HMAC auth
-- **INTEG-07**: Failed Practice Better syncs can be retried from admin portal
+- **INTEG-07**: Practice Better patient record is updated when client info changes
 
 ### Post-Onboarding Experience
 
@@ -69,7 +69,7 @@ Deferred to future milestones. Tracked but not in current roadmap.
 | Health intake questionnaires | Separate future milestone — onboarding captures goals only |
 | Email drip sequences | Future milestone — v1.0 focuses on the form flow |
 | Custom post-onboarding welcome page | v1.0 lands on existing client portal |
-| Live Practice Better API calls | Stubbed in v1.0 — requires credential verification spike first |
+| PB record updates on client info change | Adds complexity; creation is sufficient for v1.0 |
 
 ## Traceability
 
@@ -91,7 +91,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | ONBRD-08 | Phase 2 | Pending |
 | ONBRD-09 | Phase 2 | Pending |
 | ONBRD-10 | Phase 2 | Pending |
-| INTEG-05 | Phase 3 | Pending |
+| INTEG-05 | Phase 4 | Pending |
+| INTEG-06 | Phase 4 | Pending |
 | INTEG-01 | Phase 4 | Pending |
 | INTEG-02 | Phase 4 | Pending |
 | INTEG-03 | Phase 4 | Pending |
@@ -100,8 +101,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | POST-02 | Phase 4 | Pending |
 
 **Coverage:**
-- v1.0 requirements: 21 total
-- Mapped to phases: 21
+- v1.0 requirements: 22 total
+- Mapped to phases: 22
 - Unmapped: 0 ✓
 
 ---
