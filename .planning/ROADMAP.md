@@ -49,7 +49,7 @@ Plans:
 Plans:
 - [x] 02-00-PLAN.md — Install @testing-library/user-event, create failing-first test scaffolds for integration and e2e tests
 - [x] 02-01-PLAN.md — Create onboarding schema, step components (StepIndicator, StepGoals, StepLabs, StepContact, SuccessScreen)
-- [ ] 02-02-PLAN.md — Wire form controller (GetStartedForm), stub API route, page route, Hero CTA update
+- [x] 02-02-PLAN.md — Wire form controller (GetStartedForm), stub API route, page route, Hero CTA update
 
 ### Phase 3: Practice Better API Spike
 **Goal**: The Practice Better auth scheme is verified, and a working `lib/practice-better.ts` library is built with real API calls for patient creation
