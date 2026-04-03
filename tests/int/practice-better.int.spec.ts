@@ -85,13 +85,12 @@ describe('createPracticeBetterClient', () => {
   })
 
   it('throws PracticeBetterError with status on token fetch failure (401)', async () => {
-    vi.stubGlobal('fetch', vi.fn().mockResolvedValueOnce({
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
       ok: false,
       status: 401,
       text: async () => 'Unauthorized',
     }))
 
-    await expect(createPracticeBetterClient(validInput)).rejects.toThrow()
     await expect(createPracticeBetterClient(validInput)).rejects.toMatchObject({
       status: 401,
     })
@@ -112,7 +111,6 @@ describe('createPracticeBetterClient', () => {
       })
     )
 
-    await expect(createPracticeBetterClient(validInput)).rejects.toThrow()
     await expect(createPracticeBetterClient(validInput)).rejects.toMatchObject({
       status: 422,
     })
