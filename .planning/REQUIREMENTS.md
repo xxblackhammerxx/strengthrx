@@ -77,33 +77,33 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| SCHMA-01 | — | Pending |
-| SCHMA-02 | — | Pending |
-| SCHMA-03 | — | Pending |
-| SCHMA-04 | — | Pending |
-| ONBRD-01 | — | Pending |
-| ONBRD-02 | — | Pending |
-| ONBRD-03 | — | Pending |
-| ONBRD-04 | — | Pending |
-| ONBRD-05 | — | Pending |
-| ONBRD-06 | — | Pending |
-| ONBRD-07 | — | Pending |
-| ONBRD-08 | — | Pending |
-| ONBRD-09 | — | Pending |
-| ONBRD-10 | — | Pending |
-| INTEG-01 | — | Pending |
-| INTEG-02 | — | Pending |
-| INTEG-03 | — | Pending |
-| INTEG-04 | — | Pending |
-| INTEG-05 | — | Pending |
-| POST-01 | — | Pending |
-| POST-02 | — | Pending |
+| SCHMA-01 | Phase 1 | Pending |
+| SCHMA-02 | Phase 1 | Pending |
+| SCHMA-03 | Phase 1 | Pending |
+| SCHMA-04 | Phase 1 | Pending |
+| ONBRD-01 | Phase 2 | Pending |
+| ONBRD-02 | Phase 2 | Pending |
+| ONBRD-03 | Phase 2 | Pending |
+| ONBRD-04 | Phase 2 | Pending |
+| ONBRD-05 | Phase 2 | Pending |
+| ONBRD-06 | Phase 2 | Pending |
+| ONBRD-07 | Phase 2 | Pending |
+| ONBRD-08 | Phase 2 | Pending |
+| ONBRD-09 | Phase 2 | Pending |
+| ONBRD-10 | Phase 2 | Pending |
+| INTEG-05 | Phase 3 | Pending |
+| INTEG-01 | Phase 4 | Pending |
+| INTEG-02 | Phase 4 | Pending |
+| INTEG-03 | Phase 4 | Pending |
+| INTEG-04 | Phase 4 | Pending |
+| POST-01 | Phase 4 | Pending |
+| POST-02 | Phase 4 | Pending |
 
 **Coverage:**
 - v1.0 requirements: 21 total
-- Mapped to phases: 0
-- Unmapped: 21 ⚠️
+- Mapped to phases: 21
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-04-03*
-*Last updated: 2026-04-03 after initial definition*
+*Last updated: 2026-04-03 after roadmap creation*
