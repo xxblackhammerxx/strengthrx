@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: verifying
-stopped_at: Completed 02-02-PLAN.md
-last_updated: "2026-04-03T20:05:59.131Z"
-last_activity: 2026-04-03
+status: executing
+stopped_at: "Checkpoint: 03-01-PLAN.md Task 2 — awaiting human spike script execution"
+last_updated: "2026-04-03T20:25:12.681Z"
+last_activity: 2026-04-03 -- Phase 03 execution started
 progress:
   total_phases: 4
   completed_phases: 2
-  total_plans: 4
-  completed_plans: 4
+  total_plans: 6
+  completed_plans: 5
   percent: 0
 ---
 
@@ -21,14 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-03)
 
 **Core value:** Prospective patients can go from "interested" to "patient with labs ordered" in a single guided session.
-**Current focus:** Phase 02 — onboarding-form-ui
+**Current focus:** Phase 03 — practice-better-api-spike
 
 ## Current Position
 
-Phase: 3
-Plan: Not started
-Status: Phase complete — ready for verification
-Last activity: 2026-04-03
+Phase: 03 (practice-better-api-spike) — EXECUTING
+Plan: 1 of 2
+Status: Executing Phase 03
+Last activity: 2026-04-03 -- Phase 03 execution started
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -73,6 +73,7 @@ Recent decisions affecting current work:
 - [Phase 02-onboarding-form-ui]: Test files with JSX require .tsx extension — vitest/esbuild cannot transform JSX in .ts files
 - [Phase 02-onboarding-form-ui]: afterEach(cleanup) added globally in vitest.setup.ts for jsdom isolation between tests
 - [Phase 02-onboarding-form-ui]: Stub /api/onboarding route returns { ok: true } — Phase 4 replaces with Payload + Practice Better
+- [Phase 03]: OAuth2 Client Credentials is correct PB auth scheme per Swagger spec — not HMAC-SHA256 from third-party guides
 
 ### Pending Todos
 
@@ -85,6 +86,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-03T19:32:37.843Z
-Stopped at: Completed 02-02-PLAN.md
+Last session: 2026-04-03T20:25:10.024Z
+Stopped at: Checkpoint: 03-01-PLAN.md Task 2 — awaiting human spike script execution
 Resume file: None

@@ -64,7 +64,7 @@ Plans:
 **Plans:** 2 plans
 
 Plans:
-- [ ] 03-01-PLAN.md — Create spike script, run with real credentials to verify API auth and patient creation endpoint
+- [x] 03-01-PLAN.md — Create spike script, run with real credentials to verify API auth and patient creation endpoint
 - [ ] 03-02-PLAN.md — Build production practice-better.ts library with token caching and unit tests
 
 ### Phase 4: API Route and Integration
