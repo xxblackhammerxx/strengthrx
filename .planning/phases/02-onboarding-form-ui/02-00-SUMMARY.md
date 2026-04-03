@@ -100,3 +100,12 @@ None - no external service configuration required.
 ---
 *Phase: 02-onboarding-form-ui*
 *Completed: 2026-04-03*
+
+## Self-Check: PASSED
+
+- FOUND: tests/int/onboarding-form.int.spec.ts
+- FOUND: tests/e2e/onboarding.e2e.spec.ts
+- FOUND: 02-00-SUMMARY.md
+- FOUND commit: 08661bf (Task 1 — integration tests + user-event install)
+- FOUND commit: dafe72a (Task 2 — e2e tests)
+- FOUND commit: a7a71c6 (docs — planning metadata)
