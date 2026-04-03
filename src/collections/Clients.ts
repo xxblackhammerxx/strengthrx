@@ -100,6 +100,53 @@ export const Clients: CollectionConfig = {
         description: 'Admin-only edit',
       },
     },
+    {
+      name: 'goals',
+      type: 'select',
+      hasMany: true,
+      options: [
+        { label: 'Lose Weight', value: 'lose_weight' },
+        { label: 'More Energy', value: 'more_energy' },
+        { label: 'Less Burnout', value: 'less_burnout' },
+        { label: 'Build Muscle', value: 'build_muscle' },
+        { label: 'Improve Sexual Wellness', value: 'sexual_wellness' },
+        { label: 'Other', value: 'other' },
+      ],
+      admin: {
+        description: 'Health goals selected during onboarding',
+      },
+    },
+    {
+      name: 'labsStatus',
+      type: 'select',
+      options: [
+        { label: 'Yes — labs done in last 30 days', value: 'yes' },
+        { label: 'No', value: 'no' },
+      ],
+      admin: {
+        description: 'Whether client has had full labs in the last 30 days (onboarding question)',
+      },
+    },
+    {
+      name: 'practiceBetterId',
+      type: 'text',
+      admin: {
+        description: 'Practice Better patient ID — set after successful sync',
+      },
+    },
+    {
+      name: 'practiceBetterSyncStatus',
+      type: 'select',
+      defaultValue: 'pending',
+      options: [
+        { label: 'Pending', value: 'pending' },
+        { label: 'Synced', value: 'synced' },
+        { label: 'Failed', value: 'failed' },
+      ],
+      admin: {
+        description: 'Sync status with Practice Better — admin can retry on failure',
+      },
+    },
   ],
   timestamps: true, // This automatically adds createdAt and updatedAt fields
 }

@@ -343,6 +343,22 @@ export interface Client {
    * Admin-only edit
    */
   medicalReviewStatus?: ('pending' | 'complete' | 'denied') | null;
+  /**
+   * Health goals selected during onboarding
+   */
+  goals?: ('lose_weight' | 'more_energy' | 'less_burnout' | 'build_muscle' | 'sexual_wellness' | 'other')[] | null;
+  /**
+   * Whether client has had full labs in the last 30 days (onboarding question)
+   */
+  labsStatus?: ('yes' | 'no') | null;
+  /**
+   * Practice Better patient ID — set after successful sync
+   */
+  practiceBetterId?: string | null;
+  /**
+   * Sync status with Practice Better — admin can retry on failure
+   */
+  practiceBetterSyncStatus?: ('pending' | 'synced' | 'failed') | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -600,6 +616,10 @@ export interface ClientsSelect<T extends boolean = true> {
   paperworkStatus?: T;
   labStatus?: T;
   medicalReviewStatus?: T;
+  goals?: T;
+  labsStatus?: T;
+  practiceBetterId?: T;
+  practiceBetterSyncStatus?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
