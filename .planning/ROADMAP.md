@@ -78,7 +78,12 @@ Plans:
   4. The success screen displays the Rupa Health store link so the user can order labs immediately
   5. The onboarding API route rejects submissions that fail reCAPTCHA validation
   6. An admin can view clients with failed PB sync and trigger a retry from the admin portal
-**Plans**: TBD
+**Plans:** 3 plans
+
+Plans:
+- [ ] 04-01-PLAN.md — Schema fix (dateOfBirth optional), extract reCAPTCHA helper, implement /api/onboarding route
+- [ ] 04-02-PLAN.md — Frontend wiring: GetStartedForm reCAPTCHA + ?ref= param, SuccessScreen Rupa Health link, SiteSettings URL
+- [ ] 04-03-PLAN.md — Admin retry: POST /api/admin/retry-pb-sync endpoint, failed syncs UI in admin portal
 
 ## Progress
 
@@ -90,4 +95,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | 1. Schema and Foundation | 1/1 | Complete   | 2026-04-03 |
 | 2. Onboarding Form UI | 2/3 | In Progress|  |
 | 3. Practice Better API Spike | 2/2 | Complete   | 2026-04-03 |
-| 4. API Route and Integration | 0/? | Not started | - |
+| 4. API Route and Integration | 0/3 | Not started | - |
