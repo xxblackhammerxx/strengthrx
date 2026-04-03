@@ -47,7 +47,7 @@ export function Hero() {
                 style={{ animationDelay: '0.4s' }}
               >
                 <Button size="lg" asChild>
-                  <Link href="/contact">Book Free Consult</Link>
+                  <Link href="/get-started">Get Started</Link>
                 </Button>
                 <Button variant="white" size="lg" asChild>
                   <a href={businessConfig.phone.href}>Call Now: {businessConfig.phone.display}</a>
