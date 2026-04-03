@@ -29,7 +29,10 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. The Clients collection has practiceBetterId and practiceBetterSyncStatus fields visible in Payload admin
   4. Payload migrations have run without error and regenerated types are in sync with the schema
   5. react-hook-form, zod (v3), and @hookform/resolvers are installed and importable
-**Plans**: TBD
+**Plans:** 1 plan
+
+Plans:
+- [ ] 01-01-PLAN.md — Add onboarding fields to Clients, run migrations, install form libraries, write integration tests
 
 ### Phase 2: Onboarding Form UI
 **Goal**: A visitor can navigate the complete four-step onboarding flow at /get-started with full UX and stub submission
@@ -75,7 +78,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Schema and Foundation | 0/? | Not started | - |
+| 1. Schema and Foundation | 0/1 | Not started | - |
 | 2. Onboarding Form UI | 0/? | Not started | - |
 | 3. Practice Better API Spike | 0/? | Not started | - |
 | 4. API Route and Integration | 0/? | Not started | - |
