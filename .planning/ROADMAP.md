@@ -47,7 +47,7 @@ Plans:
 **Plans:** 3 plans
 
 Plans:
-- [ ] 02-00-PLAN.md — Install @testing-library/user-event, create failing-first test scaffolds for integration and e2e tests
+- [x] 02-00-PLAN.md — Install @testing-library/user-event, create failing-first test scaffolds for integration and e2e tests
 - [ ] 02-01-PLAN.md — Create onboarding schema, step components (StepIndicator, StepGoals, StepLabs, StepContact, SuccessScreen)
 - [ ] 02-02-PLAN.md — Wire form controller (GetStartedForm), stub API route, page route, Hero CTA update
 

@@ -9,16 +9,16 @@ Requirements for UserOnboarding milestone. Each maps to roadmap phases.
 
 ### Onboarding Form
 
-- [ ] **ONBRD-01**: User can click "Get Started" on homepage to begin onboarding
-- [ ] **ONBRD-02**: User can select health goals from checkbox options (lose weight, more energy, less burnout, etc.)
-- [ ] **ONBRD-03**: User can indicate whether they've had full labs done in the last 30 days
-- [ ] **ONBRD-04**: User can enter contact info (first name, last name, phone, email)
-- [ ] **ONBRD-05**: User sees a progress indicator showing current step
-- [ ] **ONBRD-06**: User can navigate back to previous steps without losing data
-- [ ] **ONBRD-07**: User sees inline validation errors before advancing steps
-- [ ] **ONBRD-08**: User sees loading state during form submission
-- [ ] **ONBRD-09**: User sees success screen with next steps after completing onboarding
-- [ ] **ONBRD-10**: Onboarding form is mobile-responsive
+- [x] **ONBRD-01**: User can click "Get Started" on homepage to begin onboarding
+- [x] **ONBRD-02**: User can select health goals from checkbox options (lose weight, more energy, less burnout, etc.)
+- [x] **ONBRD-03**: User can indicate whether they've had full labs done in the last 30 days
+- [x] **ONBRD-04**: User can enter contact info (first name, last name, phone, email)
+- [x] **ONBRD-05**: User sees a progress indicator showing current step
+- [x] **ONBRD-06**: User can navigate back to previous steps without losing data
+- [x] **ONBRD-07**: User sees inline validation errors before advancing steps
+- [x] **ONBRD-08**: User sees loading state during form submission
+- [x] **ONBRD-09**: User sees success screen with next steps after completing onboarding
+- [x] **ONBRD-10**: Onboarding form is mobile-responsive
 
 ### Schema
 
@@ -81,16 +81,16 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SCHMA-02 | Phase 1 | Complete |
 | SCHMA-03 | Phase 1 | Complete |
 | SCHMA-04 | Phase 1 | Complete |
-| ONBRD-01 | Phase 2 | Pending |
-| ONBRD-02 | Phase 2 | Pending |
-| ONBRD-03 | Phase 2 | Pending |
-| ONBRD-04 | Phase 2 | Pending |
-| ONBRD-05 | Phase 2 | Pending |
-| ONBRD-06 | Phase 2 | Pending |
-| ONBRD-07 | Phase 2 | Pending |
-| ONBRD-08 | Phase 2 | Pending |
-| ONBRD-09 | Phase 2 | Pending |
-| ONBRD-10 | Phase 2 | Pending |
+| ONBRD-01 | Phase 2 | Complete |
+| ONBRD-02 | Phase 2 | Complete |
+| ONBRD-03 | Phase 2 | Complete |
+| ONBRD-04 | Phase 2 | Complete |
+| ONBRD-05 | Phase 2 | Complete |
+| ONBRD-06 | Phase 2 | Complete |
+| ONBRD-07 | Phase 2 | Complete |
+| ONBRD-08 | Phase 2 | Complete |
+| ONBRD-09 | Phase 2 | Complete |
+| ONBRD-10 | Phase 2 | Complete |
 | INTEG-05 | Phase 4 | Pending |
 | INTEG-06 | Phase 4 | Pending |
 | INTEG-01 | Phase 4 | Pending |
