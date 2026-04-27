@@ -189,7 +189,7 @@ export default function AboutPage() {
               <div className="text-center mb-8">
                 <div className="mb-6 h-[200px] w-[200px] rounded-full overflow-hidden mx-auto">
                   <Image
-                    src="/kendon-profile.jpg"
+                    src="/kendon-profile.webp"
                     alt="Kendon Hatch - Co-Founder of StrengthRX"
                     width={200}
                     height={200}
