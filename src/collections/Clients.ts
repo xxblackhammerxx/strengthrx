@@ -50,8 +50,11 @@ export const Clients: CollectionConfig = {
         try {
           const siteSettings = await req.payload.findGlobal({ slug: 'site-settings' })
 
-          const recipient =
-            siteSettings?.newClientNotificationRecipient || 'eric@gainzmarketing.com'
+          const configuredRecipients = siteSettings?.newClientNotificationRecipients
+          const recipients =
+            Array.isArray(configuredRecipients) && configuredRecipients.length > 0
+              ? configuredRecipients.filter((r): r is string => typeof r === 'string' && r.length > 0)
+              : ['eric@gainzmarketing.com']
           const fromAddress =
             siteSettings?.fromEmail ||
             process.env.RESEND_DEFAULT_FROM_ADDRESS ||
@@ -98,7 +101,7 @@ export const Clients: CollectionConfig = {
           const resend = new Resend(process.env.RESEND_API_KEY)
           const { error: emailError } = await resend.emails.send({
             from: `${fromName} <${fromAddress}>`,
-            to: recipient,
+            to: recipients,
             subject: `New StrengthRX client signup: ${doc.firstName} ${doc.lastName}`,
             html: `
               <h2>New Client Signup</h2>

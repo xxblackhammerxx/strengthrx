@@ -735,9 +735,9 @@ export interface SiteSetting {
    */
   fromName?: string | null;
   /**
-   * Email address that receives notifications when a new client account is created.
+   * Email addresses that receive notifications when a new client account is created. Add one per row.
    */
-  newClientNotificationRecipient?: string | null;
+  newClientNotificationRecipients?: string[] | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -766,7 +766,7 @@ export interface SiteSettingsSelect<T extends boolean = true> {
   contactFormRecipient?: T;
   fromEmail?: T;
   fromName?: T;
-  newClientNotificationRecipient?: T;
+  newClientNotificationRecipients?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

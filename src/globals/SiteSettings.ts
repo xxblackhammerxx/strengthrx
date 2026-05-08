@@ -37,13 +37,14 @@ export const SiteSettings: GlobalConfig = {
       },
     },
     {
-      name: 'newClientNotificationRecipient',
-      type: 'email',
-      label: 'New Client Notification Recipient',
-      defaultValue: 'eric@gainzmarketing.com',
+      name: 'newClientNotificationRecipients',
+      type: 'text',
+      label: 'New Client Notification Recipients',
+      hasMany: true,
+      defaultValue: ['eric@gainzmarketing.com'],
       admin: {
         description:
-          'Email address that receives notifications when a new client account is created.',
+          'Email addresses that receive notifications when a new client account is created. Add one per row.',
       },
     },
   ],
