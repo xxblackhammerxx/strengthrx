@@ -734,6 +734,10 @@ export interface SiteSetting {
    * The display name shown in the "from" field of outgoing emails.
    */
   fromName?: string | null;
+  /**
+   * Email address that receives notifications when a new client account is created.
+   */
+  newClientNotificationRecipient?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -762,6 +766,7 @@ export interface SiteSettingsSelect<T extends boolean = true> {
   contactFormRecipient?: T;
   fromEmail?: T;
   fromName?: T;
+  newClientNotificationRecipient?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

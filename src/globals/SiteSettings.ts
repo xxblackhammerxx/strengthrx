@@ -36,5 +36,15 @@ export const SiteSettings: GlobalConfig = {
         description: 'The display name shown in the "from" field of outgoing emails.',
       },
     },
+    {
+      name: 'newClientNotificationRecipient',
+      type: 'email',
+      label: 'New Client Notification Recipient',
+      defaultValue: 'eric@gainzmarketing.com',
+      admin: {
+        description:
+          'Email address that receives notifications when a new client account is created.',
+      },
+    },
   ],
 }

@@ -1,4 +1,25 @@
 import type { CollectionConfig } from 'payload'
+import { Resend } from 'resend'
+
+const GOAL_LABELS: Record<string, string> = {
+  lose_weight: 'Lose Weight',
+  more_energy: 'More Energy',
+  less_burnout: 'Less Burnout',
+  build_muscle: 'Build Muscle',
+  sexual_wellness: 'Improve Sexual Wellness',
+  other: 'Other',
+}
+
+const LABS_STATUS_LABELS: Record<string, string> = {
+  yes: 'Yes — labs done in last 30 days',
+  no: 'No',
+}
+
+const PB_SYNC_LABELS: Record<string, string> = {
+  pending: 'Pending',
+  synced: 'Synced',
+  failed: 'Failed',
+}
 
 export const Clients: CollectionConfig = {
   slug: 'clients',
@@ -20,6 +41,91 @@ export const Clients: CollectionConfig = {
     delete: ({ req: { user } }) => {
       return !!user
     },
+  },
+  hooks: {
+    afterChange: [
+      async ({ doc, operation, req }) => {
+        if (operation !== 'create') return doc
+
+        try {
+          const siteSettings = await req.payload.findGlobal({ slug: 'site-settings' })
+
+          const recipient =
+            siteSettings?.newClientNotificationRecipient || 'eric@gainzmarketing.com'
+          const fromAddress =
+            siteSettings?.fromEmail ||
+            process.env.RESEND_DEFAULT_FROM_ADDRESS ||
+            'info@gainzmarketing.com'
+          const fromName =
+            siteSettings?.fromName || process.env.RESEND_DEFAULT_FROM_NAME || 'StrengthRX'
+
+          let trainerName: string | null = null
+          if (doc.assignedTrainer) {
+            const trainerId =
+              typeof doc.assignedTrainer === 'object'
+                ? doc.assignedTrainer.id
+                : doc.assignedTrainer
+            try {
+              const trainer = await req.payload.findByID({
+                collection: 'partners',
+                id: trainerId,
+              })
+              trainerName = trainer.fullName || null
+            } catch (trainerError) {
+              console.error('Failed to load assigned trainer for signup notification:', trainerError)
+            }
+          }
+
+          const goalsLabel =
+            Array.isArray(doc.goals) && doc.goals.length > 0
+              ? doc.goals.map((g: string) => GOAL_LABELS[g] ?? g).join(', ')
+              : 'Not specified'
+
+          const labsStatusLabel = doc.labsStatus
+            ? LABS_STATUS_LABELS[doc.labsStatus] ?? doc.labsStatus
+            : 'Not specified'
+
+          const pbStatusLabel = doc.practiceBetterSyncStatus
+            ? PB_SYNC_LABELS[doc.practiceBetterSyncStatus] ?? doc.practiceBetterSyncStatus
+            : 'Pending'
+
+          const row = (label: string, value: string) => `
+            <tr>
+              <td style="padding: 8px 12px; font-weight: bold; border-bottom: 1px solid #eee;">${label}</td>
+              <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">${value}</td>
+            </tr>`
+
+          const resend = new Resend(process.env.RESEND_API_KEY)
+          const { error: emailError } = await resend.emails.send({
+            from: `${fromName} <${fromAddress}>`,
+            to: recipient,
+            subject: `New StrengthRX client signup: ${doc.firstName} ${doc.lastName}`,
+            html: `
+              <h2>New Client Signup</h2>
+              <table style="border-collapse: collapse; width: 100%; max-width: 600px;">
+                ${row('Name', `${doc.firstName} ${doc.lastName}`)}
+                ${row('Email', `<a href="mailto:${doc.email}">${doc.email}</a>`)}
+                ${row('Phone', doc.phone || 'Not provided')}
+                ${row('Date of Birth', doc.dateOfBirth || 'Not provided')}
+                ${row('Assigned Trainer', trainerName || 'None')}
+                ${row('Goals', goalsLabel)}
+                ${row('Recent Labs', labsStatusLabel)}
+                ${row('Practice Better Sync', pbStatusLabel)}
+                ${row('Signed Up At', new Date().toISOString())}
+              </table>
+            `,
+          })
+
+          if (emailError) {
+            console.error('Failed to send new client notification email:', emailError)
+          }
+        } catch (notifyError) {
+          console.error('New client notification hook failed:', notifyError)
+        }
+
+        return doc
+      },
+    ],
   },
   fields: [
     {
