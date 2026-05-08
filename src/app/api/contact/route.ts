@@ -2,13 +2,10 @@ import { RecaptchaEnterpriseServiceClient } from '@google-cloud/recaptcha-enterp
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import { NextRequest, NextResponse } from 'next/server'
-import { Resend } from 'resend'
 
 const PROJECT_ID = 'prj-gainz'
 const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ''
 const RECAPTCHA_ACTION = 'CONTACT_FORM'
-
-const resend = new Resend(process.env.RESEND_API_KEY)
 
 // Cache the client instance across requests
 let client: RecaptchaEnterpriseServiceClient | null = null
@@ -102,46 +99,46 @@ export async function POST(request: NextRequest) {
       'info@gainzmarketing.com'
     const fromName = siteSettings?.fromName || process.env.RESEND_DEFAULT_FROM_NAME || 'StrengthRX'
 
-    const { error: emailError } = await resend.emails.send({
-      from: `${fromName} <${fromAddress}>`,
-      to: adminEmail,
-      replyTo: email,
-      subject: `New Contact Form Submission from ${name}`,
-      html: `
-        <h2>New Contact Form Submission</h2>
-        <table style="border-collapse: collapse; width: 100%; max-width: 600px;">
-          <tr>
-            <td style="padding: 8px 12px; font-weight: bold; border-bottom: 1px solid #eee;">Name</td>
-            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">${name}</td>
-          </tr>
-          <tr>
-            <td style="padding: 8px 12px; font-weight: bold; border-bottom: 1px solid #eee;">Email</td>
-            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"><a href="mailto:${email}">${email}</a></td>
-          </tr>
-          <tr>
-            <td style="padding: 8px 12px; font-weight: bold; border-bottom: 1px solid #eee;">Phone</td>
-            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">${phone || 'Not provided'}</td>
-          </tr>
-          <tr>
-            <td style="padding: 8px 12px; font-weight: bold; border-bottom: 1px solid #eee;">Product/Service</td>
-            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">${state || 'Not specified'}</td>
-          </tr>
-          <tr>
-            <td style="padding: 8px 12px; font-weight: bold; border-bottom: 1px solid #eee;">Message</td>
-            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">${message}</td>
-          </tr>
-          <tr>
-            <td style="padding: 8px 12px; font-weight: bold; border-bottom: 1px solid #eee;">reCAPTCHA Score</td>
-            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">${recaptchaResult.score}</td>
-          </tr>
-        </table>
-        <div style="margin-top: 24px; text-align: center;">
-          <a href="mailto:${email}?subject=Re: Your inquiry to StrengthRX" style="display: inline-block; padding: 12px 24px; background-color: #2563eb; color: #ffffff; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 16px;">Reply to ${name}</a>
-        </div>
-      `,
-    })
-
-    if (emailError) {
+    try {
+      await payload.sendEmail({
+        from: `${fromName} <${fromAddress}>`,
+        to: adminEmail,
+        replyTo: email,
+        subject: `New Contact Form Submission from ${name}`,
+        html: `
+          <h2>New Contact Form Submission</h2>
+          <table style="border-collapse: collapse; width: 100%; max-width: 600px;">
+            <tr>
+              <td style="padding: 8px 12px; font-weight: bold; border-bottom: 1px solid #eee;">Name</td>
+              <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">${name}</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px 12px; font-weight: bold; border-bottom: 1px solid #eee;">Email</td>
+              <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"><a href="mailto:${email}">${email}</a></td>
+            </tr>
+            <tr>
+              <td style="padding: 8px 12px; font-weight: bold; border-bottom: 1px solid #eee;">Phone</td>
+              <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">${phone || 'Not provided'}</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px 12px; font-weight: bold; border-bottom: 1px solid #eee;">Product/Service</td>
+              <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">${state || 'Not specified'}</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px 12px; font-weight: bold; border-bottom: 1px solid #eee;">Message</td>
+              <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">${message}</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px 12px; font-weight: bold; border-bottom: 1px solid #eee;">reCAPTCHA Score</td>
+              <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">${recaptchaResult.score}</td>
+            </tr>
+          </table>
+          <div style="margin-top: 24px; text-align: center;">
+            <a href="mailto:${email}?subject=Re: Your inquiry to StrengthRX" style="display: inline-block; padding: 12px 24px; background-color: #2563eb; color: #ffffff; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 16px;">Reply to ${name}</a>
+          </div>
+        `,
+      })
+    } catch (emailError) {
       console.error('Failed to send email:', emailError)
       return NextResponse.json(
         { error: 'Failed to send message. Please try again.' },

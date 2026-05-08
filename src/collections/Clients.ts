@@ -1,5 +1,4 @@
 import type { CollectionConfig } from 'payload'
-import { Resend } from 'resend'
 
 const GOAL_LABELS: Record<string, string> = {
   lose_weight: 'Lose Weight',
@@ -51,10 +50,34 @@ export const Clients: CollectionConfig = {
           const siteSettings = await req.payload.findGlobal({ slug: 'site-settings' })
 
           const configuredRecipients = siteSettings?.newClientNotificationRecipients
+          const recipientEmails: string[] = []
+          if (Array.isArray(configuredRecipients)) {
+            for (const entry of configuredRecipients) {
+              if (!entry || typeof entry !== 'object') continue
+              const { relationTo, value } = entry as {
+                relationTo: 'users' | 'admins'
+                value: string | number | { email?: string }
+              }
+              if (typeof value === 'object' && value?.email) {
+                recipientEmails.push(value.email)
+              } else if (typeof value === 'string' || typeof value === 'number') {
+                try {
+                  const populated = await req.payload.findByID({
+                    collection: relationTo,
+                    id: value,
+                  })
+                  if (populated?.email) recipientEmails.push(populated.email)
+                } catch (lookupError) {
+                  console.error(
+                    `Failed to resolve recipient ${relationTo}:${value} for new client notification:`,
+                    lookupError,
+                  )
+                }
+              }
+            }
+          }
           const recipients =
-            Array.isArray(configuredRecipients) && configuredRecipients.length > 0
-              ? configuredRecipients.filter((r): r is string => typeof r === 'string' && r.length > 0)
-              : ['eric@gainzmarketing.com']
+            recipientEmails.length > 0 ? recipientEmails : ['eric@gainzmarketing.com']
           const fromAddress =
             siteSettings?.fromEmail ||
             process.env.RESEND_DEFAULT_FROM_ADDRESS ||
@@ -98,8 +121,7 @@ export const Clients: CollectionConfig = {
               <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">${value}</td>
             </tr>`
 
-          const resend = new Resend(process.env.RESEND_API_KEY)
-          const { error: emailError } = await resend.emails.send({
+          await req.payload.sendEmail({
             from: `${fromName} <${fromAddress}>`,
             to: recipients,
             subject: `New StrengthRX client signup: ${doc.firstName} ${doc.lastName}`,
@@ -118,10 +140,6 @@ export const Clients: CollectionConfig = {
               </table>
             `,
           })
-
-          if (emailError) {
-            console.error('Failed to send new client notification email:', emailError)
-          }
         } catch (notifyError) {
           console.error('New client notification hook failed:', notifyError)
         }

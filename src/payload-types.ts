@@ -735,9 +735,20 @@ export interface SiteSetting {
    */
   fromName?: string | null;
   /**
-   * Email addresses that receive notifications when a new client account is created. Add one per row.
+   * Users or admins that receive notifications when a new client account is created.
    */
-  newClientNotificationRecipients?: string[] | null;
+  newClientNotificationRecipients?:
+    | (
+        | {
+            relationTo: 'users';
+            value: number | User;
+          }
+        | {
+            relationTo: 'admins';
+            value: number | Admin;
+          }
+      )[]
+    | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
