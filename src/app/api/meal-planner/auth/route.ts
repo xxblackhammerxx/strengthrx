@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-
-export const MEAL_PLANNER_COOKIE = 'srx_meal_planner_auth'
+import { MEAL_PLANNER_COOKIE } from '../cookie'
 
 export async function POST(request: NextRequest) {
   const expected = process.env.MEAL_PLANNER_PASSWORD

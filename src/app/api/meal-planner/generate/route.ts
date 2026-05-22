@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { MEAL_PLANNER_COOKIE } from '../auth/route'
+import { MEAL_PLANNER_COOKIE } from '../cookie'
 
 export const maxDuration = 60
 

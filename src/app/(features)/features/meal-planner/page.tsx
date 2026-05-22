@@ -1,5 +1,5 @@
 import { cookies } from 'next/headers'
-import { MEAL_PLANNER_COOKIE } from '@/app/api/meal-planner/auth/route'
+import { MEAL_PLANNER_COOKIE } from '@/app/api/meal-planner/cookie'
 import { MealPlanner } from './MealPlanner'
 import { PasswordGate } from './PasswordGate'
 import styles from './styles.module.css'
