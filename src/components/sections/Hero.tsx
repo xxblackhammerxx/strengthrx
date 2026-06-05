@@ -44,6 +44,9 @@ export function Hero() {
                     <li>✓ Nutrition & supplement recommendations</li>
                     <li>✓ Monthly provider check-ins</li>
                   </ul>
+                  <div className="text-sm font-semibold mt-3">
+                    Everything shipped directly to your door — ultimate convenience
+                  </div>
                 </div>
               </div>
             </AnimatedSection>
