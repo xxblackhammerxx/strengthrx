@@ -34,9 +34,16 @@ export function Hero() {
                 style={{ animationDelay: '0.1s' }}
               >
                 <div className="text-white text-center">
-                  <div className="text-3xl font-bold">$89</div>
-                  <div className="text-lg font-medium">Lab Tests & Consultation</div>
-                  <div className="text-sm opacity-90 mt-1">Complete wellness assessment</div>
+                  <div className="text-3xl font-bold">
+                    $350<span className="text-lg font-medium">/month</span>
+                  </div>
+                  <div className="text-lg font-medium">All-Inclusive Membership</div>
+                  <ul className="text-sm opacity-90 mt-3 space-y-1 text-left mx-auto w-fit">
+                    <li>✓ Quarterly labs</li>
+                    <li>✓ Hormone optimization</li>
+                    <li>✓ Nutrition & supplement recommendations</li>
+                    <li>✓ Monthly provider check-ins</li>
+                  </ul>
                 </div>
               </div>
             </AnimatedSection>
