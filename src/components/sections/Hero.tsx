@@ -30,32 +30,50 @@ export function Hero() {
             {/* Pricing emphasis */}
             <AnimatedSection delay={300}>
               <div
-                className="mt-6 bg-accent/90 backdrop-blur-sm rounded-2xl p-6 max-w-md mx-auto border-2 border-accent/30 animate-fade-in-up"
+                className="mt-6 flex flex-col sm:flex-row gap-4 justify-center items-stretch max-w-3xl mx-auto animate-fade-in-up"
                 style={{ animationDelay: '0.1s' }}
               >
-                <div className="text-white text-center">
-                  <div className="text-3xl font-bold">
-                    $350<span className="text-lg font-medium">/month</span>
+                <div className="flex-1 bg-accent/90 backdrop-blur-sm rounded-2xl p-6 border-2 border-accent/30">
+                  <div className="text-white text-center">
+                    <div className="text-3xl font-bold">
+                      $350<span className="text-lg font-medium">/month</span>
+                    </div>
+                    <div className="text-lg font-medium">All-Inclusive Membership</div>
+                    <ul className="text-sm opacity-90 mt-3 space-y-1 text-left mx-auto w-fit">
+                      <li>✓ Quarterly labs</li>
+                      <li>✓ Hormone optimization</li>
+                      <li>✓ Nutrition & supplement recommendations</li>
+                      <li>✓ Monthly provider check-ins</li>
+                    </ul>
+                    <div className="text-sm font-semibold mt-3">
+                      Everything shipped directly to your door — ultimate convenience
+                    </div>
                   </div>
-                  <div className="text-lg font-medium">All-Inclusive Membership</div>
-                  <ul className="text-sm opacity-90 mt-3 space-y-1 text-left mx-auto w-fit">
-                    <li>✓ Quarterly labs</li>
-                    <li>✓ Hormone optimization</li>
-                    <li>✓ Nutrition & supplement recommendations</li>
-                    <li>✓ Monthly provider check-ins</li>
-                  </ul>
-                  <div className="text-sm font-semibold mt-3">
-                    Everything shipped directly to your door — ultimate convenience
+                </div>
+                <div className="flex-1 bg-accent/90 backdrop-blur-sm rounded-2xl p-6 border-2 border-accent/30">
+                  <div className="text-white text-center">
+                    <div className="text-3xl font-bold">
+                      $89<span className="text-lg font-medium"> Labs</span>
+                    </div>
+                    <div className="text-lg font-medium">Comprehensive Panel</div>
+                    <ul className="text-sm opacity-90 mt-3 space-y-1 text-left mx-auto w-fit">
+                      <li>✓ Full hormone panel</li>
+                      <li>✓ Metabolic & lipid markers</li>
+                      <li>✓ No membership required</li>
+                    </ul>
+                    <div className="text-sm font-semibold mt-3">
+                      Know your numbers before you commit
+                    </div>
                   </div>
                 </div>
               </div>
             </AnimatedSection>
             <AnimatedSection delay={400}>
               <div
-                className="mt-10 flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up"
+                className="mt-10 max-w-3xl mx-auto animate-fade-in-up"
                 style={{ animationDelay: '0.4s' }}
               >
-                <Button size="lg" asChild>
+                <Button size="lg" className="w-full" asChild>
                   <Link href="/get-started">Get Started</Link>
                 </Button>
               </div>
