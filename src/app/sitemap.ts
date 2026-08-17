@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next'
+import { businessConfig } from '@/lib/business.config'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://mystrengthrx.com'
+  const baseUrl = businessConfig.urls.website
   const currentDate = new Date()
 
   return [
@@ -37,6 +38,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/privacy`,
+      lastModified: currentDate,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/notice-of-privacy-practices`,
+      lastModified: currentDate,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/sms-terms`,
       lastModified: currentDate,
       changeFrequency: 'yearly',
       priority: 0.3,

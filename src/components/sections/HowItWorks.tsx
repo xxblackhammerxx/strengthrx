@@ -6,7 +6,7 @@ const steps = [
     step: '1',
     title: 'Free Consultation',
     description:
-      'Schedule a virtual consultation to discuss your health goals and symptoms with our licensed providers.',
+      'Schedule a virtual consultation to discuss your health goals and symptoms with our licensed provider.',
   },
   {
     step: '2',

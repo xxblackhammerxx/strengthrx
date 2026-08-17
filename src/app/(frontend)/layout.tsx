@@ -1,4 +1,6 @@
 import { SiteFooter } from '@/components/footer/SiteFooter'
+import { formatStateNames } from '@/lib/licensed-states'
+import { businessConfig } from '@/lib/business.config'
 import { MainNav } from '@/components/header/MainNav'
 import type { Metadata } from 'next'
 import { Inter, Montserrat } from 'next/font/google'
@@ -22,8 +24,11 @@ export const metadata: Metadata = {
     default: 'StrengthRX | Strong body, strong minds, destroying mediocrity',
     template: '%s | StrengthRX',
   },
-  description:
-    'Professional wellness optimization through TRT, peptides, and performance protocols. We serve all 50 states. Prescription services currently available in select states and expanding.',
+  // Names the licensed states outright. The previous copy claimed "We serve
+  // all 50 states" and hedged prescription access to "select states" — a
+  // reader, and a state board, reasonably concludes from that that we can
+  // treat them anywhere.
+  description: `Professional wellness optimization through TRT, peptides, and performance protocols. Prescription services available in ${formatStateNames()}.`,
   keywords: [
     'TRT',
     'testosterone replacement therapy',
@@ -35,14 +40,14 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'StrengthRX' }],
   creator: 'StrengthRX',
-  metadataBase: new URL('https://mystrengthrx.com'),
+  metadataBase: new URL(businessConfig.urls.website),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://mystrengthrx.com',
+    url: businessConfig.urls.website,
     title: 'StrengthRX | Strong body, strong minds, destroying mediocrity',
     description:
       'Professional wellness optimization through TRT, peptides, and performance protocols.',
@@ -85,6 +90,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           strategy="afterInteractive"
         />
       </head>
+      {/*
+        No MetaPixel here, and nothing else that reports to an ad platform.
+
+        This layout wraps /get-started, whose first step asks the user to check
+        health goals ("Improve Sexual Wellness") and whose second step collects
+        lab history. That is health information tied to an identifiable person,
+        and a PageView carries the URL and referrer to Meta. Meta will not sign
+        a BAA covering it, so the only safe payload is no payload — not a
+        reduced one.
+
+        It also wraps /peptides, /hormone-therapy and /sexual-wellness, which
+        exist for organic search and carry the clinical vocabulary listed in
+        lib/compliance.ts.
+
+        Ad traffic never lands here. It lands in the (landing) group, which has
+        its own pixel, no site nav, and copy screened against BANNED_TERMS.
+        Keep the two paths separate.
+      */}
       <body className="font-sans antialiased">
         <div className="flex min-h-screen flex-col">
           <MainNav />

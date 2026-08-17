@@ -36,6 +36,7 @@ export function GetStartedForm() {
       lastName: '',
       email: '',
       phone: '',
+      smsConsent: false,
       password: '',
       confirmPassword: '',
     },
@@ -50,6 +51,7 @@ export function GetStartedForm() {
 
   const onSubmit = async (data: OnboardingFormData) => {
     setSubmitError('')
+
     const res = await fetch('/api/onboarding', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -62,6 +64,13 @@ export function GetStartedForm() {
       return
     }
 
+    /*
+     * No trackPixel here, and no pixel on this page at all — see the note in
+     * app/(frontend)/layout.tsx. `data` at this point holds the health goals
+     * and lab history collected in steps 1 and 2, and firing a conversion for
+     * this person tells Meta they became a patient. Do not add an event back,
+     * not even one with an empty custom_data.
+     */
     router.push('/client-portal')
   }
 
@@ -91,7 +100,7 @@ export function GetStartedForm() {
           <form onSubmit={handleSubmit(onSubmit)}>
             {currentStep === 0 && <StepGoals control={control} errors={errors} />}
             {currentStep === 1 && <StepLabs control={control} errors={errors} />}
-            {currentStep === 2 && <StepContact register={register} errors={errors} />}
+            {currentStep === 2 && <StepContact register={register} control={control} errors={errors} />}
             {currentStep === 3 && <StepPassword register={register} errors={errors} />}
 
             {submitError && (

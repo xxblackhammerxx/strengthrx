@@ -340,7 +340,7 @@ export default function AboutPage() {
                         clipRule="evenodd"
                       />
                     </svg>
-                    <span>Board-certified healthcare professionals</span>
+                    <span>Board-certified family nurse practitioner</span>
                   </li>
                   <li className="flex items-start">
                     <svg

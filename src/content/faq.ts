@@ -1,3 +1,5 @@
+import { formatStateNames } from '@/lib/licensed-states'
+
 export interface FAQ {
   id: string
   question: string
@@ -21,13 +23,13 @@ export const faqs: FAQ[] = [
     id: 'telehealth-how-works',
     question: 'How does telehealth work?',
     answer:
-      "After scheduling a consultation, you'll meet with our licensed providers via secure video call. We'll review your health history, symptoms, and lab results to create a personalized treatment plan. Follow-up appointments are also conducted virtually for your convenience.",
+      "After scheduling a consultation, you'll meet with our licensed provider via secure video call. We'll review your health history, symptoms, and lab results to create a personalized treatment plan. Follow-up appointments are also conducted virtually for your convenience.",
   },
   {
     id: 'what-states-served',
     question: 'What states do you serve?',
     answer:
-      'We currently provide telehealth services in Arizona, Idaho, Wyoming, Iowa, Utah, New Mexico, Nevada, and Colorado. Our licensed providers are credentialed in each state we serve.',
+      `We currently provide telehealth services in ${formatStateNames()}. Our licensed provider is credentialed in each state we serve.`,
   },
   {
     id: 'lab-testing-required',

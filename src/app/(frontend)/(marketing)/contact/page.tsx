@@ -6,7 +6,11 @@ import { Container } from '@/components/ui/Container'
 import { Heading } from '@/components/ui/Heading'
 import { Input } from '@/components/ui/Input'
 import { Textarea } from '@/components/ui/Textarea'
+import { MetaEvent } from '@/lib/meta/events'
+import { newEventId, trackPixel } from '@/lib/meta/pixel'
 import { useState } from 'react'
+import { SmsConsent } from '@/components/forms/SmsConsent'
+import { LICENSED_STATES } from '@/lib/licensed-states'
 
 // Note: This would be defined in layout.tsx or page.tsx in a real app
 // export const metadata: Metadata = {
@@ -17,16 +21,10 @@ import { useState } from 'react'
 //   },
 // }
 
-const states = [
-  { code: 'AZ', name: 'Arizona' },
-  { code: 'CO', name: 'Colorado' },
-  { code: 'ID', name: 'Idaho' },
-  { code: 'IA', name: 'Iowa' },
-  { code: 'NV', name: 'Nevada' },
-  { code: 'NM', name: 'New Mexico' },
-  { code: 'UT', name: 'Utah' },
-  { code: 'WY', name: 'Wyoming' },
-]
+// Was a fourth hand-maintained copy of the state list. Imported from
+// licensed-states because that module has no Payload dependency and so is safe
+// to pull into a client component.
+const states = LICENSED_STATES
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -36,6 +34,9 @@ export default function ContactPage() {
     state: '',
     message: '',
   })
+  // A2P 10DLC: never pre-checked, and optional here because the phone field is
+  // optional. Someone may want an email reply without agreeing to be texted.
+  const [smsConsent, setSmsConsent] = useState(false)
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
@@ -95,6 +96,10 @@ export default function ContactPage() {
         })
       })
 
+      // Shared IDs so the pixel copy below and the server copy sent from
+      // /api/contact are deduplicated into one event each.
+      const metaEventIds = { contact: newEventId(), lead: newEventId() }
+
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
@@ -102,7 +107,9 @@ export default function ContactPage() {
         },
         body: JSON.stringify({
           ...formData,
+          smsConsent,
           recaptchaToken,
+          metaEventIds,
         }),
       })
 
@@ -110,6 +117,9 @@ export default function ContactPage() {
         const data = await response.json()
         throw new Error(data.error || 'Failed to submit form')
       }
+
+      trackPixel(MetaEvent.Contact, { content_name: 'Contact Form' }, metaEventIds.contact)
+      trackPixel(MetaEvent.Lead, { content_name: 'Contact Form' }, metaEventIds.lead)
 
       setSubmitSuccess(true)
 
@@ -275,6 +285,10 @@ export default function ContactPage() {
                         placeholder="Tell us about your questions or how we can help you..."
                         rows={4}
                       />
+
+                      {formData.phone.trim() ? (
+                        <SmsConsent checked={smsConsent} onChange={setSmsConsent} />
+                      ) : null}
 
                       <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
                         {isSubmitting ? 'Sending...' : 'Send Message'}

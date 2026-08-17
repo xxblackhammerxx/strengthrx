@@ -17,6 +17,12 @@ export const onboardingSchema = z
     lastName: z.string().min(1, 'Last name is required'),
     email: z.string().email('Enter a valid email address'),
     phone: z.string().optional(),
+    /**
+     * A2P 10DLC opt-in. Optional because the phone field is — an account can be
+     * created without agreeing to be texted, and defaulting this to true would
+     * manufacture consent nobody gave.
+     */
+    smsConsent: z.boolean().optional(),
     password: z.string().min(8, 'Password must be at least 8 characters'),
     confirmPassword: z.string().min(1, 'Please confirm your password'),
   })
