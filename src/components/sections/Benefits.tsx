@@ -50,7 +50,7 @@ const benefits = [
   {
     title: 'Telehealth Convenience',
     description:
-      'Virtual consultations and ongoing support from the comfort of your home. We serve all 50 states.',
+      'Virtual consultations and ongoing support from the comfort of your home, in every state we are licensed in.',
     icon: (
       <svg className="h-8 w-8 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path

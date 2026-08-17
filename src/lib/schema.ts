@@ -16,9 +16,18 @@ interface Service {
 }
 
 import { businessConfig } from './business.config'
+import { LICENSED_STATE_CODES } from './licensed-states'
+
+/**
+ * Every URL in this file used to be hardcoded to mystrengthrx.com, which is
+ * not the site. That put the wrong host in the canonical tags, the sitemap,
+ * robots.txt and every JSON-LD @id — telling search engines the content
+ * belonged to a domain we do not serve. Derive it from one place instead.
+ */
+const SITE_URL = businessConfig.urls.website
 
 // Default fallback - the CMS global is the source of truth
-const defaultServiceAreas = ['AZ', 'ID', 'WY', 'IA', 'UT', 'NM', 'NV', 'CO', 'WA', 'VA', 'NE', 'FL']
+const defaultServiceAreas = LICENSED_STATE_CODES
 
 const contactInfo: ContactInfo = {
   telephone: businessConfig.phone.international,
@@ -34,12 +43,12 @@ export function generateOrganizationSchema(serviceAreas: string[] = defaultServi
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    '@id': 'https://mystrengthrx.com/#organization',
+    '@id': `${SITE_URL}/#organization`,
     name: 'StrengthRX',
     alternateName: 'StrengthRX',
-    url: 'https://mystrengthrx.com',
-    logo: 'https://mystrengthrx.com/logo.png',
-    description: `Professional wellness optimization through testosterone replacement therapy, peptide protocols, and performance enhancement. We serve all 50 states. Prescription services available in ${serviceAreas.length} states and expanding.`,
+    url: SITE_URL,
+    logo: `${SITE_URL}/logo.png`,
+    description: `Professional wellness optimization through testosterone replacement therapy, peptide protocols, and performance enhancement. Prescription services available in ${serviceAreas.join(', ')}.`,
     foundingDate: '2022-02-01',
     telephone: contactInfo.telephone,
     email: contactInfo.email,
@@ -62,12 +71,12 @@ export function generateLocalBusinessSchema(serviceAreas: string[] = defaultServ
   return {
     '@context': 'https://schema.org',
     '@type': 'MedicalBusiness',
-    '@id': 'https://mystrengthrx.com/#localbusiness',
+    '@id': `${SITE_URL}/#localbusiness`,
     name: 'StrengthRX',
-    image: 'https://mystrengthrx.com/og-image.jpg',
+    image: `${SITE_URL}/og-image.jpg`,
     description:
       'Professional wellness optimization through testosterone replacement therapy, peptide protocols, and performance enhancement.',
-    url: 'https://mystrengthrx.com',
+    url: SITE_URL,
     telephone: contactInfo.telephone,
     email: contactInfo.email,
     address: {
@@ -128,10 +137,10 @@ export function generateMedicalOrganizationSchema(serviceAreas: string[] = defau
   return {
     '@context': 'https://schema.org',
     '@type': 'MedicalOrganization',
-    '@id': 'https://mystrengthrx.com/#medicalorganization',
+    '@id': `${SITE_URL}/#medicalorganization`,
     name: 'StrengthRX',
-    url: 'https://mystrengthrx.com',
-    logo: 'https://mystrengthrx.com/logo.png',
+    url: SITE_URL,
+    logo: `${SITE_URL}/logo.png`,
     description:
       'Telehealth wellness optimization services specializing in hormone therapy, peptides, and performance enhancement.',
     telephone: contactInfo.telephone,
@@ -174,18 +183,18 @@ export function generateWebsiteSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    '@id': 'https://mystrengthrx.com/#website',
-    url: 'https://mystrengthrx.com',
+    '@id': `${SITE_URL}/#website`,
+    url: SITE_URL,
     name: 'StrengthRX',
     description:
       'Professional wellness optimization through TRT, peptides, and performance protocols.',
     inLanguage: 'en-US',
     publisher: {
-      '@id': 'https://mystrengthrx.com/#organization',
+      '@id': `${SITE_URL}/#organization`,
     },
     potentialAction: {
       '@type': 'SearchAction',
-      target: 'https://mystrengthrx.com/search?q={search_term_string}',
+      target: `${SITE_URL}/search?q={search_term_string}`,
       'query-input': 'required name=search_term_string',
     },
   }
@@ -201,7 +210,7 @@ export function generateServiceSchema(
     name: service.name,
     description: service.description,
     provider: {
-      '@id': 'https://mystrengthrx.com/#organization',
+      '@id': `${SITE_URL}/#organization`,
     },
     areaServed: serviceAreas.map((state) => ({
       '@type': 'State',
@@ -209,7 +218,7 @@ export function generateServiceSchema(
     })),
     serviceType: 'Medical Service',
     category: 'Healthcare',
-    ...(service.url && { url: `https://mystrengthrx.com${service.url}` }),
+    ...(service.url && { url: `${SITE_URL}${service.url}` }),
   }
 }
 
@@ -234,7 +243,7 @@ export function generateContactPageSchema(serviceAreas: string[] = defaultServic
     '@type': 'ContactPage',
     name: 'Contact StrengthRX',
     description: 'Contact StrengthRX for wellness optimization consultations and services.',
-    url: 'https://mystrengthrx.com/contact',
+    url: `${SITE_URL}/contact`,
     mainEntity: {
       '@type': 'ContactPoint',
       telephone: contactInfo.telephone,

@@ -4,13 +4,13 @@ import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { Heading } from '@/components/ui/Heading'
 import { getPrescriptionStates } from '@/lib/prescription-states'
+import { formatStateNames } from '@/lib/licensed-states'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Service Areas - Telehealth Across All 50 States | StrengthRX',
-  description:
-    'StrengthRX serves all 50 states. Prescription-related services are currently available in select states, with more being added frequently.',
+  title: 'Service Areas | StrengthRX',
+  description: `StrengthRX provides telehealth care in ${formatStateNames()}. We are licensed in these states only.`,
   alternates: {
     canonical: '/locations',
   },
@@ -25,12 +25,12 @@ export default async function LocationsPage() {
         <Container>
           <div className="text-center">
             <Heading as="h1" size="4xl" className="mb-4">
-              We Serve All 50 States
+              Where We Are Licensed
             </Heading>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               Convenient, professional wellness optimization services delivered directly to you
-              through secure telehealth consultations. Prescription-related services are currently
-              available in the states listed below, with more being added frequently.
+              through secure telehealth consultations. We are licensed to provide care in the
+              states listed below, and we cannot accept patients outside them.
             </p>
           </div>
         </Container>
@@ -242,9 +242,9 @@ export default async function LocationsPage() {
               Licensed and Expanding
             </Heading>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We serve all 50 states for general wellness services. Our healthcare providers are
-              properly licensed and credentialed in each state where we offer prescription-related
-              services, ensuring compliance with local regulations and standards of care.
+              Our provider is licensed and credentialed in each state listed above, which is what
+              lets us offer prescription-related services there. We do not accept patients in
+              states outside that list.
             </p>
           </div>
 

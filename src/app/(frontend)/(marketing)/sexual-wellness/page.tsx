@@ -8,8 +8,11 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Sexual Wellness - StrengthRX',
+  // "evidence-based treatments" was an unsubstantiated efficacy claim, and the
+  // named conditions are the single strongest signal in Meta's health
+  // classification of this domain. Both go.
   description:
-    'Restore confidence and vitality with StrengthRX sexual wellness programs. Our medical approach addresses erectile dysfunction, low libido, and sexual performance through evidence-based treatments.',
+    "Confidential, provider-led telehealth for men's sexual health. Evaluation and lab work with a licensed provider, and an individualized plan if treatment is appropriate for you.",
   alternates: {
     canonical: '/sexual-wellness',
   },
@@ -193,11 +196,14 @@ export default function SexualWellnessPage() {
             <DetailCard
               title="Medication Therapy"
               description="Medications for erectile dysfunction, premature ejaculation, and other sexual health concerns."
+              // No drug names and no effectiveness claims. What is appropriate
+              // is decided in the consult after evaluation — see the note at
+              // the top of /peptides for the reasoning.
               benefits={[
-                'PDE5 inhibitors (Sildenafil, Tadalafil)',
-                'Topical treatments and compounded formulations',
-                'Injectable therapies for enhanced effectiveness',
-                'Customized dosing for optimal results',
+                'Oral, topical, and compounded options',
+                'Prescribed only after a provider evaluation',
+                'Dosing determined individually by your provider',
+                'Dispensed by a licensed compounding pharmacy',
               ]}
               icon={
                 <svg

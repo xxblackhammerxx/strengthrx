@@ -1,4 +1,6 @@
 import type { Metadata } from 'next'
+import { formatStateNames } from './licensed-states'
+import { businessConfig } from './business.config'
 
 interface SEOProps {
   title?: string
@@ -12,9 +14,8 @@ interface SEOProps {
 
 const siteConfig = {
   name: 'StrengthRX',
-  url: 'https://mystrengthrx.com',
-  description:
-    'Professional wellness optimization through TRT, peptides, and performance protocols. We serve all 50 states. Prescription services currently available in select states and expanding.',
+  url: businessConfig.urls.website,
+  description: `Professional wellness optimization through TRT, peptides, and performance protocols. Prescription services available in ${formatStateNames()}.`,
 
   tagline: 'Strong body, strong minds, destroying mediocrity.',
   defaultOgImage: '/og-image.jpg',

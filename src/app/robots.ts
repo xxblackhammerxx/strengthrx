@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next'
+import { businessConfig } from '@/lib/business.config'
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -17,7 +18,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: '/',
       },
     ],
-    sitemap: 'https://mystrengthrx.com/sitemap.xml',
-    host: 'https://mystrengthrx.com',
+    sitemap: `${businessConfig.urls.website}/sitemap.xml`,
+    host: businessConfig.urls.website,
   }
 }

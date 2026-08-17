@@ -2,6 +2,15 @@ import { RecaptchaEnterpriseServiceClient } from '@google-cloud/recaptcha-enterp
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import { NextRequest, NextResponse } from 'next/server'
+import {
+  applyMetaCookies,
+  getMetaRequestContext,
+  sendMetaEvents,
+  type MetaCapiEvent,
+} from '@/lib/meta/capi'
+import { MetaEvent } from '@/lib/meta/events'
+import { valueParams } from '@/lib/meta/value'
+import { captureConsent, resolveAttribution, syncLeadToGhl } from '@/lib/ghl/leads'
 
 const PROJECT_ID = 'prj-gainz'
 const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ''
@@ -68,7 +77,7 @@ async function createAssessment(token: string): Promise<{ success: boolean; scor
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { name, email, phone, state, message, recaptchaToken } = body
+    const { name, email, phone, state, message, smsConsent, recaptchaToken, metaEventIds } = body
 
     // Validate required fields
     if (!name || !email || !message) {
@@ -146,7 +155,66 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    return NextResponse.json({ success: true })
+    const [firstName, ...rest] = String(name).trim().split(/\s+/)
+    const lastName = rest.join(' ') || undefined
+
+    // Into the CRM so speed-to-lead (WF-1) fires for contact-form inquiries
+    // too, not just landing-page leads. The form's `state` field actually
+    // holds a product selection, which the runbook's PHI table permits in GHL
+    // as pre-sale package interest — but never in Meta.
+    await syncLeadToGhl({
+      firstName: firstName || name,
+      lastName,
+      email,
+      phone: phone || undefined,
+      source: 'contact-form',
+      tags: ['contact-form'],
+      attribution: resolveAttribution(request),
+      packageInterest: state || undefined,
+      // Only what they explicitly ticked. Deriving consent from "they gave us a
+      // phone number" is how a business ends up texting people who never opted
+      // in — a TCPA exposure, and grounds for a carrier to kill the 10DLC
+      // campaign that every other SMS depends on.
+      consent: captureConsent(request, smsConsent === true),
+      createOpportunity: true,
+    })
+
+    const metaContext = getMetaRequestContext(request)
+
+    // Fires only after reCAPTCHA passed and the email actually sent, so Meta
+    // optimizes toward real inquiries rather than bot submissions.
+    if (metaEventIds?.contact || metaEventIds?.lead) {
+      const context = metaContext
+      // NOTE: the form's `state` field holds a product selection ("TRT",
+      // "Sexual Wellness"), not a US state — it must not be sent as `st`, and
+      // it must not reach custom_data either. A treatment interest attached to
+      // a matchable identifier is health data, which Meta's terms forbid.
+      const userData = { email, phone, firstName, lastName, country: 'us' }
+
+      const events: MetaCapiEvent[] = []
+      if (metaEventIds?.contact) {
+        events.push({
+          eventName: MetaEvent.Contact,
+          eventId: metaEventIds.contact as string,
+          userData,
+          customData: { content_name: 'Contact Form', ...valueParams(MetaEvent.Contact) },
+          context,
+        })
+      }
+      if (metaEventIds?.lead) {
+        events.push({
+          eventName: MetaEvent.Lead,
+          eventId: metaEventIds.lead as string,
+          userData,
+          customData: { content_name: 'Contact Form', ...valueParams(MetaEvent.Lead) },
+          context,
+        })
+      }
+
+      await sendMetaEvents(events)
+    }
+
+    return applyMetaCookies(NextResponse.json({ success: true }), metaContext)
   } catch (error) {
     console.error('Contact form error:', error)
     return NextResponse.json(

@@ -1,27 +1,20 @@
 import config from '@payload-config'
 import { getPayload } from 'payload'
+import { LICENSED_STATES, type PrescriptionState } from '@/lib/licensed-states'
 
-export interface PrescriptionState {
-  code: string
-  name: string
-  description: string
-}
+export type { PrescriptionState }
 
-// Default states used as fallback if the CMS has no data yet
-const defaultStates: PrescriptionState[] = [
-  { code: 'AZ', name: 'Arizona', description: 'Phoenix and statewide coverage' },
-  { code: 'ID', name: 'Idaho', description: 'Boise and statewide coverage' },
-  { code: 'WY', name: 'Wyoming', description: 'Cheyenne and statewide coverage' },
-  { code: 'IA', name: 'Iowa', description: 'Des Moines and statewide coverage' },
-  { code: 'UT', name: 'Utah', description: 'Salt Lake City and statewide coverage' },
-  { code: 'NM', name: 'New Mexico', description: 'Albuquerque and statewide coverage' },
-  { code: 'NV', name: 'Nevada', description: 'Las Vegas and statewide coverage' },
-  { code: 'CO', name: 'Colorado', description: 'Denver and statewide coverage' },
-  { code: 'WA', name: 'Washington', description: 'Seattle and statewide coverage' },
-  { code: 'VA', name: 'Virginia', description: 'Richmond and statewide coverage' },
-  { code: 'NE', name: 'Nebraska', description: 'Omaha and statewide coverage' },
-  { code: 'FL', name: 'Florida', description: 'Miami and statewide coverage' },
-]
+/**
+ * Fallback when the CMS has no data yet.
+ *
+ * The ad landing pages render this directly rather than awaiting the CMS: a
+ * paid-traffic destination that 500s while spend keeps flowing is far more
+ * expensive than a stale dropdown.
+ *
+ * The list itself lives in lib/licensed-states.ts — edit it there, not here,
+ * and read the warning in that file before adding a state.
+ */
+export const DEFAULT_PRESCRIPTION_STATES: PrescriptionState[] = LICENSED_STATES
 
 export async function getPrescriptionStates(): Promise<PrescriptionState[]> {
   try {
@@ -36,9 +29,9 @@ export async function getPrescriptionStates(): Promise<PrescriptionState[]> {
       }))
     }
 
-    return defaultStates
+    return DEFAULT_PRESCRIPTION_STATES
   } catch {
-    return defaultStates
+    return DEFAULT_PRESCRIPTION_STATES
   }
 }
 

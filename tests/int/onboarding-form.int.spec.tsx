@@ -109,8 +109,8 @@ describe('StepContact', () => {
   it('renders first name, last name, email, and phone fields', () => {
     render(
       <FormWrapper>
-        {({ register, formState: { errors } }) => (
-          <StepContact register={register} errors={errors} />
+        {({ register, control, formState: { errors } }) => (
+          <StepContact register={register} control={control} errors={errors} />
         )}
       </FormWrapper>,
     )
@@ -118,6 +118,20 @@ describe('StepContact', () => {
     expect(screen.getByLabelText(/last name/i)).toBeTruthy()
     expect(screen.getByLabelText(/email/i)).toBeTruthy()
     expect(screen.getByLabelText(/phone/i)).toBeTruthy()
+  })
+
+  it('offers an SMS opt-in that starts unchecked', () => {
+    render(
+      <FormWrapper>
+        {({ register, control, formState: { errors } }) => (
+          <StepContact register={register} control={control} errors={errors} />
+        )}
+      </FormWrapper>,
+    )
+    // A2P 10DLC: a pre-checked box is not consent, and is the most common
+    // reason a carrier rejects a campaign.
+    const consent = screen.getByRole('checkbox', { name: /text messages/i }) as HTMLInputElement
+    expect(consent.checked).toBe(false)
   })
 })
 

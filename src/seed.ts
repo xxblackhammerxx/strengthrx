@@ -1,6 +1,7 @@
 import 'dotenv/config'
 import { getPayload } from 'payload'
 import config from './payload.config'
+import { LICENSED_STATES } from './lib/licensed-states'
 
 const ADMIN_PASSWORD = 'Admin123!'
 const PARTNER_PASSWORD = 'Partner123!'
@@ -289,20 +290,9 @@ async function seed() {
   await payload.updateGlobal({
     slug: 'prescription-states',
     data: {
-      states: [
-        { code: 'AZ', name: 'Arizona', description: 'Phoenix and statewide coverage' },
-        { code: 'ID', name: 'Idaho', description: 'Boise and statewide coverage' },
-        { code: 'WY', name: 'Wyoming', description: 'Cheyenne and statewide coverage' },
-        { code: 'IA', name: 'Iowa', description: 'Des Moines and statewide coverage' },
-        { code: 'UT', name: 'Utah', description: 'Salt Lake City and statewide coverage' },
-        { code: 'NM', name: 'New Mexico', description: 'Albuquerque and statewide coverage' },
-        { code: 'NV', name: 'Nevada', description: 'Las Vegas and statewide coverage' },
-        { code: 'CO', name: 'Colorado', description: 'Denver and statewide coverage' },
-        { code: 'WA', name: 'Washington', description: 'Seattle and statewide coverage' },
-        { code: 'VA', name: 'Virginia', description: 'Richmond and statewide coverage' },
-        { code: 'NE', name: 'Nebraska', description: 'Omaha and statewide coverage' },
-        { code: 'FL', name: 'Florida', description: 'Miami and statewide coverage' },
-      ],
+      // Seeded from the canonical list so the CMS global starts in agreement
+      // with the static fallback instead of drifting from it.
+      states: LICENSED_STATES,
     },
   })
   console.log('  ✓ Prescription states seeded (12 states)')

@@ -11,6 +11,10 @@ const footerLinks = {
   ],
   legal: [
     { name: 'Privacy Policy', href: '/privacy' },
+    // HIPAA requires the Notice of Privacy Practices to be prominently posted
+    // on a website that describes our services — a footer link is the minimum.
+    { name: 'Notice of Privacy Practices', href: '/notice-of-privacy-practices' },
+    { name: 'Messaging Terms', href: '/sms-terms' },
     { name: 'Terms of Service', href: '/terms' },
   ],
 }
