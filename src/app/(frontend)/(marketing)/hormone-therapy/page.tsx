@@ -8,7 +8,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Hormone Replacement Therapy - StrengthRX',
+  title: 'Hormone Therapy',
   description:
     'Optimize your hormones with StrengthRX comprehensive hormone replacement therapy. Our medical approach addresses testosterone, thyroid, and other hormonal imbalances for enhanced vitality and performance.',
   alternates: {

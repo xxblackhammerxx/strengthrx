@@ -9,7 +9,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Service Areas | StrengthRX',
+  title: 'Licensed Service Areas',
   description: `StrengthRX provides telehealth care in ${formatStateNames()}. We are licensed in these states only.`,
   alternates: {
     canonical: '/locations',

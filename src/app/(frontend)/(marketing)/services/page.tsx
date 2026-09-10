@@ -8,7 +8,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Our Services - TRT, Peptides & Weight Loss | StrengthRX',
+  title: 'Wellness Services',
   description:
     'Comprehensive wellness services including testosterone replacement therapy, peptide protocols, weight loss programs, and performance optimization. Licensed providers, telehealth available.',
   alternates: {

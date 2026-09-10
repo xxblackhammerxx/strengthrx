@@ -38,7 +38,7 @@ import { Heading } from '@/components/ui/Heading'
  * the effective date below bumped in both.
  */
 export const metadata: Metadata = {
-  title: 'Notice of Privacy Practices | StrengthRX',
+  title: 'Notice of Privacy Practices',
   description:
     'How StrengthRX may use and disclose your protected health information, and your rights regarding that information under HIPAA.',
   alternates: {

@@ -2,6 +2,16 @@ import { Suspense } from 'react'
 import { Loader2 } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { GetStartedForm } from '@/components/onboarding/GetStartedForm'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Get Started',
+  description:
+    'Create your StrengthRX account and share your wellness goals before your provider consultation.',
+  alternates: {
+    canonical: '/get-started',
+  },
+}
 
 export default function GetStartedPage() {
   return (

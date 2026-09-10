@@ -7,7 +7,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Sexual Wellness - StrengthRX',
+  title: 'Sexual Wellness',
   // "evidence-based treatments" was an unsubstantiated efficacy claim, and the
   // named conditions are the single strongest signal in Meta's health
   // classification of this domain. Both go.

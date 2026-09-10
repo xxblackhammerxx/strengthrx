@@ -7,7 +7,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'About Us - StrengthRX Professional Wellness Optimization',
+  title: 'About the Practice',
   description:
     'Founded in February 2022, StrengthRX is dedicated to helping individuals achieve optimal health through evidence-based hormone optimization and performance enhancement protocols.',
   alternates: {
