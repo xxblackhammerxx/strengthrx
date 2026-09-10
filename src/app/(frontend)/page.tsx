@@ -15,9 +15,9 @@ import {
 import { getPrescriptionStateCodes } from '@/lib/prescription-states'
 import type { Metadata } from 'next'
 
-const homeTitle = 'Telehealth Wellness Optimization, TRT & Peptides | StrengthRX'
+const homeTitle = 'Physician-Focused Financial Education & Coaching | StrengthRX'
 const homeDescription =
-  'StrengthRX offers provider-led TRT, peptide and performance wellness programs with lab-based protocols, telehealth check-ins and ongoing support.'
+  'StrengthRX provides physician-focused financial education, trusted connections, guided accountability coaching, and community support.'
 
 export const metadata: Metadata = {
   title: homeTitle,
