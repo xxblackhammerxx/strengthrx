@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getPayload } from 'payload'
 import type { Where } from 'payload'
 import config from '@payload-config'
+import { canManageContactSubmissions } from '@/lib/contact-submissions-access'
 
 const LEADS_ALLOWED_SORTS = new Set(['createdAt', '-createdAt', 'name', '-name', 'status', '-status'])
 const LEADS_ALLOWED_STATUSES = new Set(['new', 'in-progress', 'responded', 'resolved', 'archived'])
@@ -157,21 +158,24 @@ export async function POST(request: NextRequest) {
       },
       { status: 201 },
     )
-  } catch (error) {
-    console.error('[contact-submissions] Failed to create submission:', error)
+  } catch {
+    console.error('[contact-submissions] Failed to create submission.')
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
 
 /**
  * GET /api/contact-submissions powers the portal Leads page. It requires a
- * Payload-authenticated site user because submissions contain lead PII.
+ * privileged Payload admin/staff user because submissions contain lead PII.
  */
 export async function GET(request: NextRequest) {
   try {
     const payload = await getPayload({ config })
     const { user } = await payload.auth({ headers: request.headers })
     if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    if (!canManageContactSubmissions(user)) {
+      return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+    }
 
     const sp = request.nextUrl.searchParams
     const page = Math.max(1, Number.parseInt(sp.get('page') ?? '1', 10) || 1)
@@ -219,8 +223,8 @@ export async function GET(request: NextRequest) {
     })
 
     return NextResponse.json(result)
-  } catch (error) {
-    console.error('[contact-submissions] Failed to list submissions:', error)
+  } catch {
+    console.error('[contact-submissions] Failed to list submissions.')
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }

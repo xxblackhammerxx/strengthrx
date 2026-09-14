@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload'
 import type { SiteSetting } from '@/payload-types'
+import { canManageContactSubmissions } from '@/lib/contact-submissions-access'
 
 type ContactEmailSettings = Pick<SiteSetting, 'contactFormRecipient' | 'fromEmail' | 'fromName'>
 
@@ -25,12 +26,12 @@ export const ContactSubmissions: CollectionConfig = {
   },
   access: {
     // Contact submissions contain lead PII. Public forms write through the
-    // server route using Payload's local API; direct collection access requires
-    // an authenticated Payload user and never exposes submissions publicly.
-    read: ({ req }) => Boolean(req.user),
+    // server route using Payload's local API; direct collection read/manage
+    // access is limited to privileged admin/staff users only.
+    read: ({ req }) => canManageContactSubmissions(req.user),
     create: ({ req }) => Boolean(req.user),
-    update: ({ req }) => Boolean(req.user),
-    delete: ({ req }) => Boolean(req.user),
+    update: ({ req }) => canManageContactSubmissions(req.user),
+    delete: ({ req }) => canManageContactSubmissions(req.user),
   },
   fields: [
     {
@@ -168,8 +169,8 @@ export const ContactSubmissions: CollectionConfig = {
               </div>
             `,
           })
-        } catch (error) {
-          console.error('[contact-submissions] Notification email failed:', error)
+        } catch {
+          console.error('[contact-submissions] Notification email failed.')
           // Keep the stored lead even when notification delivery has a transient failure.
         }
       },
