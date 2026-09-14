@@ -14,6 +14,7 @@ import { Admins } from './collections/Admins'
 import { Partners } from './collections/Partners'
 import { Clients } from './collections/Clients'
 import { Referrals } from './collections/Referrals'
+import { ContactSubmissions } from './collections/ContactSubmissions'
 import { PrescriptionStates } from './globals/PrescriptionStates'
 import { SiteSettings } from './globals/SiteSettings'
 
@@ -27,7 +28,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Admins, Partners, Clients, Referrals],
+  collections: [Users, Media, Admins, Partners, Clients, Referrals, ContactSubmissions],
   globals: [PrescriptionStates, SiteSettings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
