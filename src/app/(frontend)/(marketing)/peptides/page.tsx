@@ -24,7 +24,7 @@ import Link from 'next/link'
  * bulks list.
  */
 export const metadata: Metadata = {
-  title: 'Peptide Therapy - StrengthRX',
+  title: 'Peptide Therapy',
   description:
     'How peptide therapy works at StrengthRX: comprehensive labs, evaluation by a licensed provider, and an individualized protocol dispensed by a licensed 503A compounding pharmacy.',
   alternates: {

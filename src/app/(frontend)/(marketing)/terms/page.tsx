@@ -5,7 +5,7 @@ import { Heading } from '@/components/ui/Heading'
 import { getPrescriptionStatesList } from '@/lib/prescription-states'
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | StrengthRX',
+  title: 'Terms of Service',
   description:
     'StrengthRX terms of service outlining the terms and conditions for using our telehealth wellness optimization services.',
   alternates: {

@@ -35,7 +35,7 @@ import { formatStateNames } from '@/lib/licensed-states'
  *      /notice-of-privacy-practices, which is the HIPAA-facing document.
  */
 export const metadata: Metadata = {
-  title: 'Privacy Policy | StrengthRX',
+  title: 'Privacy Policy',
   description:
     'How StrengthRX collects, uses, shares, and protects your personal and health information.',
   alternates: {

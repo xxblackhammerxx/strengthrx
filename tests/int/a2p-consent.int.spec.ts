@@ -109,7 +109,7 @@ describe('consent is never manufactured', () => {
 
     // Every form's consent state must start false.
     expect(read('src/components/landing/LeadForm.tsx')).toMatch(/useState\(false\)/)
-    expect(read('src/app/(frontend)/(marketing)/contact/page.tsx')).toMatch(
+    expect(read('src/app/(frontend)/(marketing)/contact/ContactPageClient.tsx')).toMatch(
       /const \[smsConsent, setSmsConsent\] = useState\(false\)/,
     )
     expect(read('src/components/onboarding/GetStartedForm.tsx')).toMatch(/smsConsent: false/)
@@ -120,7 +120,7 @@ describe('consent is never manufactured', () => {
     // matching the language a lead saw.
     for (const form of [
       'src/components/landing/LeadForm.tsx',
-      'src/app/(frontend)/(marketing)/contact/page.tsx',
+      'src/app/(frontend)/(marketing)/contact/ContactPageClient.tsx',
       'src/components/onboarding/StepContact.tsx',
     ]) {
       expect(read(form)).toContain('SmsConsent')

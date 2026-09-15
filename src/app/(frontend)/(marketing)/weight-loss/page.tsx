@@ -8,7 +8,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Weight Loss Programs - StrengthRX',
+  title: 'Medical Weight Loss Programs',
   description:
     'Achieve sustainable weight loss with StrengthRX comprehensive programs. Our medical approach combines GLP-1 therapy, metabolic optimization, and personalized nutrition guidance.',
   alternates: {
