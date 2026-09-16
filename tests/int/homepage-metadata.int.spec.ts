@@ -4,9 +4,9 @@ import { metadata } from '@/app/(frontend)/page'
 
 describe('homepage metadata', () => {
   it('defines a unique crawlable homepage title and description', () => {
-    expect(metadata.title).toBe('Physician-Focused Financial Education & Coaching | StrengthRX')
+    expect(metadata.title).toBe('TRT & Hormone Optimization Telehealth | StrengthRX')
     expect(metadata.description).toBe(
-      'StrengthRX provides physician-focused financial education, trusted connections, guided accountability coaching, and community support.',
+      'StrengthRX provides provider-led telehealth for TRT, hormone optimization, peptides, weight loss, and performance protocols with labs and monitoring.',
     )
   })
 
