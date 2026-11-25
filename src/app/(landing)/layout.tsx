@@ -3,6 +3,7 @@ import { Inter, Montserrat } from 'next/font/google'
 import Image from 'next/image'
 import Script from 'next/script'
 import { MetaPixel } from '@/components/analytics/MetaPixel'
+import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics'
 import { AttributionCapture } from '@/components/analytics/AttributionCapture'
 import { businessConfig } from '@/lib/business.config'
 import '../(frontend)/styles.css'
@@ -44,6 +45,7 @@ export default function LandingLayout({ children }: { children: React.ReactNode 
       </head>
       <body className="font-sans antialiased">
         <MetaPixel />
+        <GoogleAnalytics />
         <AttributionCapture />
 
         <div className="flex min-h-screen flex-col">

@@ -21,6 +21,8 @@ import { formatStateNames } from '@/lib/licensed-states'
  *   Meta             lib/meta/capi.ts + components/analytics/MetaPixel.tsx
  *                    — mounted ONLY in app/(landing), never in app/(frontend)
  *   Resend           /api/contact (notification to our own inbox)
+ *   Google Analytics components/analytics/GoogleAnalytics.tsx
+ *                    — homepage and app/(landing) only; lib/analytics/ga4.ts
  *   reCAPTCHA        both root layouts
  *
  * If you change a data flow, change this page in the same commit. A privacy
@@ -62,7 +64,7 @@ export default function PrivacyPage() {
           <p className="text-sm text-muted-foreground mb-8">
             <strong>Effective Date:</strong> August 17, 2026
             <br />
-            <strong>Last Updated:</strong> August 17, 2026
+            <strong>Last Updated:</strong> November 24, 2026
           </p>
 
           <h2>1. Scope of This Policy</h2>
@@ -161,7 +163,9 @@ export default function PrivacyPage() {
             </li>
             <li>
               <strong>Google</strong> — reCAPTCHA Enterprise receives technical signals from your
-              browser to distinguish real visitors from automated abuse.
+              browser to distinguish real visitors from automated abuse. Google Analytics receives
+              visit measurement data from our homepage and advertising landing pages only, as
+              described in Section 5.
             </li>
             <li>
               <strong>Laboratories and compounding pharmacies</strong> — receive the information
@@ -195,6 +199,12 @@ export default function PrivacyPage() {
             page you visited, advertising click identifiers, and — if you submit a form on one of
             those pages — a cryptographically hashed copy of the contact details you entered, so
             that Meta can match your response to the ad you saw.
+          </p>
+          <p>
+            <strong>Website analytics.</strong> On our homepage and our advertising landing pages
+            only, we use Google Analytics to count visits and understand how visitors found us. It
+            may receive your IP address, browser and device information, the page you visited, and
+            the page that referred you. We have turned off its advertising features.
           </p>
           <p>
             <strong>Where we deliberately do not use them.</strong> We do not place advertising or
