@@ -1,3 +1,4 @@
+import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics'
 import { Benefits } from '@/components/sections/Benefits'
 import { CTA } from '@/components/sections/CTA'
 import { FAQ } from '@/components/sections/FAQ'
@@ -21,6 +22,11 @@ export default async function HomePage() {
 
   return (
     <>
+      {/*
+        Mounted on this page, not in the layout: the layout also wraps
+        /get-started and the clinical service pages, which must stay untracked.
+      */}
+      <GoogleAnalytics />
       {/* Structured Data */}
       <script
         type="application/ld+json"

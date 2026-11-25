@@ -107,6 +107,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         Ad traffic never lands here. It lands in the (landing) group, which has
         its own pixel, no site nav, and copy screened against BANNED_TERMS.
         Keep the two paths separate.
+
+        Google Analytics is the one exception, and it is not mounted here: the
+        homepage mounts it from its own page.tsx, and lib/analytics/ga4.ts
+        keeps it silent on every other page in this layout.
       */}
       <body className="font-sans antialiased">
         <div className="flex min-h-screen flex-col">
